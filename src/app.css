@@ -1,0 +1,26 @@
+@import 'tailwindcss';
+
+@theme {
+	--font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		animation-duration: 0.01ms !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+
+html {
+	overflow-x: hidden;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+	min-height: 100svh;
+	font-family: var(--font-sans);
+	-webkit-tap-highlight-color: transparent;
+	overflow-x: hidden;
+}
