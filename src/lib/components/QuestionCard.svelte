@@ -179,7 +179,7 @@
         <button
           type="button"
           onclick={() => toggleOption(option)}
-          class="rounded-lg border-2 px-3 py-1.5 text-sm font-medium transition-all cursor-pointer active:scale-[0.97]
+          class="rounded-lg border-2 px-4 py-2 text-lg font-medium transition-all cursor-pointer active:scale-[0.97]
 						{selectedOptions.includes(option)
             ? selectedOptionColors[i % selectedOptionColors.length]
             : optionColors[i % optionColors.length]}"

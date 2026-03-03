@@ -9,3 +9,5 @@
 | 2026-03-03 | 16:25 | 16:31 | 0.1 | `819d111` | Make options clickable, replace Belangrijk with Ga verder button |
 | 2026-03-03 | 16:31 | 16:43 | 0.2 | `7923b5c` | Add slider UI for slider questions, limit max selectable options, and style tweaks |
 | 2026-03-03 | 16:43 | 16:46 | 0.1 | `572cb8c` | Move remark section below buttons, increase font sizes, disable skip when option selected |
+| 2026-03-03 | 19:15 | 19:24 | 0.1 | `b00c347` | UI: Add spacing and refine styling in QuestionCard |
+| 2026-03-03 | 19:25 | 19:26 | 0.0 | `4162867` | UI: Increase spacing and refine styling in QuestionCard |
