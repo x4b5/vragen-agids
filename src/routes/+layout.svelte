@@ -16,7 +16,7 @@
 </script>
 
 <svelte:head>
-  <title>Agent Kompas</title>
+  <title>Vragen Agids</title>
 </svelte:head>
 
 {@render children()}

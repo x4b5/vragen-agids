@@ -20,6 +20,19 @@
 		isLast: boolean;
 	} = $props();
 
+	const optionColors = [
+		'bg-emerald-50 border-emerald-300 text-emerald-800',
+		'bg-sky-50 border-sky-300 text-sky-800',
+		'bg-amber-50 border-amber-300 text-amber-800',
+		'bg-rose-50 border-rose-300 text-rose-800',
+		'bg-violet-50 border-violet-300 text-violet-800',
+		'bg-teal-50 border-teal-300 text-teal-800',
+		'bg-orange-50 border-orange-300 text-orange-800',
+		'bg-indigo-50 border-indigo-300 text-indigo-800',
+		'bg-lime-50 border-lime-300 text-lime-800',
+		'bg-pink-50 border-pink-300 text-pink-800',
+	];
+
 	let showRemark = $state(false);
 	let remark = $state('');
 
@@ -49,8 +62,8 @@
 	<!-- Read-only options display -->
 	{#if question.type === 'options' && question.options}
 		<div class="flex flex-wrap justify-center gap-2 mb-6">
-			{#each question.options as option}
-				<span class="rounded-lg bg-gray-50 border border-gray-200 px-3 py-1.5 text-sm text-gray-600">
+			{#each question.options as option, i}
+				<span class="rounded-lg border px-3 py-1.5 text-sm font-medium {optionColors[i % optionColors.length]}">
 					{option}
 				</span>
 			{/each}
@@ -59,8 +72,8 @@
 
 	{#if question.type === 'multi-select' && question.options}
 		<div class="flex flex-wrap justify-center gap-2 mb-6">
-			{#each question.options as option}
-				<span class="rounded-lg bg-gray-50 border border-gray-200 px-3 py-1.5 text-sm text-gray-600">
+			{#each question.options as option, i}
+				<span class="rounded-lg border px-3 py-1.5 text-sm font-medium {optionColors[i % optionColors.length]}">
 					{option}
 				</span>
 			{/each}
@@ -69,9 +82,9 @@
 
 	{#if question.type === 'slider' && question.sliderLabels}
 		<div class="flex items-center justify-between mb-6 px-4">
-			<span class="text-sm font-medium text-gray-500">{question.sliderLabels[0]}</span>
-			<div class="flex-1 mx-4 h-2 rounded-full bg-gradient-to-r from-gray-200 to-gray-300"></div>
-			<span class="text-sm font-medium text-gray-500">{question.sliderLabels[1]}</span>
+			<span class="rounded-lg border px-3 py-1.5 text-sm font-medium {optionColors[0]}">{question.sliderLabels[0]}</span>
+			<div class="flex-1 mx-4 h-2 rounded-full bg-gradient-to-r from-emerald-100 to-teal-100"></div>
+			<span class="rounded-lg border px-3 py-1.5 text-sm font-medium {optionColors[1]}">{question.sliderLabels[1]}</span>
 		</div>
 	{/if}
 

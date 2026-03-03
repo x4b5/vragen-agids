@@ -19,7 +19,7 @@
 <main class="min-h-svh flex items-center justify-center px-5">
 	<div class="w-full max-w-sm text-center">
 		<div class="mb-10">
-			<h1 class="text-4xl font-bold text-gray-900 mb-3">Agent Kompas</h1>
+			<h1 class="text-4xl font-bold text-gray-900 mb-3">Vragen Agids</h1>
 			<p class="text-lg text-gray-500">Voer het wachtwoord in om te beginnen</p>
 		</div>
 

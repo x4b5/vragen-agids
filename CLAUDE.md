@@ -1,4 +1,4 @@
-# [PROJECTNAAM] — Agent Kompas
+# [PROJECTNAAM] — Vragen Agids
 
 ## Doel
 Een aantrekkelijke, responsive vragenlijst (desktop + mobiel) waarin de gebruiker vragen beantwoordt en per vraag aangeeft hoe belangrijk die is. Toegang tot de app is beschermd met een wachtwoord.
