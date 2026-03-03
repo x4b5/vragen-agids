@@ -1,5 +1,5 @@
 import { questions } from '../data/questions';
-import { trackLoginSuccess, trackQuestionRated, trackQuestionnaireCompleted } from '../utils/analytics';
+import { submitResponses } from '../utils/supabase';
 
 export type GamePhase = 'login' | 'questionnaire' | 'done';
 
@@ -60,26 +60,17 @@ export function login(password: string): boolean {
 		if (typeof window !== 'undefined') {
 			localStorage.setItem(STORAGE_KEY, 'true');
 		}
-		trackLoginSuccess();
 		return true;
 	}
 	return false;
 }
 
 export function rateQuestion(questionId: string, rating: 'skip' | 'important', remark?: string): void {
-	const question = questions.find((q) => q.id === questionId);
 	const answer: Answer = { rating };
 	if (remark?.trim()) {
 		answer.remark = remark.trim();
 	}
 	answers.set(questionId, answer);
-
-	trackQuestionRated({
-		question_id: questionId,
-		phase: question?.phase ?? '',
-		rating,
-		has_remark: !!answer.remark
-	});
 }
 
 export function nextQuestion(): void {
@@ -100,13 +91,16 @@ export function submitAll(): void {
 	let totalSkipped = 0;
 	let totalRemarks = 0;
 
-	for (const answer of answers.values()) {
+	const answersObj: Record<string, { rating: string; remark?: string }> = {};
+	for (const [id, answer] of answers.entries()) {
 		if (answer.rating === 'important') totalImportant++;
 		else totalSkipped++;
 		if (answer.remark) totalRemarks++;
+		answersObj[id] = { rating: answer.rating, ...(answer.remark ? { remark: answer.remark } : {}) };
 	}
 
-	trackQuestionnaireCompleted({
+	submitResponses({
+		answers: answersObj,
 		total_important: totalImportant,
 		total_skipped: totalSkipped,
 		total_remarks: totalRemarks,
