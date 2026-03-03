@@ -11,3 +11,4 @@
 | 2026-03-03 | 16:43 | 16:46 | 0.1 | `572cb8c` | Move remark section below buttons, increase font sizes, disable skip when option selected |
 | 2026-03-03 | 19:15 | 19:24 | 0.1 | `b00c347` | UI: Add spacing and refine styling in QuestionCard |
 | 2026-03-03 | 19:25 | 19:26 | 0.0 | `4162867` | UI: Increase spacing and refine styling in QuestionCard |
+| 2026-03-03 | 19:24 | 19:27 | 0.0 | `4d6bdb2` | UI: Increase font size and padding of option buttons |

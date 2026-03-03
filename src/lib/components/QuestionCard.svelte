@@ -126,6 +126,7 @@
 
   function handleSkipLast() {
     onrate(question.id, "skip", undefined, showRemark ? remark : undefined);
+    onnext();
   }
 
   function handleProceedLast() {
@@ -135,6 +136,7 @@
       selectedOptions,
       showRemark ? remark : undefined,
     );
+    onnext();
   }
 </script>
 
@@ -196,7 +198,7 @@
       <button
         onclick={handleSkipLast}
         disabled={hasSelection && !isSlider}
-        class="w-full rounded-xl border border-gray-300 bg-gray-200 px-6 py-3.5 text-base font-medium
+        class="cursor-pointer w-full rounded-xl border border-gray-300 bg-gray-200 px-6 py-3.5 text-base font-medium
 					text-gray-600 transition-all active:scale-[0.97] hover:bg-gray-300 hover:text-gray-700
 					disabled:opacity-30 disabled:cursor-not-allowed
 					{answer?.rating === 'skip' ? 'border-gray-400 bg-gray-300 text-gray-700' : ''}"
@@ -206,7 +208,7 @@
       {#if hasSelection || !hasOptions}
         <button
           onclick={handleProceedLast}
-          class="w-full rounded-xl bg-indigo-600 px-6 py-3.5 text-lg font-semibold text-white shadow-lg
+          class="cursor-pointer w-full rounded-xl bg-indigo-600 px-6 py-3.5 text-lg font-semibold text-white shadow-lg
 						transition-all active:scale-[0.97] hover:bg-indigo-700"
         >
           Ga verder
@@ -216,7 +218,7 @@
       <button
         onclick={skip}
         disabled={hasSelection && !isSlider}
-        class="w-full rounded-xl border border-gray-300 bg-gray-200 px-6 py-3.5 text-base font-medium
+        class="cursor-pointer w-full rounded-xl border border-gray-300 bg-gray-200 px-6 py-3.5 text-base font-medium
 					text-gray-600 transition-all active:scale-[0.97] hover:bg-gray-300 hover:text-gray-700
 					disabled:opacity-30 disabled:cursor-not-allowed
 					{answer?.rating === 'skip' ? 'border-gray-400 bg-gray-300 text-gray-700' : ''}"
@@ -226,7 +228,7 @@
       {#if hasSelection || !hasOptions}
         <button
           onclick={proceed}
-          class="w-full rounded-xl bg-indigo-600 px-6 py-3.5 text-lg font-semibold text-white shadow-lg
+          class="cursor-pointer w-full rounded-xl bg-indigo-600 px-6 py-3.5 text-lg font-semibold text-white shadow-lg
 						transition-all active:scale-[0.97] hover:bg-indigo-700"
         >
           Ga verder
@@ -240,7 +242,7 @@
     <button
       type="button"
       onclick={() => (showRemark = !showRemark)}
-      class="text-base text-indigo-500 hover:text-indigo-700 transition-colors font-medium"
+      class="cursor-pointer text-base text-indigo-500 hover:text-indigo-700 transition-colors font-medium"
     >
       {showRemark ? "Opmerking verbergen" : "Opmerking toevoegen"}
     </button>
@@ -261,7 +263,7 @@
     <button
       onclick={onprev}
       disabled={isFirst}
-      class="text-base font-medium text-gray-400 hover:text-gray-600 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+      class="cursor-pointer text-base font-medium text-gray-400 hover:text-gray-600 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
     >
       Vorige
     </button>
@@ -269,7 +271,7 @@
     {#if isLast && answer}
       <button
         onclick={onnext}
-        class="text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors"
+        class="cursor-pointer text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors"
       >
         Afronden
       </button>

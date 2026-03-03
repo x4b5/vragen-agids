@@ -213,10 +213,10 @@ export const questions: Question[] = [
 		text: 'Wat past het meest bij jou?',
 		type: 'options',
 		options: [
-			'Jij steekt graag meteen de handen uit de mouwen',
-			'Jij denkt eerst goed na voordat je begint',
-			'Jij zorgt dat dingen geregeld worden',
-			'Jij helpt graag anderen'
+			'Ik steek graag meteen de handen uit de mouwen',
+			'Ik denk eerst goed na voordat ik begin',
+			'Ik zorg dat dingen geregeld worden',
+			'Ik help graag anderen'
 		]
 	},
 	{
@@ -237,10 +237,10 @@ export const questions: Question[] = [
 		text: 'Als je ergens nieuw binnenloopt, dan:',
 		type: 'options',
 		options: [
-			'Jij begint meteen',
-			'Jij kijkt eerst rustig rond',
-			'Jij stelt een paar vragen',
-			'Jij zoekt iemand die je helpt'
+			'Ik begin meteen',
+			'Ik kijk eerst rustig rond',
+			'Ik stel een paar vragen',
+			'Ik zoek iemand die me helpt'
 		]
 	},
 	{
@@ -249,10 +249,10 @@ export const questions: Question[] = [
 		text: 'Als iets niet lukt, dan:',
 		type: 'options',
 		options: [
-			'Jij blijft proberen',
-			'Jij vraagt hulp',
-			'Jij zoekt een andere manier',
-			'Jij laat het even liggen'
+			'Ik blijf proberen',
+			'Ik vraag hulp',
+			'Ik zoek een andere manier',
+			'Ik laat het even liggen'
 		]
 	},
 	{
@@ -275,10 +275,10 @@ export const questions: Question[] = [
 		text: 'Heb je werkervaring?',
 		type: 'options',
 		options: [
-			'Jij hebt al langere tijd gewerkt',
-			'Jij hebt wat ervaring (bijbaan of stage)',
-			'Jij hebt nog niet veel ervaring',
-			'Jij hebt nog niet gewerkt'
+			'Ik heb al langere tijd gewerkt',
+			'Ik heb wat ervaring (bijbaan of stage)',
+			'Ik heb nog niet veel ervaring',
+			'Ik heb nog niet gewerkt'
 		]
 	},
 	{
@@ -287,11 +287,11 @@ export const questions: Question[] = [
 		text: 'Wat kun jij goed?',
 		type: 'multi-select',
 		options: [
-			'Jij gaat makkelijk met mensen om',
-			'Jij werkt netjes en precies',
-			'Jij pakt door als het nodig is',
-			'Jij houdt overzicht',
-			'Jij lost problemen op'
+			'Ik ga makkelijk met mensen om',
+			'Ik werk netjes en precies',
+			'Ik pak door als het nodig is',
+			'Ik houd overzicht',
+			'Ik los problemen op'
 		]
 	},
 	{

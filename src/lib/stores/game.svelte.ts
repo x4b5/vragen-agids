@@ -24,6 +24,9 @@ if (typeof window !== 'undefined' && localStorage.getItem(STORAGE_KEY) === 'true
 
 export function getGameState() {
 	return {
+		get skipToEnd() {
+			return skipToEnd;
+		},
 		get phase() {
 			return phase;
 		},
@@ -87,6 +90,10 @@ export function prevQuestion(): void {
 	if (currentQuestionIndex > 0) {
 		currentQuestionIndex--;
 	}
+}
+
+export function skipToEnd(): void {
+	currentQuestionIndex = questions.length - 1;
 }
 
 export function submitAll(): void {
