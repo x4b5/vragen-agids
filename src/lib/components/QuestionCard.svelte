@@ -50,9 +50,25 @@
 	let remark = $state('');
 	let selectedOptions = $state<string[]>([]);
 
-	let isMultiSelect = $derived(question.type === 'multi-select');
-	let hasOptions = $derived(question.type === 'options' || question.type === 'multi-select');
+	let displayOptions = $derived(
+		question.options?.slice(0, 4) ?? []
+	);
+
+	let isSlider = $derived(question.type === 'slider' && !!question.sliderLabels);
+	let hasOptions = $derived(displayOptions.length > 0 || isSlider);
 	let hasSelection = $derived(selectedOptions.length > 0);
+
+	let sliderValue = $state<number | null>(null);
+	let sliderLabels = $derived(
+		question.sliderLabels
+			? [
+				question.sliderLabels[0],
+				`Meer ${question.sliderLabels[0].toLowerCase()}`,
+				`Meer ${question.sliderLabels[1].toLowerCase()}`,
+				question.sliderLabels[1]
+			]
+			: []
+	);
 
 	// Reset state when question changes
 	$effect(() => {
@@ -60,17 +76,28 @@
 		showRemark = !!answer?.remark;
 		remark = answer?.remark ?? '';
 		selectedOptions = answer?.selectedOptions ?? [];
+		// Restore slider position from saved answer
+		if (isSlider && answer?.selectedOptions?.[0]) {
+			const idx = sliderLabels.indexOf(answer.selectedOptions[0]);
+			sliderValue = idx >= 0 ? idx : null;
+		} else {
+			sliderValue = null;
+		}
 	});
 
+	function handleSlider(value: number) {
+		sliderValue = value;
+		selectedOptions = [sliderLabels[value]];
+	}
+
 	function toggleOption(option: string) {
-		if (isMultiSelect) {
-			if (selectedOptions.includes(option)) {
-				selectedOptions = selectedOptions.filter(o => o !== option);
-			} else {
-				selectedOptions = [...selectedOptions, option];
-			}
+		if (selectedOptions.includes(option)) {
+			selectedOptions = selectedOptions.filter(o => o !== option);
+		} else if (question.maxSelect && selectedOptions.length >= question.maxSelect) {
+			// At max: replace oldest selection
+			selectedOptions = [...selectedOptions.slice(1), option];
 		} else {
-			selectedOptions = selectedOptions.includes(option) ? [] : [option];
+			selectedOptions = [...selectedOptions, option];
 		}
 	}
 
@@ -98,10 +125,31 @@
 		{question.text}
 	</h2>
 
+	<!-- Slider -->
+	{#if isSlider && question.sliderLabels}
+		<div class="mb-6 px-2">
+			<div class="flex justify-between mb-2 text-sm font-medium text-gray-600">
+				<span>{sliderLabels[0]}</span>
+				<span>{sliderLabels[3]}</span>
+			</div>
+			<input
+				type="range"
+				min="0"
+				max="3"
+				step="1"
+				value={sliderValue ?? 1}
+				oninput={(e) => handleSlider(Number(e.currentTarget.value))}
+				class="w-full h-3 rounded-full appearance-none cursor-pointer accent-indigo-600
+					{sliderValue === null ? 'opacity-40' : ''}"
+				style="background: linear-gradient(to right, #d1fae5, #ffe4e6);"
+			/>
+		</div>
+	{/if}
+
 	<!-- Clickable options -->
-	{#if hasOptions && question.options}
+	{#if !isSlider && displayOptions.length > 0}
 		<div class="flex flex-wrap justify-center gap-2 mb-6">
-			{#each question.options as option, i}
+			{#each displayOptions as option, i}
 				<button
 					type="button"
 					onclick={() => toggleOption(option)}
@@ -111,14 +159,6 @@
 					{option}
 				</button>
 			{/each}
-		</div>
-	{/if}
-
-	{#if question.type === 'slider' && question.sliderLabels}
-		<div class="flex items-center justify-between mb-6 px-4">
-			<span class="rounded-lg border px-3 py-1.5 text-sm font-medium {optionColors[0]}">{question.sliderLabels[0]}</span>
-			<div class="flex-1 mx-4 h-2 rounded-full bg-gradient-to-r from-emerald-100 to-teal-100"></div>
-			<span class="rounded-lg border px-3 py-1.5 text-sm font-medium {optionColors[1]}">{question.sliderLabels[1]}</span>
 		</div>
 	{/if}
 
@@ -148,9 +188,9 @@
 		{#if isLast}
 			<button
 				onclick={handleSkipLast}
-				class="w-full rounded-xl border-2 border-gray-200 bg-white px-6 py-3.5 text-lg font-semibold
-					text-gray-600 transition-all active:scale-[0.97] hover:bg-gray-50 hover:border-gray-300
-					{answer?.rating === 'skip' ? 'border-gray-400 bg-gray-50' : ''}"
+				class="w-full rounded-xl border border-gray-300 bg-gray-200 px-6 py-3.5 text-base font-medium
+					text-gray-600 transition-all active:scale-[0.97] hover:bg-gray-300 hover:text-gray-700
+					{answer?.rating === 'skip' ? 'border-gray-400 bg-gray-300 text-gray-700' : ''}"
 			>
 				Sla over (rare vraag)
 			</button>
@@ -166,9 +206,9 @@
 		{:else}
 			<button
 				onclick={skip}
-				class="w-full rounded-xl border-2 border-gray-200 bg-white px-6 py-3.5 text-lg font-semibold
-					text-gray-600 transition-all active:scale-[0.97] hover:bg-gray-50 hover:border-gray-300
-					{answer?.rating === 'skip' ? 'border-gray-400 bg-gray-50' : ''}"
+				class="w-full rounded-xl border border-gray-300 bg-gray-200 px-6 py-3.5 text-base font-medium
+					text-gray-600 transition-all active:scale-[0.97] hover:bg-gray-300 hover:text-gray-700
+					{answer?.rating === 'skip' ? 'border-gray-400 bg-gray-300 text-gray-700' : ''}"
 			>
 				Sla over (rare vraag)
 			</button>

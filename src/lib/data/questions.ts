@@ -7,6 +7,7 @@ export interface Question {
 	type: QuestionType;
 	options?: string[];
 	sliderLabels?: [string, string];
+	maxSelect?: number;
 }
 
 export const phases = [
@@ -83,6 +84,7 @@ export const questions: Question[] = [
 		phase: 'Wat vind jij belangrijk?',
 		text: 'Wat vind jij belangrijk in werk? (maximaal 2)',
 		type: 'multi-select',
+		maxSelect: 2,
 		options: [
 			'Goede sfeer',
 			'Zekerheid',
