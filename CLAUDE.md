@@ -1,7 +1,7 @@
 # [PROJECTNAAM] — Agent Kompas
 
 ## Doel
-[Beschrijf het doel van je project in 2-3 zinnen. Wat doet het? Voor wie? Wat is het primaire doel?]
+Een aantrekkelijke, responsive vragenlijst (desktop + mobiel) waarin de gebruiker vragen beantwoordt en per vraag aangeeft hoe belangrijk die is. Toegang tot de app is beschermd met een wachtwoord.
 
 ## Techstack
 - SvelteKit 5 + Svelte 5 runes (`$state`, `$derived`, `$effect`) — geen legacy syntax

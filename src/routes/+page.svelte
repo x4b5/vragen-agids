@@ -1,47 +1,60 @@
 <script lang="ts">
-  import { getGameState } from "$lib/stores/game.svelte";
+  import { getGameState, rateQuestion, nextQuestion, prevQuestion, submitAll } from "$lib/stores/game.svelte";
+  import LoginScreen from "$lib/components/LoginScreen.svelte";
+  import QuestionCard from "$lib/components/QuestionCard.svelte";
+  import ProgressBar from "$lib/components/ProgressBar.svelte";
+  import PhaseHeader from "$lib/components/PhaseHeader.svelte";
+  import DoneScreen from "$lib/components/DoneScreen.svelte";
 
   const game = getGameState();
+
+  function handleRate(questionId: string, rating: 'skip' | 'important', remark?: string) {
+    rateQuestion(questionId, rating, remark);
+  }
+
+  function handleNext() {
+    if (game.isLastQuestion) {
+      submitAll();
+    } else {
+      nextQuestion();
+    }
+  }
+
+  function handlePrev() {
+    prevQuestion();
+  }
 </script>
 
-{#if game.phase === "welcome"}
-  <main class="min-h-svh flex items-center justify-center px-5">
-    <div class="text-center">
-      <h1 class="text-4xl font-bold mb-4">[APP_NAME]</h1>
-      <p class="text-lg text-gray-600 mb-8">[APP_DESCRIPTION]</p>
-      <button
-        onclick={() => import("$lib/stores/game.svelte").then(m => m.startGame())}
-        class="rounded-2xl bg-indigo-600 px-8 py-4 text-lg font-bold text-white shadow-lg
-               transition-all active:scale-[0.97] hover:bg-indigo-700"
-      >
-        Start
-      </button>
+{#if game.phase === "login"}
+  <LoginScreen />
+{:else if game.phase === "questionnaire"}
+  <main class="min-h-svh flex flex-col px-5 py-6 sm:py-10">
+    <div class="w-full max-w-lg mx-auto">
+      <ProgressBar
+        progress={game.progress}
+        current={game.currentQuestionIndex}
+        total={game.totalQuestions}
+      />
+    </div>
+
+    <div class="flex-1 flex flex-col items-center justify-center py-8">
+      <PhaseHeader phase={game.currentPhase} />
+
+      {#key game.currentQuestionIndex}
+        <div class="w-full animate-fade-in">
+          <QuestionCard
+            question={game.currentQuestion}
+            answer={game.answers.get(game.currentQuestion.id)}
+            onrate={handleRate}
+            onnext={handleNext}
+            onprev={handlePrev}
+            isFirst={game.isFirstQuestion}
+            isLast={game.isLastQuestion}
+          />
+        </div>
+      {/key}
     </div>
   </main>
-{:else if game.phase === "playing"}
-  <main class="min-h-svh flex items-center justify-center px-5">
-    <div class="text-center">
-      <h1 class="text-2xl font-bold mb-4">Playing...</h1>
-      <button
-        onclick={() => import("$lib/stores/game.svelte").then(m => m.finishGame())}
-        class="rounded-2xl bg-indigo-600 px-8 py-4 text-lg font-bold text-white shadow-lg
-               transition-all active:scale-[0.97] hover:bg-indigo-700"
-      >
-        Finish
-      </button>
-    </div>
-  </main>
-{:else if game.phase === "results"}
-  <main class="min-h-svh flex items-center justify-center px-5">
-    <div class="text-center">
-      <h1 class="text-2xl font-bold mb-4">Results!</h1>
-      <button
-        onclick={() => import("$lib/stores/game.svelte").then(m => m.resetGame())}
-        class="rounded-2xl bg-gray-600 px-8 py-4 text-lg font-bold text-white shadow-lg
-               transition-all active:scale-[0.97] hover:bg-gray-700"
-      >
-        Restart
-      </button>
-    </div>
-  </main>
+{:else if game.phase === "done"}
+  <DoneScreen />
 {/if}

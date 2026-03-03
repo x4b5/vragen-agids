@@ -31,10 +31,32 @@ function capture(event: string, properties?: Record<string, unknown>): void {
 	}
 }
 
-// --- Add your tracking functions below ---
+// --- Tracking functions ---
 
 export function trackPageViewed(page: string): void {
 	capture('page_viewed', { page });
+}
+
+export function trackLoginSuccess(): void {
+	capture('login_success');
+}
+
+export function trackQuestionRated(props: {
+	question_id: string;
+	phase: string;
+	rating: 'skip' | 'important';
+	has_remark: boolean;
+}): void {
+	capture('question_rated', props);
+}
+
+export function trackQuestionnaireCompleted(props: {
+	total_important: number;
+	total_skipped: number;
+	total_remarks: number;
+	duration_ms: number;
+}): void {
+	capture('questionnaire_completed', props);
 }
 
 export function setupAbandonmentTracking(
