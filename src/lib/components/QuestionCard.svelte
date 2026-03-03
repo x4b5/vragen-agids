@@ -13,7 +13,7 @@
 	}: {
 		question: Question;
 		answer: Answer | undefined;
-		onrate: (questionId: string, rating: 'skip' | 'important', remark?: string) => void;
+		onrate: (questionId: string, rating: 'skip' | 'important', selectedOptions?: string[], remark?: string) => void;
 		onnext: () => void;
 		onprev: () => void;
 		isFirst: boolean;
@@ -33,24 +33,63 @@
 		'bg-pink-50 border-pink-300 text-pink-800',
 	];
 
+	const selectedOptionColors = [
+		'bg-emerald-200 border-emerald-500 text-emerald-900 ring-2 ring-emerald-400',
+		'bg-sky-200 border-sky-500 text-sky-900 ring-2 ring-sky-400',
+		'bg-amber-200 border-amber-500 text-amber-900 ring-2 ring-amber-400',
+		'bg-rose-200 border-rose-500 text-rose-900 ring-2 ring-rose-400',
+		'bg-violet-200 border-violet-500 text-violet-900 ring-2 ring-violet-400',
+		'bg-teal-200 border-teal-500 text-teal-900 ring-2 ring-teal-400',
+		'bg-orange-200 border-orange-500 text-orange-900 ring-2 ring-orange-400',
+		'bg-indigo-200 border-indigo-500 text-indigo-900 ring-2 ring-indigo-400',
+		'bg-lime-200 border-lime-500 text-lime-900 ring-2 ring-lime-400',
+		'bg-pink-200 border-pink-500 text-pink-900 ring-2 ring-pink-400',
+	];
+
 	let showRemark = $state(false);
 	let remark = $state('');
+	let selectedOptions = $state<string[]>([]);
 
-	// Reset remark state when question changes
+	let isMultiSelect = $derived(question.type === 'multi-select');
+	let hasOptions = $derived(question.type === 'options' || question.type === 'multi-select');
+	let hasSelection = $derived(selectedOptions.length > 0);
+
+	// Reset state when question changes
 	$effect(() => {
-		// Access question.id to track changes
 		question.id;
 		showRemark = !!answer?.remark;
 		remark = answer?.remark ?? '';
+		selectedOptions = answer?.selectedOptions ?? [];
 	});
 
-	function rate(rating: 'skip' | 'important') {
-		onrate(question.id, rating, showRemark ? remark : undefined);
+	function toggleOption(option: string) {
+		if (isMultiSelect) {
+			if (selectedOptions.includes(option)) {
+				selectedOptions = selectedOptions.filter(o => o !== option);
+			} else {
+				selectedOptions = [...selectedOptions, option];
+			}
+		} else {
+			selectedOptions = selectedOptions.includes(option) ? [] : [option];
+		}
+	}
+
+	function skip() {
+		onrate(question.id, 'skip', undefined, showRemark ? remark : undefined);
 		onnext();
 	}
 
-	function handleSubmitLast(rating: 'skip' | 'important') {
-		onrate(question.id, rating, showRemark ? remark : undefined);
+	function proceed() {
+		onrate(question.id, 'important', selectedOptions, showRemark ? remark : undefined);
+		onnext();
+	}
+
+	function handleSkipLast() {
+		onrate(question.id, 'skip', undefined, showRemark ? remark : undefined);
+	}
+
+	function handleProceedLast() {
+		onrate(question.id, 'important', selectedOptions, showRemark ? remark : undefined);
 	}
 </script>
 
@@ -59,23 +98,18 @@
 		{question.text}
 	</h2>
 
-	<!-- Read-only options display -->
-	{#if question.type === 'options' && question.options}
+	<!-- Clickable options -->
+	{#if hasOptions && question.options}
 		<div class="flex flex-wrap justify-center gap-2 mb-6">
 			{#each question.options as option, i}
-				<span class="rounded-lg border px-3 py-1.5 text-sm font-medium {optionColors[i % optionColors.length]}">
+				<button
+					type="button"
+					onclick={() => toggleOption(option)}
+					class="rounded-lg border-2 px-3 py-1.5 text-sm font-medium transition-all cursor-pointer active:scale-[0.97]
+						{selectedOptions.includes(option) ? selectedOptionColors[i % selectedOptionColors.length] : optionColors[i % optionColors.length]}"
+				>
 					{option}
-				</span>
-			{/each}
-		</div>
-	{/if}
-
-	{#if question.type === 'multi-select' && question.options}
-		<div class="flex flex-wrap justify-center gap-2 mb-6">
-			{#each question.options as option, i}
-				<span class="rounded-lg border px-3 py-1.5 text-sm font-medium {optionColors[i % optionColors.length]}">
-					{option}
-				</span>
+				</button>
 			{/each}
 		</div>
 	{/if}
@@ -109,42 +143,44 @@
 		{/if}
 	</div>
 
-	<!-- Rating buttons -->
-	<div class="flex gap-3">
+	<!-- Action buttons -->
+	<div class="flex flex-col gap-3">
 		{#if isLast}
 			<button
-				onclick={() => handleSubmitLast('skip')}
-				class="flex-1 rounded-xl border-2 border-gray-200 bg-white px-6 py-3.5 text-lg font-semibold
+				onclick={handleSkipLast}
+				class="w-full rounded-xl border-2 border-gray-200 bg-white px-6 py-3.5 text-lg font-semibold
 					text-gray-600 transition-all active:scale-[0.97] hover:bg-gray-50 hover:border-gray-300
 					{answer?.rating === 'skip' ? 'border-gray-400 bg-gray-50' : ''}"
 			>
-				Sla over
+				Sla over (rare vraag)
 			</button>
-			<button
-				onclick={() => handleSubmitLast('important')}
-				class="flex-1 rounded-xl bg-indigo-600 px-6 py-3.5 text-lg font-semibold text-white shadow-lg
-					transition-all active:scale-[0.97] hover:bg-indigo-700
-					{answer?.rating === 'important' ? 'ring-2 ring-indigo-300' : ''}"
-			>
-				Belangrijk
-			</button>
+			{#if hasSelection || !hasOptions}
+				<button
+					onclick={handleProceedLast}
+					class="w-full rounded-xl bg-indigo-600 px-6 py-3.5 text-lg font-semibold text-white shadow-lg
+						transition-all active:scale-[0.97] hover:bg-indigo-700"
+				>
+					Ga verder
+				</button>
+			{/if}
 		{:else}
 			<button
-				onclick={() => rate('skip')}
-				class="flex-1 rounded-xl border-2 border-gray-200 bg-white px-6 py-3.5 text-lg font-semibold
+				onclick={skip}
+				class="w-full rounded-xl border-2 border-gray-200 bg-white px-6 py-3.5 text-lg font-semibold
 					text-gray-600 transition-all active:scale-[0.97] hover:bg-gray-50 hover:border-gray-300
 					{answer?.rating === 'skip' ? 'border-gray-400 bg-gray-50' : ''}"
 			>
-				Sla over
+				Sla over (rare vraag)
 			</button>
-			<button
-				onclick={() => rate('important')}
-				class="flex-1 rounded-xl bg-indigo-600 px-6 py-3.5 text-lg font-semibold text-white shadow-lg
-					transition-all active:scale-[0.97] hover:bg-indigo-700
-					{answer?.rating === 'important' ? 'ring-2 ring-indigo-300' : ''}"
-			>
-				Belangrijk
-			</button>
+			{#if hasSelection || !hasOptions}
+				<button
+					onclick={proceed}
+					class="w-full rounded-xl bg-indigo-600 px-6 py-3.5 text-lg font-semibold text-white shadow-lg
+						transition-all active:scale-[0.97] hover:bg-indigo-700"
+				>
+					Ga verder
+				</button>
+			{/if}
 		{/if}
 	</div>
 

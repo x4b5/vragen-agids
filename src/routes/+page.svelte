@@ -8,8 +8,8 @@
 
   const game = getGameState();
 
-  function handleRate(questionId: string, rating: 'skip' | 'important', remark?: string) {
-    rateQuestion(questionId, rating, remark);
+  function handleRate(questionId: string, rating: 'skip' | 'important', selectedOptions?: string[], remark?: string) {
+    rateQuestion(questionId, rating, selectedOptions, remark);
   }
 
   function handleNext() {

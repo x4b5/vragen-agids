@@ -5,6 +5,7 @@ export type GamePhase = 'login' | 'questionnaire' | 'done';
 
 export interface Answer {
 	rating: 'skip' | 'important';
+	selectedOptions?: string[];
 	remark?: string;
 }
 
@@ -65,8 +66,11 @@ export function login(password: string): boolean {
 	return false;
 }
 
-export function rateQuestion(questionId: string, rating: 'skip' | 'important', remark?: string): void {
+export function rateQuestion(questionId: string, rating: 'skip' | 'important', selectedOptions?: string[], remark?: string): void {
 	const answer: Answer = { rating };
+	if (selectedOptions?.length) {
+		answer.selectedOptions = selectedOptions;
+	}
 	if (remark?.trim()) {
 		answer.remark = remark.trim();
 	}
@@ -91,12 +95,16 @@ export function submitAll(): void {
 	let totalSkipped = 0;
 	let totalRemarks = 0;
 
-	const answersObj: Record<string, { rating: string; remark?: string }> = {};
+	const answersObj: Record<string, { rating: string; selectedOptions?: string[]; remark?: string }> = {};
 	for (const [id, answer] of answers.entries()) {
 		if (answer.rating === 'important') totalImportant++;
 		else totalSkipped++;
 		if (answer.remark) totalRemarks++;
-		answersObj[id] = { rating: answer.rating, ...(answer.remark ? { remark: answer.remark } : {}) };
+		answersObj[id] = {
+			rating: answer.rating,
+			...(answer.selectedOptions?.length ? { selectedOptions: answer.selectedOptions } : {}),
+			...(answer.remark ? { remark: answer.remark } : {})
+		};
 	}
 
 	submitResponses({
