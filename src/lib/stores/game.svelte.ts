@@ -1,7 +1,7 @@
 import { questions } from '../data/questions';
 import { submitResponses } from '../utils/supabase';
 
-export type GamePhase = 'login' | 'questionnaire' | 'done';
+export type GamePhase = 'login' | 'welcome' | 'questionnaire' | 'done';
 
 export interface Answer {
 	rating: 'skip' | 'important';
@@ -19,7 +19,7 @@ const STORAGE_KEY = 'agids-logged-in';
 
 // Restore session from localStorage
 if (typeof window !== 'undefined' && localStorage.getItem(STORAGE_KEY) === 'true') {
-	phase = 'questionnaire';
+	phase = 'welcome';
 }
 
 export function getGameState() {
@@ -59,14 +59,18 @@ export function getGameState() {
 
 export function login(password: string): boolean {
 	if (password === PASSWORD) {
-		phase = 'questionnaire';
-		startedAt = Date.now();
+		phase = 'welcome';
 		if (typeof window !== 'undefined') {
 			localStorage.setItem(STORAGE_KEY, 'true');
 		}
 		return true;
 	}
 	return false;
+}
+
+export function startQuestionnaire(): void {
+	phase = 'questionnaire';
+	startedAt = Date.now();
 }
 
 export function rateQuestion(questionId: string, rating: 'skip' | 'important', selectedOptions?: string[], remark?: string): void {
