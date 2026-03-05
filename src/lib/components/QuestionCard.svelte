@@ -91,8 +91,9 @@
   });
 
   function handleSlider(value: number) {
-    sliderValue = value;
-    selectedOptions = [sliderLabels[value]];
+    const roundedValue = Math.round(value);
+    sliderValue = roundedValue;
+    selectedOptions = [sliderLabels[roundedValue]];
   }
 
   function toggleOption(option: string) {
@@ -163,8 +164,8 @@
         type="range"
         min="0"
         max="3"
-        step="1"
-        value={sliderValue ?? 1}
+        step={sliderValue === null ? "any" : "1"}
+        value={sliderValue ?? 1.5}
         oninput={(e) => handleSlider(Number(e.currentTarget.value))}
         class="w-full h-4 rounded-full appearance-none cursor-pointer accent-indigo-600
 					[&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-8 [&::-webkit-slider-thumb]:h-8 [&::-webkit-slider-thumb]:bg-indigo-600 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:shadow-md
