@@ -1,0 +1,30 @@
+name: Weekly Data Backup
+
+on:
+  schedule:
+    - cron: '0 6 * * 1' # Every Monday at 06:00 UTC
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+
+      - name: Export CSV
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: node export_excel.js
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: antwoorden-${{ github.run_id }}
+          path: antwoorden.csv
+          retention-days: 90

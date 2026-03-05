@@ -3,11 +3,6 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = import.meta.env.VITE_PUBLIC_SUPABASE_URL as string | undefined;
 const supabaseAnonKey = import.meta.env.VITE_PUBLIC_SUPABASE_ANON_KEY as string | undefined;
 
-console.log("Environment variables:", {
-    url: supabaseUrl,
-    key: supabaseAnonKey ? "SET" : "UNSET"
-});
-
 const supabase =
 	supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null;
 
@@ -17,8 +12,8 @@ export async function submitResponses(data: {
 	total_skipped: number;
 	total_remarks: number;
 	duration_ms: number;
-}): Promise<void> {
-	if (!supabase) return;
+}): Promise<boolean> {
+	if (!supabase) return false;
 
 	try {
 		const { error } = await supabase.from('responses').insert({
@@ -31,9 +26,11 @@ export async function submitResponses(data: {
 
 		if (error) {
 			console.error('Failed to submit responses:', error.message);
+			return false;
 		}
+		return true;
 	} catch (err) {
 		console.error('Network or unexpected error while submitting:', err);
-		// Silent fail — storage should never break the app but we should log it for debugging
+		return false;
 	}
 }

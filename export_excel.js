@@ -1,9 +1,16 @@
+import 'dotenv/config';
 import { createClient } from '@supabase/supabase-js';
 import { questions } from './src/lib/data/questions.ts';
 import { writeFileSync } from 'fs';
 
-const url = 'https://kjorxtwgcvbzyjikadab.supabase.co';
-const key = 'sb_publishable_nAFVwUBc_SKVgBAogroBXQ_6BT5qZTI';
+const url = process.env.SUPABASE_URL;
+const key = process.env.SUPABASE_KEY;
+
+if (!url || !key) {
+    console.error('Missing SUPABASE_URL or SUPABASE_KEY environment variables.');
+    console.error('Set them in your environment or in a .env file.');
+    process.exit(1);
+}
 
 const supabase = createClient(url, key);
 

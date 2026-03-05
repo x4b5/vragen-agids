@@ -13,9 +13,9 @@
     rateQuestion(questionId, rating, selectedOptions, remark);
   }
 
-  function handleNext() {
+  async function handleNext() {
     if (game.isLastQuestion) {
-      submitAll();
+      await submitAll();
     } else {
       nextQuestion();
     }
