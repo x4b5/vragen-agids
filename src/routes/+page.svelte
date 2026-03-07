@@ -1,6 +1,5 @@
 <script lang="ts">
   import { getGameState, rateQuestion, nextQuestion, prevQuestion, submitAll } from "$lib/stores/game.svelte";
-  import LoginScreen from "$lib/components/LoginScreen.svelte";
   import WelcomeScreen from "$lib/components/WelcomeScreen.svelte";
   import QuestionCard from "$lib/components/QuestionCard.svelte";
   import ProgressBar from "$lib/components/ProgressBar.svelte";
@@ -26,9 +25,7 @@
   }
 </script>
 
-{#if game.phase === "login"}
-  <LoginScreen />
-{:else if game.phase === "welcome"}
+{#if game.phase === "welcome"}
   <WelcomeScreen />
 {:else if game.phase === "questionnaire"}
   <main class="min-h-svh flex flex-col px-5 py-6 sm:py-10">

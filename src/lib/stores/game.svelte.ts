@@ -1,7 +1,7 @@
 import { questions } from '../data/questions';
 import { saveSession, loadSession, clearSession, submitWithRetry } from '../utils/persistence';
 
-export type GamePhase = 'login' | 'welcome' | 'questionnaire' | 'done';
+export type GamePhase = 'welcome' | 'questionnaire' | 'done';
 export type SubmissionStatus = 'idle' | 'submitting' | 'submitted' | 'queued';
 
 export interface Answer {
@@ -10,19 +10,11 @@ export interface Answer {
 	remark?: string;
 }
 
-let phase = $state<GamePhase>('login');
+let phase = $state<GamePhase>('welcome');
 let currentQuestionIndex = $state(0);
 let answers = $state<Map<string, Answer>>(new Map());
 let startedAt = $state<number>(0);
 let submissionStatus = $state<SubmissionStatus>('idle');
-
-const PASSWORD = import.meta.env.VITE_PUBLIC_PASSWORD || '';
-const STORAGE_KEY = 'agids-logged-in';
-
-// Restore session from localStorage
-if (typeof window !== 'undefined' && localStorage.getItem(STORAGE_KEY) === 'true') {
-	phase = 'welcome';
-}
 
 export function getGameState() {
 	return {
@@ -60,17 +52,6 @@ export function getGameState() {
 			return submissionStatus;
 		}
 	};
-}
-
-export function login(password: string): boolean {
-	if (password === PASSWORD) {
-		phase = 'welcome';
-		if (typeof window !== 'undefined') {
-			localStorage.setItem(STORAGE_KEY, 'true');
-		}
-		return true;
-	}
-	return false;
 }
 
 function persistSession(): void {
@@ -173,13 +154,10 @@ export async function submitAll(): Promise<void> {
 }
 
 export function resetGame(): void {
-	phase = 'login';
+	phase = 'welcome';
 	currentQuestionIndex = 0;
 	answers = new Map();
 	startedAt = 0;
 	submissionStatus = 'idle';
 	clearSession();
-	if (typeof window !== 'undefined') {
-		localStorage.removeItem(STORAGE_KEY);
-	}
 }

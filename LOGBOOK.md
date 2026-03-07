@@ -1,6 +1,6 @@
 # Urenregistratie Logboek
 
-**Totaal gewerkte uren:** 4.23
+**Totaal gewerkte uren:** 4.63
 
 | Datum      | Starttijd | Eindtijd | Duur (uren) | Commit Hash | Omschrijving                                                                                                                                                                                                                                                |
 | ---------- | --------- | -------- | ----------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21,3 +21,4 @@
 | 2026-03-05 | 18:13     | 18:32    | 0.31        | `942aee4`   | Add data persistence: localStorage WAL, retry queue, and weekly backup                                                                                                                                                                                      |
 | 2026-03-05 | 18:32     | 18:38    | 0.11        | `476a53b`   | Fix GitHub Action: use Node 22 with TypeScript strip support                                                                                                                                                                                                |
 | 2026-03-05 | 18:38     | 18:43    | 0.08        | `e018000`   | Change backup schedule to every other day                                                                                                                                                                                                                   |
+| 2026-03-05 | 18:43 | 19:07 | 0.40 | `3a4f58d` | fix: set initial slider value to center position (1.5) |

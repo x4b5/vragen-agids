@@ -1,7 +1,7 @@
 # [PROJECTNAAM] — Vragen Agids
 
 ## Doel
-Een aantrekkelijke, responsive vragenlijst (desktop + mobiel) waarin de gebruiker vragen beantwoordt en per vraag aangeeft hoe belangrijk die is. Toegang tot de app is beschermd met een wachtwoord.
+Een aantrekkelijke, responsive vragenlijst (desktop + mobiel) waarin de gebruiker vragen beantwoordt en per vraag aangeeft hoe belangrijk die is.
 
 ## Techstack
 - SvelteKit 5 + Svelte 5 runes (`$state`, `$derived`, `$effect`) — geen legacy syntax
