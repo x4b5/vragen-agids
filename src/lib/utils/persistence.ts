@@ -18,6 +18,7 @@ export interface SubmissionPayload {
 	total_remarks?: number;
 	duration_ms: number;
 	version?: string;
+	suggestions?: Array<{ title: string; description: string }>;
 }
 
 function isLocalStorageAvailable(): boolean {
@@ -208,6 +209,93 @@ export function clearV4Session(): void {
 	if (!isLocalStorageAvailable()) return;
 	try {
 		localStorage.removeItem(V4_SESSION_KEY);
+	} catch {
+		// Non-critical
+	}
+}
+
+// === V5 persistence (separate keys to avoid conflict with v1/v2/v3/v4) ===
+
+const V5_SESSION_KEY = 'agids-v5-session';
+
+export interface V5SessionData {
+	filterValues: Record<string, number>;
+	currentIndex: number;
+	startedAt: number;
+	savedAt: number;
+}
+
+export function saveV5Session(data: V5SessionData): void {
+	if (!isLocalStorageAvailable()) return;
+	try {
+		localStorage.setItem(V5_SESSION_KEY, JSON.stringify(data));
+	} catch {
+		// Storage full or blocked
+	}
+}
+
+export function loadV5Session(): V5SessionData | null {
+	if (!isLocalStorageAvailable()) return null;
+	try {
+		const raw = localStorage.getItem(V5_SESSION_KEY);
+		if (!raw) return null;
+		const data: V5SessionData = JSON.parse(raw);
+		if (Date.now() - data.savedAt > MAX_SESSION_AGE_MS) {
+			localStorage.removeItem(V5_SESSION_KEY);
+			return null;
+		}
+		return data;
+	} catch {
+		localStorage.removeItem(V5_SESSION_KEY);
+		return null;
+	}
+}
+
+export function clearV5Session(): void {
+	if (!isLocalStorageAvailable()) return;
+	try {
+		localStorage.removeItem(V5_SESSION_KEY);
+	} catch {
+		// Non-critical
+	}
+}
+
+// === V6 persistence (separate keys to avoid conflict with v1/v2/v3/v4/v5) ===
+
+const V6_SESSION_KEY = 'agids-v6-session';
+
+export type V6SessionData = V2SessionData;
+
+export function saveV6Session(data: V6SessionData): void {
+	if (!isLocalStorageAvailable()) return;
+	try {
+		localStorage.setItem(V6_SESSION_KEY, JSON.stringify(data));
+	} catch {
+		// Storage full or blocked
+	}
+}
+
+export function loadV6Session(): V6SessionData | null {
+	if (!isLocalStorageAvailable()) return null;
+	try {
+		const raw = localStorage.getItem(V6_SESSION_KEY);
+		if (!raw) return null;
+		const data: V6SessionData = JSON.parse(raw);
+		if (Date.now() - data.savedAt > MAX_SESSION_AGE_MS) {
+			localStorage.removeItem(V6_SESSION_KEY);
+			return null;
+		}
+		return data;
+	} catch {
+		localStorage.removeItem(V6_SESSION_KEY);
+		return null;
+	}
+}
+
+export function clearV6Session(): void {
+	if (!isLocalStorageAvailable()) return;
+	try {
+		localStorage.removeItem(V6_SESSION_KEY);
 	} catch {
 		// Non-critical
 	}

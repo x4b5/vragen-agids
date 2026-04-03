@@ -4,6 +4,8 @@
     { href: '/v2', label: 'V2', desc: '38 vragen — gebalanceerd', color: 'bg-sky-50 border-sky-300 text-sky-800 hover:bg-sky-100' },
     { href: '/v3', label: 'V3', desc: '20 vragen — formeel taalgebruik', color: 'bg-emerald-50 border-emerald-300 text-emerald-800 hover:bg-emerald-100' },
     { href: '/v4', label: 'V4', desc: '20 vragen — eenvoudig taalgebruik', color: 'bg-amber-50 border-amber-300 text-amber-800 hover:bg-amber-100' },
+    { href: '/v5', label: 'V5', desc: 'Visuele filters — AI-gegenereerde beroepssuggesties', color: 'bg-violet-50 border-violet-300 text-violet-800 hover:bg-violet-100' },
+    { href: '/v6', label: 'V6', desc: '20 vragen — visuele kaarten met foto\'s', color: 'bg-rose-50 border-rose-300 text-rose-800 hover:bg-rose-100' },
   ];
 </script>
 

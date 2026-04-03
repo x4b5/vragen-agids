@@ -14,6 +14,10 @@ function getTableForVersion(version?: string): string {
 			return 'responses_v3';
 		case 'v4':
 			return 'responses_v4';
+		case 'v5':
+			return 'responses_v5';
+		case 'v6':
+			return 'responses_v6';
 		default:
 			return 'responses';
 	}
@@ -26,25 +30,34 @@ export async function submitResponses(data: {
 	total_remarks?: number;
 	duration_ms: number;
 	version?: string;
+	suggestions?: Array<{ title: string; description: string }>;
 }): Promise<boolean> {
 	if (!supabase) return false;
 
 	const table = getTableForVersion(data.version);
 
 	try {
-		const row =
-			table === 'responses'
-				? {
-						answers: data.answers,
-						total_important: data.total_important ?? 0,
-						total_skipped: data.total_skipped ?? 0,
-						total_remarks: data.total_remarks ?? 0,
-						duration_ms: data.duration_ms
-					}
-				: {
-						answers: data.answers,
-						duration_ms: data.duration_ms
-					};
+		let row;
+		if (table === 'responses') {
+			row = {
+				answers: data.answers,
+				total_important: data.total_important ?? 0,
+				total_skipped: data.total_skipped ?? 0,
+				total_remarks: data.total_remarks ?? 0,
+				duration_ms: data.duration_ms
+			};
+		} else if (table === 'responses_v5') {
+			row = {
+				answers: data.answers,
+				suggestions: data.suggestions ?? null,
+				duration_ms: data.duration_ms
+			};
+		} else {
+			row = {
+				answers: data.answers,
+				duration_ms: data.duration_ms
+			};
+		}
 
 		const { error } = await supabase.from(table).insert(row);
 

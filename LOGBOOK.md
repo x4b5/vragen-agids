@@ -1,6 +1,6 @@
 # Urenregistratie Logboek
 
-**Totaal gewerkte uren:** 20.63
+**Totaal gewerkte uren:** 21.85
 
 | Datum      | Starttijd | Eindtijd | Duur (uren) | Commit Hash | Omschrijving                                                                                                                                                                                                                                                |
 | ---------- | --------- | -------- | ----------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -24,3 +24,6 @@
 | 2026-03-05 | 18:43 | 19:07 | 0.40 | `3a4f58d` | fix: set initial slider value to center position (1.5) |
 | 2026-03-07 | 19:07 | 13:19 | 8.00 | `5191d06` | Remove password protection — app now starts directly at welcome screen |
 | 2026-04-03 | 13:19 | 13:39 | 8.00 | `d245d04` | feat: add v2, v3 questionnaires and Skizo AI agent |
+| 2026-04-03 | 13:39 | 13:55 | 0.27 | `a5801de` | feat: add v4 questionnaire with simplified Dutch questions |
+| 2026-04-03 | 13:55 | 13:59 | 0.07 | `0c99f67` | feat: add home page with version picker, move v1 to /v1 |
+| 2026-04-03 | 13:59 | 14:52 | 0.88 | `07e9c7d` | feat: shuffle questions randomly and route submissions to per-version Supabase tables |
