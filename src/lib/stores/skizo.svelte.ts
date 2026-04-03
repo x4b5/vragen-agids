@@ -2,14 +2,15 @@ import type { Question } from '../data/questions';
 import { questions } from '../data/questions';
 import { questionsV2 } from '../data/questions-v2';
 import { questionsV3 } from '../data/questions-v3';
+import { questionsV4 } from '../data/questions-v4';
 import { personalities } from '../data/personalities';
 
 export type SkizoPhase = 'input' | 'processing' | 'result';
-export type SkizoVersion = 'v1' | 'v2' | 'v3';
+export type SkizoVersion = 'v1' | 'v2' | 'v3' | 'v4';
 export type SkizoDisplayMode = 'live' | 'direct';
 
 let phase = $state<SkizoPhase>('input');
-let selectedVersion = $state<SkizoVersion>('v3');
+let selectedVersion = $state<SkizoVersion>('v4');
 let selectedPersonality = $state('standaard');
 let displayMode = $state<SkizoDisplayMode>('live');
 let answers = $state<Map<string, string>>(new Map());
@@ -24,6 +25,8 @@ function getQuestionsForVersion(version: SkizoVersion): Question[] {
 			return questionsV2;
 		case 'v3':
 			return questionsV3;
+		case 'v4':
+			return questionsV4;
 	}
 }
 

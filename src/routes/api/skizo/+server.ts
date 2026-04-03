@@ -5,6 +5,7 @@ import { env } from '$env/dynamic/private';
 import { questions } from '$lib/data/questions';
 import { questionsV2 } from '$lib/data/questions-v2';
 import { questionsV3 } from '$lib/data/questions-v3';
+import { questionsV4 } from '$lib/data/questions-v4';
 import { personalities } from '$lib/data/personalities';
 import type { Question } from '$lib/data/questions';
 
@@ -16,6 +17,8 @@ function getQuestionsForVersion(version: string): Question[] {
 			return questionsV2;
 		case 'v3':
 			return questionsV3;
+		case 'v4':
+			return questionsV4;
 		default:
 			throw new Error(`Onbekende versie: ${version}`);
 	}
@@ -51,7 +54,7 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	const { version, personalityId } = body;
 
-	if (!['v1', 'v2', 'v3'].includes(version)) {
+	if (!['v1', 'v2', 'v3', 'v4'].includes(version)) {
 		return error(400, `Ongeldige versie: ${version}`);
 	}
 

@@ -29,7 +29,8 @@
 	const versionOptions: { value: SkizoVersion; label: string; desc: string }[] = [
 		{ value: 'v1', label: 'V1', desc: `${41} vragen — uitgebreid` },
 		{ value: 'v2', label: 'V2', desc: `${38} vragen — gebalanceerd` },
-		{ value: 'v3', label: 'V3', desc: `${20} vragen — compact` }
+		{ value: 'v3', label: 'V3', desc: `${20} vragen — formeel` },
+		{ value: 'v4', label: 'V4', desc: `${20} vragen — eenvoudig` }
 	];
 
 	const modeOptions: { value: SkizoDisplayMode; label: string; desc: string }[] = [
