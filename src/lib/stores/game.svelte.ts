@@ -1,5 +1,6 @@
-import { questions } from '../data/questions';
+import { questions, type Question } from '../data/questions';
 import { saveSession, loadSession, clearSession, submitWithRetry } from '../utils/persistence';
+import { shuffle } from '../utils/shuffle';
 
 export type GamePhase = 'welcome' | 'questionnaire' | 'done';
 export type SubmissionStatus = 'idle' | 'submitting' | 'submitted' | 'queued';
@@ -15,6 +16,7 @@ let currentQuestionIndex = $state(0);
 let answers = $state<Map<string, Answer>>(new Map());
 let startedAt = $state<number>(0);
 let submissionStatus = $state<SubmissionStatus>('idle');
+let shuffledQuestions = $state<Question[]>(questions);
 
 export function getGameState() {
 	return {
@@ -28,25 +30,25 @@ export function getGameState() {
 			return currentQuestionIndex;
 		},
 		get currentQuestion() {
-			return questions[currentQuestionIndex];
+			return shuffledQuestions[currentQuestionIndex];
 		},
 		get totalQuestions() {
-			return questions.length;
+			return shuffledQuestions.length;
 		},
 		get answers() {
 			return answers;
 		},
 		get currentPhase() {
-			return questions[currentQuestionIndex]?.phase ?? '';
+			return shuffledQuestions[currentQuestionIndex]?.phase ?? '';
 		},
 		get progress() {
-			return currentQuestionIndex / questions.length;
+			return currentQuestionIndex / shuffledQuestions.length;
 		},
 		get isFirstQuestion() {
 			return currentQuestionIndex === 0;
 		},
 		get isLastQuestion() {
-			return currentQuestionIndex === questions.length - 1;
+			return currentQuestionIndex === shuffledQuestions.length - 1;
 		},
 		get submissionStatus() {
 			return submissionStatus;
@@ -88,6 +90,7 @@ export function startQuestionnaire(): void {
 		currentQuestionIndex = 0;
 		startedAt = Date.now();
 	}
+	shuffledQuestions = shuffle(questions);
 	submissionStatus = 'idle';
 	phase = 'questionnaire';
 }
@@ -105,7 +108,7 @@ export function rateQuestion(questionId: string, rating: 'skip' | 'important', s
 }
 
 export function nextQuestion(): void {
-	if (currentQuestionIndex < questions.length - 1) {
+	if (currentQuestionIndex < shuffledQuestions.length - 1) {
 		currentQuestionIndex++;
 	}
 }
@@ -117,7 +120,7 @@ export function prevQuestion(): void {
 }
 
 export function skipToEnd(): void {
-	currentQuestionIndex = questions.length - 1;
+	currentQuestionIndex = shuffledQuestions.length - 1;
 }
 
 export async function submitAll(): Promise<void> {

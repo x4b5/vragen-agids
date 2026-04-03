@@ -1,5 +1,7 @@
 import { questionsV4 } from '../data/questions-v4';
+import type { Question } from '../data/questions';
 import { saveV4Session, loadV4Session, clearV4Session, submitWithRetry } from '../utils/persistence';
+import { shuffle } from '../utils/shuffle';
 
 export type GamePhaseV4 = 'welcome' | 'questionnaire' | 'done';
 export type SubmissionStatusV4 = 'idle' | 'submitting' | 'submitted' | 'queued';
@@ -9,6 +11,7 @@ let currentQuestionIndex = $state(0);
 let answers = $state<Map<string, string>>(new Map());
 let startedAt = $state<number>(0);
 let submissionStatus = $state<SubmissionStatusV4>('idle');
+let shuffledQuestions = $state<Question[]>(questionsV4);
 
 export function getGameStateV4() {
 	return {
@@ -19,25 +22,25 @@ export function getGameStateV4() {
 			return currentQuestionIndex;
 		},
 		get currentQuestion() {
-			return questionsV4[currentQuestionIndex];
+			return shuffledQuestions[currentQuestionIndex];
 		},
 		get totalQuestions() {
-			return questionsV4.length;
+			return shuffledQuestions.length;
 		},
 		get answers() {
 			return answers;
 		},
 		get currentPhase() {
-			return questionsV4[currentQuestionIndex]?.phase ?? '';
+			return shuffledQuestions[currentQuestionIndex]?.phase ?? '';
 		},
 		get progress() {
-			return currentQuestionIndex / questionsV4.length;
+			return currentQuestionIndex / shuffledQuestions.length;
 		},
 		get isFirstQuestion() {
 			return currentQuestionIndex === 0;
 		},
 		get isLastQuestion() {
-			return currentQuestionIndex === questionsV4.length - 1;
+			return currentQuestionIndex === shuffledQuestions.length - 1;
 		},
 		get submissionStatus() {
 			return submissionStatus;
@@ -69,6 +72,7 @@ export function startQuestionnaireV4(): void {
 		currentQuestionIndex = 0;
 		startedAt = Date.now();
 	}
+	shuffledQuestions = shuffle(questionsV4);
 	submissionStatus = 'idle';
 	phase = 'questionnaire';
 }
@@ -79,7 +83,7 @@ export function answerQuestionV4(questionId: string, value: string): void {
 }
 
 export function nextQuestionV4(): void {
-	if (currentQuestionIndex < questionsV4.length - 1) {
+	if (currentQuestionIndex < shuffledQuestions.length - 1) {
 		currentQuestionIndex++;
 	}
 }
