@@ -7,21 +7,23 @@ const supabase =
 	supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null;
 
 export async function submitResponses(data: {
-	answers: Record<string, { rating: string; remark?: string }>;
-	total_important: number;
-	total_skipped: number;
-	total_remarks: number;
+	answers: Record<string, { rating?: string; selectedOptions?: string[]; remark?: string; value?: string }>;
+	total_important?: number;
+	total_skipped?: number;
+	total_remarks?: number;
 	duration_ms: number;
+	version?: string;
 }): Promise<boolean> {
 	if (!supabase) return false;
 
 	try {
 		const { error } = await supabase.from('responses').insert({
 			answers: data.answers,
-			total_important: data.total_important,
-			total_skipped: data.total_skipped,
-			total_remarks: data.total_remarks,
-			duration_ms: data.duration_ms
+			total_important: data.total_important ?? 0,
+			total_skipped: data.total_skipped ?? 0,
+			total_remarks: data.total_remarks ?? 0,
+			duration_ms: data.duration_ms,
+			...(data.version ? { version: data.version } : {})
 		});
 
 		if (error) {

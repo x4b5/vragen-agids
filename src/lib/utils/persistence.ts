@@ -12,11 +12,12 @@ export interface SessionData {
 }
 
 export interface SubmissionPayload {
-	answers: Record<string, { rating: string; selectedOptions?: string[]; remark?: string }>;
-	total_important: number;
-	total_skipped: number;
-	total_remarks: number;
+	answers: Record<string, { rating?: string; selectedOptions?: string[]; remark?: string; value?: string }>;
+	total_important?: number;
+	total_skipped?: number;
+	total_remarks?: number;
 	duration_ms: number;
+	version?: string;
 }
 
 function isLocalStorageAvailable(): boolean {
@@ -82,6 +83,93 @@ export async function submitWithRetry(payload: SubmissionPayload): Promise<'subm
 		}
 	}
 	return 'queued';
+}
+
+// === V2 persistence (separate keys to avoid conflict with v1) ===
+
+const V2_SESSION_KEY = 'agids-v2-session';
+
+export interface V2SessionData {
+	answers: Record<string, string>;
+	currentIndex: number;
+	startedAt: number;
+	savedAt: number;
+}
+
+export function saveV2Session(data: V2SessionData): void {
+	if (!isLocalStorageAvailable()) return;
+	try {
+		localStorage.setItem(V2_SESSION_KEY, JSON.stringify(data));
+	} catch {
+		// Storage full or blocked
+	}
+}
+
+export function loadV2Session(): V2SessionData | null {
+	if (!isLocalStorageAvailable()) return null;
+	try {
+		const raw = localStorage.getItem(V2_SESSION_KEY);
+		if (!raw) return null;
+		const data: V2SessionData = JSON.parse(raw);
+		if (Date.now() - data.savedAt > MAX_SESSION_AGE_MS) {
+			localStorage.removeItem(V2_SESSION_KEY);
+			return null;
+		}
+		return data;
+	} catch {
+		localStorage.removeItem(V2_SESSION_KEY);
+		return null;
+	}
+}
+
+export function clearV2Session(): void {
+	if (!isLocalStorageAvailable()) return;
+	try {
+		localStorage.removeItem(V2_SESSION_KEY);
+	} catch {
+		// Non-critical
+	}
+}
+
+// === V3 persistence (separate keys to avoid conflict with v1/v2) ===
+
+const V3_SESSION_KEY = 'agids-v3-session';
+
+export type V3SessionData = V2SessionData;
+
+export function saveV3Session(data: V3SessionData): void {
+	if (!isLocalStorageAvailable()) return;
+	try {
+		localStorage.setItem(V3_SESSION_KEY, JSON.stringify(data));
+	} catch {
+		// Storage full or blocked
+	}
+}
+
+export function loadV3Session(): V3SessionData | null {
+	if (!isLocalStorageAvailable()) return null;
+	try {
+		const raw = localStorage.getItem(V3_SESSION_KEY);
+		if (!raw) return null;
+		const data: V3SessionData = JSON.parse(raw);
+		if (Date.now() - data.savedAt > MAX_SESSION_AGE_MS) {
+			localStorage.removeItem(V3_SESSION_KEY);
+			return null;
+		}
+		return data;
+	} catch {
+		localStorage.removeItem(V3_SESSION_KEY);
+		return null;
+	}
+}
+
+export function clearV3Session(): void {
+	if (!isLocalStorageAvailable()) return;
+	try {
+		localStorage.removeItem(V3_SESSION_KEY);
+	} catch {
+		// Non-critical
+	}
 }
 
 export async function flushPendingQueue(): Promise<void> {

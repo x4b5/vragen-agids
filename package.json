@@ -30,6 +30,7 @@
     "vitest": "^4.0.18"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.82.0",
     "@supabase/supabase-js": "^2.98.0",
     "dotenv": "^17.3.1"
   }

@@ -1,4 +1,4 @@
-export type QuestionType = 'options' | 'slider' | 'multi-select';
+export type QuestionType = 'options' | 'slider' | 'multi-select' | 'open';
 
 export interface Question {
 	id: string;
