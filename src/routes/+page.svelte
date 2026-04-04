@@ -6,6 +6,7 @@
     { href: '/v4', label: 'V4', desc: '20 vragen — eenvoudig taalgebruik', color: 'bg-amber-50 border-amber-300 text-amber-800 hover:bg-amber-100' },
     { href: '/v5', label: 'V5', desc: 'Visuele filters — AI-gegenereerde beroepssuggesties', color: 'bg-violet-50 border-violet-300 text-violet-800 hover:bg-violet-100' },
     { href: '/v6', label: 'V6', desc: '20 vragen — visuele kaarten met foto\'s', color: 'bg-rose-50 border-rose-300 text-rose-800 hover:bg-rose-100' },
+    { href: '/v7', label: 'V7', desc: '20 vragen — swipe-stijl kaarten (Tinder UX)', color: 'bg-pink-50 border-pink-300 text-pink-800 hover:bg-pink-100' },
   ];
 </script>
 

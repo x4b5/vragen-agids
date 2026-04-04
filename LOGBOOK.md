@@ -1,6 +1,6 @@
 # Urenregistratie Logboek
 
-**Totaal gewerkte uren:** 21.85
+**Totaal gewerkte uren:** 23.59
 
 | Datum      | Starttijd | Eindtijd | Duur (uren) | Commit Hash | Omschrijving                                                                                                                                                                                                                                                |
 | ---------- | --------- | -------- | ----------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -27,3 +27,4 @@
 | 2026-04-03 | 13:39 | 13:55 | 0.27 | `a5801de` | feat: add v4 questionnaire with simplified Dutch questions |
 | 2026-04-03 | 13:55 | 13:59 | 0.07 | `0c99f67` | feat: add home page with version picker, move v1 to /v1 |
 | 2026-04-03 | 13:59 | 14:52 | 0.88 | `07e9c7d` | feat: shuffle questions randomly and route submissions to per-version Supabase tables |
+| 2026-04-03 | 14:52 | 16:36 | 1.74 | `eb2909b` | feat: add V5 visual filters and V6 visual card questionnaire |
