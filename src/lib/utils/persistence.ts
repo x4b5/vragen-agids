@@ -348,6 +348,7 @@ const V8_SESSION_KEY = 'agids-v8-session';
 
 export interface V8SessionData {
 	likedQuestions: string[];
+	customQuestions?: Record<string, { text: string; options: string[] }>;
 	currentIndex: number;
 	startedAt: number;
 	savedAt: number;

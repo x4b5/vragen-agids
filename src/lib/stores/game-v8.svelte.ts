@@ -5,9 +5,15 @@ import { saveV8Session, loadV8Session, clearV8Session, submitWithRetry } from '.
 export type GamePhaseV8 = 'welcome' | 'review' | 'done';
 export type SubmissionStatusV8 = 'idle' | 'submitting' | 'submitted' | 'queued';
 
+export interface CustomQuestionV8 {
+	text: string;
+	options: string[];
+}
+
 let phase = $state<GamePhaseV8>('welcome');
 let currentGroupIndex = $state(0);
 let likedQuestions = $state<Set<string>>(new Set());
+let customQuestions = $state<Record<string, CustomQuestionV8>>({});
 let startedAt = $state<number>(0);
 let submissionStatus = $state<SubmissionStatusV8>('idle');
 
@@ -34,6 +40,9 @@ export function getGameStateV8() {
 		get totalLiked() {
 			return likedQuestions.size;
 		},
+		get customQuestions() {
+			return customQuestions;
+		},
 		get progress() {
 			return currentGroupIndex / questionGroupsV8.length;
 		},
@@ -52,6 +61,7 @@ export function getGameStateV8() {
 function persistSession(): void {
 	saveV8Session({
 		likedQuestions: Array.from(likedQuestions),
+		customQuestions,
 		currentIndex: currentGroupIndex,
 		startedAt,
 		savedAt: Date.now()
@@ -62,10 +72,12 @@ export function startReviewV8(): void {
 	const saved = loadV8Session();
 	if (saved) {
 		likedQuestions = new Set(saved.likedQuestions);
+		customQuestions = saved.customQuestions ?? {};
 		currentGroupIndex = saved.currentIndex;
 		startedAt = saved.startedAt;
 	} else {
 		likedQuestions = new Set();
+		customQuestions = {};
 		currentGroupIndex = 0;
 		startedAt = Date.now();
 	}
@@ -82,6 +94,37 @@ export function toggleLikeV8(questionId: string): void {
 	}
 	likedQuestions = next;
 	persistSession();
+}
+
+export function getCustomForGroup(groupId: string): CustomQuestionV8 {
+	return customQuestions[groupId] ?? { text: '', options: ['', ''] };
+}
+
+export function updateCustomQuestionV8(groupId: string, question: CustomQuestionV8): void {
+	customQuestions = { ...customQuestions, [groupId]: question };
+	persistSession();
+}
+
+export function addCustomOptionV8(groupId: string): void {
+	const current = getCustomForGroup(groupId);
+	if (current.options.length < 4) {
+		customQuestions = {
+			...customQuestions,
+			[groupId]: { ...current, options: [...current.options, ''] }
+		};
+		persistSession();
+	}
+}
+
+export function removeCustomOptionV8(groupId: string, index: number): void {
+	const current = getCustomForGroup(groupId);
+	if (current.options.length > 2) {
+		customQuestions = {
+			...customQuestions,
+			[groupId]: { ...current, options: current.options.filter((_, i) => i !== index) }
+		};
+		persistSession();
+	}
 }
 
 export function nextGroupV8(): void {
@@ -117,6 +160,18 @@ export async function submitAllV8(): Promise<void> {
 				value: likedQuestions.has(variant.id) ? 'liked' : 'skipped'
 			};
 		}
+
+		// Include custom question for this group if filled in
+		const custom = customQuestions[group.id];
+		if (custom?.text.trim()) {
+			const filledOptions = custom.options.filter((o) => o.trim() !== '');
+			answersObj[`custom-${group.id}`] = {
+				value: JSON.stringify({
+					text: custom.text.trim(),
+					options: filledOptions
+				})
+			};
+		}
 	}
 
 	const result = await submitWithRetry({
@@ -134,6 +189,7 @@ export function resetGameV8(): void {
 	phase = 'welcome';
 	currentGroupIndex = 0;
 	likedQuestions = new Set();
+	customQuestions = {};
 	startedAt = 0;
 	submissionStatus = 'idle';
 	clearV8Session();

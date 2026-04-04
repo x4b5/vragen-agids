@@ -18,6 +18,10 @@ function getTableForVersion(version?: string): string {
 			return 'responses_v5';
 		case 'v6':
 			return 'responses_v6';
+		case 'v7':
+			return 'responses_v7';
+		case 'v8':
+			return 'responses_v8';
 		default:
 			return 'responses';
 	}
