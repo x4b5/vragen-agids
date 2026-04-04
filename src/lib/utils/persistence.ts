@@ -342,6 +342,52 @@ export function clearV7Session(): void {
 	}
 }
 
+// === V8 persistence (separate keys to avoid conflict with v1-v7) ===
+
+const V8_SESSION_KEY = 'agids-v8-session';
+
+export interface V8SessionData {
+	likedQuestions: string[];
+	currentIndex: number;
+	startedAt: number;
+	savedAt: number;
+}
+
+export function saveV8Session(data: V8SessionData): void {
+	if (!isLocalStorageAvailable()) return;
+	try {
+		localStorage.setItem(V8_SESSION_KEY, JSON.stringify(data));
+	} catch {
+		// Storage full or blocked
+	}
+}
+
+export function loadV8Session(): V8SessionData | null {
+	if (!isLocalStorageAvailable()) return null;
+	try {
+		const raw = localStorage.getItem(V8_SESSION_KEY);
+		if (!raw) return null;
+		const data: V8SessionData = JSON.parse(raw);
+		if (Date.now() - data.savedAt > MAX_SESSION_AGE_MS) {
+			localStorage.removeItem(V8_SESSION_KEY);
+			return null;
+		}
+		return data;
+	} catch {
+		localStorage.removeItem(V8_SESSION_KEY);
+		return null;
+	}
+}
+
+export function clearV8Session(): void {
+	if (!isLocalStorageAvailable()) return;
+	try {
+		localStorage.removeItem(V8_SESSION_KEY);
+	} catch {
+		// Non-critical
+	}
+}
+
 export async function flushPendingQueue(): Promise<void> {
 	if (!isLocalStorageAvailable()) return;
 	try {
