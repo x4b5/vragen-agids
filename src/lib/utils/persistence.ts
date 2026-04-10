@@ -389,6 +389,47 @@ export function clearV8Session(): void {
 	}
 }
 
+// === V9 persistence (separate keys to avoid conflict with v1-v8) ===
+
+const V9_SESSION_KEY = 'agids-v9-session';
+
+export type V9SessionData = V2SessionData;
+
+export function saveV9Session(data: V9SessionData): void {
+	if (!isLocalStorageAvailable()) return;
+	try {
+		localStorage.setItem(V9_SESSION_KEY, JSON.stringify(data));
+	} catch {
+		// Storage full or blocked
+	}
+}
+
+export function loadV9Session(): V9SessionData | null {
+	if (!isLocalStorageAvailable()) return null;
+	try {
+		const raw = localStorage.getItem(V9_SESSION_KEY);
+		if (!raw) return null;
+		const data: V9SessionData = JSON.parse(raw);
+		if (Date.now() - data.savedAt > MAX_SESSION_AGE_MS) {
+			localStorage.removeItem(V9_SESSION_KEY);
+			return null;
+		}
+		return data;
+	} catch {
+		localStorage.removeItem(V9_SESSION_KEY);
+		return null;
+	}
+}
+
+export function clearV9Session(): void {
+	if (!isLocalStorageAvailable()) return;
+	try {
+		localStorage.removeItem(V9_SESSION_KEY);
+	} catch {
+		// Non-critical
+	}
+}
+
 export async function flushPendingQueue(): Promise<void> {
 	if (!isLocalStorageAvailable()) return;
 	try {

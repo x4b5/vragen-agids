@@ -34,15 +34,40 @@
   ];
 
   let openText = $state("");
+  let multiSelected = $state<Set<string>>(new Set());
 
-  // Reset open text when question changes
+  // Reset open text and multi-select when question changes
   $effect(() => {
     question.id;
     openText = answer ?? "";
+    if (question.type === 'multi-select' && answer) {
+      try {
+        multiSelected = new Set(JSON.parse(answer));
+      } catch {
+        multiSelected = new Set();
+      }
+    } else {
+      multiSelected = new Set();
+    }
   });
 
   function selectOption(option: string) {
     onanswer(question.id, option);
+    onnext();
+  }
+
+  function toggleMultiOption(option: string) {
+    const next = new Set(multiSelected);
+    if (next.has(option)) {
+      next.delete(option);
+    } else {
+      next.add(option);
+    }
+    multiSelected = next;
+    onanswer(question.id, JSON.stringify(Array.from(next)));
+  }
+
+  function submitMulti() {
     onnext();
   }
 
@@ -80,6 +105,41 @@
     >
       {isLast ? "Afronden" : "Volgende"}
     </button>
+  {:else if question.type === "multi-select"}
+    <!-- Multi-select toggle options -->
+    <p class="text-sm text-gray-500 mb-4 text-center">Kies meerdere opties</p>
+    <div class="flex flex-col gap-3 mb-8">
+      {#each question.options ?? [] as option, i}
+        <button
+          type="button"
+          onclick={() => toggleMultiOption(option)}
+          class="rounded-xl border-2 px-5 py-3.5 text-base font-medium transition-all cursor-pointer active:scale-[0.97] text-left flex items-center gap-3
+            {multiSelected.has(option)
+            ? selectedOptionColors[i % selectedOptionColors.length]
+            : optionColors[i % optionColors.length]}"
+        >
+          <span class="flex-shrink-0 flex h-6 w-6 items-center justify-center rounded border-2 transition-all
+            {multiSelected.has(option)
+            ? 'border-current bg-current/20'
+            : 'border-current/40'}">
+            {#if multiSelected.has(option)}
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            {/if}
+          </span>
+          {option}
+        </button>
+      {/each}
+    </div>
+
+    <button
+      onclick={submitMulti}
+      class="cursor-pointer w-full rounded-xl bg-indigo-600 px-6 py-3.5 text-lg font-semibold text-white shadow-lg
+        transition-all active:scale-[0.97] hover:bg-indigo-700"
+    >
+      {isLast ? "Afronden" : "Volgende"}
+    </button>
   {:else}
     <!-- Clickable single-select options -->
     <div class="flex flex-col gap-3 mb-8">
@@ -108,7 +168,7 @@
       Vorige
     </button>
 
-    {#if question.type !== "open" && answer}
+    {#if question.type !== "open" && question.type !== "multi-select" && answer}
       <button
         onclick={onnext}
         class="cursor-pointer text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors"
