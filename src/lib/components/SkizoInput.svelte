@@ -27,10 +27,11 @@
 	}
 
 	const versionOptions: { value: SkizoVersion; label: string; desc: string }[] = [
-		{ value: 'v1', label: 'V1', desc: `${41} vragen — uitgebreid` },
-		{ value: 'v2', label: 'V2', desc: `${38} vragen — gebalanceerd` },
+		{ value: 'v10', label: 'V10', desc: `${32} vragen — filterbaar` },
+		{ value: 'v4', label: 'V4', desc: `${20} vragen — eenvoudig` },
 		{ value: 'v3', label: 'V3', desc: `${20} vragen — formeel` },
-		{ value: 'v4', label: 'V4', desc: `${20} vragen — eenvoudig` }
+		{ value: 'v2', label: 'V2', desc: `${38} vragen — gebalanceerd` },
+		{ value: 'v1', label: 'V1', desc: `${41} vragen — uitgebreid` }
 	];
 
 	const modeOptions: { value: SkizoDisplayMode; label: string; desc: string }[] = [

@@ -1,5 +1,6 @@
 <script lang="ts">
   const versions = [
+    { href: '/v10', label: 'V10', desc: '32 vragen — filterbaar, 4 opties, toegankelijk voor laaggeletterden', color: 'bg-violet-50 border-violet-300 text-violet-800 hover:bg-violet-100' },
     { href: '/v9', label: 'V9', desc: '20 vragen — definitieve set met multi-select sectoren', color: 'bg-indigo-50 border-indigo-300 text-indigo-800 hover:bg-indigo-100' },
     { href: '/v8', label: 'V8', desc: 'Review — alle vragen V1-V7, selecteer de beste', color: 'bg-teal-50 border-teal-300 text-teal-800 hover:bg-teal-100' },
     { href: '/v7', label: 'V7', desc: '20 vragen — swipe-stijl kaarten (Tinder UX)', color: 'bg-pink-50 border-pink-300 text-pink-800 hover:bg-pink-100' },
@@ -19,14 +20,14 @@
       Kies een versie van de vragenlijst
     </p>
 
-    <!-- V9 uitgelicht -->
+    <!-- V10 uitgelicht -->
     <a
-      href="/v9"
-      class="block rounded-2xl border-2 border-indigo-400 bg-indigo-600 px-8 py-8 mb-8 transition-all hover:bg-indigo-700 shadow-lg hover:shadow-xl"
+      href="/v10"
+      class="block rounded-2xl border-2 border-violet-400 bg-violet-600 px-8 py-8 mb-8 transition-all hover:bg-violet-700 shadow-lg hover:shadow-xl"
     >
       <span class="inline-block rounded-full bg-white/20 px-3 py-0.5 text-xs font-semibold text-white uppercase tracking-wider mb-3">Nieuwste</span>
-      <span class="block text-2xl font-bold text-white">V9 — Definitieve vragenlijst</span>
-      <span class="block text-base mt-2 text-indigo-100">20 vragen in 6 thema's met multi-select sectorkeuze</span>
+      <span class="block text-2xl font-bold text-white">V10 — Filterbare vragenlijst</span>
+      <span class="block text-base mt-2 text-violet-100">32 vragen met 4 opties, filterbaar en toegankelijk voor laaggeletterden</span>
     </a>
 
     <p class="text-sm text-gray-400 mb-3 uppercase tracking-wider font-medium">Eerdere versies</p>

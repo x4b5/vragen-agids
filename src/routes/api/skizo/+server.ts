@@ -6,10 +6,12 @@ import { questions } from '$lib/data/questions';
 import { questionsV2 } from '$lib/data/questions-v2';
 import { questionsV3 } from '$lib/data/questions-v3';
 import { questionsV4 } from '$lib/data/questions-v4';
+import { questionsV10 } from '$lib/data/questions-v10';
 import { personalities } from '$lib/data/personalities';
 import type { Question } from '$lib/data/questions';
+import type { V10Question } from '$lib/data/questions-v10';
 
-function getQuestionsForVersion(version: string): Question[] {
+function getQuestionsForVersion(version: string): Question[] | V10Question[] {
 	switch (version) {
 		case 'v1':
 			return questions;
@@ -19,6 +21,8 @@ function getQuestionsForVersion(version: string): Question[] {
 			return questionsV3;
 		case 'v4':
 			return questionsV4;
+		case 'v10':
+			return questionsV10;
 		default:
 			throw new Error(`Onbekende versie: ${version}`);
 	}
@@ -41,6 +45,15 @@ function formatQuestionsForPrompt(questionList: Question[]): string {
 		.join('\n');
 }
 
+function formatV10QuestionsForPrompt(questionList: V10Question[]): string {
+	return questionList
+		.map((q) => {
+			const examples = q.examples ? ` (bijv. ${q.examples.join(', ')})` : '';
+			return `- ID: "${q.id}" | Hoe belangrijk om te weten: "${q.text}"${examples} | Kies precies 1 uit: "Hoef ik niet te weten", "Leuk om te weten", "Wil ik weten", "Moet ik weten!"`;
+		})
+		.join('\n');
+}
+
 export const POST: RequestHandler = async ({ request }) => {
 	const apiKey = env.ANTHROPIC_API_KEY;
 	if (!apiKey) {
@@ -54,7 +67,7 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	const { version, personalityId } = body;
 
-	if (!['v1', 'v2', 'v3', 'v4'].includes(version)) {
+	if (!['v1', 'v2', 'v3', 'v4', 'v10'].includes(version)) {
 		return error(400, `Ongeldige versie: ${version}`);
 	}
 
@@ -64,7 +77,10 @@ export const POST: RequestHandler = async ({ request }) => {
 	}
 
 	const questionList = getQuestionsForVersion(version);
-	const formattedQuestions = formatQuestionsForPrompt(questionList);
+	const isV10 = version === 'v10';
+	const formattedQuestions = isV10
+		? formatV10QuestionsForPrompt(questionList as V10Question[])
+		: formatQuestionsForPrompt(questionList as Question[]);
 
 	const client = new Anthropic({ apiKey });
 
