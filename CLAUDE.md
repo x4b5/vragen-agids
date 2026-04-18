@@ -23,6 +23,16 @@ docs/                    -> Architectuur, ADRs, analytics-plan
 .claude/skills/          -> Gedetailleerde instructies per taaktype
 ```
 
+## Vraagkwaliteit
+Elke vraag in de vragenlijst moet voldoen aan deze 7 criteria:
+1. **Toegankelijk** — eenvoudige taal, geschikt voor laaggeletterden
+2. **Filterbaar** — koppelt aan een concreet filter op de jobsite (bijv. binnen/buiten, stil/luid)
+3. **Geen overlap** — meet iets unieks, niet hetzelfde als een andere vraag
+4. **Niet sturend** — neutraal geformuleerd, geen "goed" of "fout" antwoord
+5. **Differentiërend** — moet verschillende waarderingen opleveren bij verschillende mensen
+6. **Eenduidig** — gaat over één ding, niet meerdere dingen tegelijk
+7. **Relevant** — gaat over werk zoeken, werk beginnen of onboarding
+
 ## Werkregels
 1. **Single source of truth**: Alle game-state leeft in `game.svelte.ts`. Nooit dupliceren in components.
 2. **Svelte 5 only**: Gebruik `$props()`, `$state()`, `$derived()`, `$effect()`. Nooit `export let` of `$:`.

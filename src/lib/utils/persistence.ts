@@ -430,6 +430,52 @@ export function clearV9Session(): void {
 	}
 }
 
+// === V10 persistence (separate keys to avoid conflict with v1-v9) ===
+
+const V10_SESSION_KEY = 'agids-v10-session';
+
+export interface V10SessionData {
+	answers: Record<string, number>;
+	currentIndex: number;
+	startedAt: number;
+	savedAt: number;
+}
+
+export function saveV10Session(data: V10SessionData): void {
+	if (!isLocalStorageAvailable()) return;
+	try {
+		localStorage.setItem(V10_SESSION_KEY, JSON.stringify(data));
+	} catch {
+		// Storage full or blocked
+	}
+}
+
+export function loadV10Session(): V10SessionData | null {
+	if (!isLocalStorageAvailable()) return null;
+	try {
+		const raw = localStorage.getItem(V10_SESSION_KEY);
+		if (!raw) return null;
+		const data: V10SessionData = JSON.parse(raw);
+		if (Date.now() - data.savedAt > MAX_SESSION_AGE_MS) {
+			localStorage.removeItem(V10_SESSION_KEY);
+			return null;
+		}
+		return data;
+	} catch {
+		localStorage.removeItem(V10_SESSION_KEY);
+		return null;
+	}
+}
+
+export function clearV10Session(): void {
+	if (!isLocalStorageAvailable()) return;
+	try {
+		localStorage.removeItem(V10_SESSION_KEY);
+	} catch {
+		// Non-critical
+	}
+}
+
 export async function flushPendingQueue(): Promise<void> {
 	if (!isLocalStorageAvailable()) return;
 	try {
