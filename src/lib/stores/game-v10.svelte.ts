@@ -15,7 +15,7 @@ export const ageCategories = [
 
 export type AgeCategory = (typeof ageCategories)[number];
 
-let phase = $state<GamePhaseV10>('welcome');
+let phase = $state<GamePhaseV10>('intake');
 let currentQuestionIndex = $state(0);
 let answers = $state<Map<string, number>>(new Map());
 let startedAt = $state<number>(0);
@@ -149,7 +149,7 @@ export async function submitAllV10(): Promise<void> {
 }
 
 export function resetGameV10(): void {
-	phase = 'welcome';
+	phase = 'intake';
 	currentQuestionIndex = 0;
 	answers = new Map();
 	startedAt = 0;
