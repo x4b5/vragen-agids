@@ -49,7 +49,7 @@ function formatV10QuestionsForPrompt(questionList: V10Question[]): string {
 	return questionList
 		.map((q) => {
 			const examples = q.examples ? ` (bijv. ${q.examples.join(', ')})` : '';
-			return `- ID: "${q.id}" | Hoe belangrijk om te weten: "${q.text}"${examples} | Kies precies 1 uit: "Hoef ik niet te weten", "Leuk om te weten", "Wil ik weten", "Moet ik weten!"`;
+			return `- ID: "${q.id}" | Stelling: "Als ik werk zoek, wil ik weten ...${q.text}"${examples} | Geef een score van 1 t/m 5 (1=niet belangrijk, 5=heel belangrijk)`;
 		})
 		.join('\n');
 }
@@ -91,6 +91,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			system: `${personality.prompt}
 
 Je beantwoordt een vragenlijst. Geef per vraag exact één antwoord.
+${isV10 ? 'Voor V10 stellingen: geef een score van 1 t/m 5 als string (bijv. "3").' : ''}
 Antwoord ALLEEN met een geldig JSON object in het formaat: { "vraag-id": "gekozen antwoord" }
 Geen extra tekst, uitleg of markdown. Alleen het JSON object.`,
 			messages: [
