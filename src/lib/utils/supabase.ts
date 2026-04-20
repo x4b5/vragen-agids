@@ -24,6 +24,8 @@ function getTableForVersion(version?: string): string {
 			return 'responses_v8';
 		case 'v9':
 			return 'responses_v9';
+		case 'v10':
+			return 'responses_v10';
 		default:
 			return 'responses';
 	}

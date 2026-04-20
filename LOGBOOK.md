@@ -1,6 +1,6 @@
 # Urenregistratie Logboek
 
-**Totaal gewerkte uren:** 64.06
+**Totaal gewerkte uren:** 64.92
 
 | Datum      | Starttijd | Eindtijd | Duur (uren) | Commit Hash | Omschrijving                                                                                                                                                                                                                                                |
 | ---------- | --------- | -------- | ----------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -35,3 +35,6 @@
 | 2026-04-18 | 06:30 | 05:33 | 8.00 | `6be907e` | feat: add V10 questionnaire with 32 filtered questions and 4-option rating |
 | 2026-04-18 | 05:33 | 05:38 | 0.10 | `741669e` | feat: add V10 support to homepage and Skizo agent |
 | 2026-04-20 | 05:38 | 06:09 | 8.00 | `5975878` | feat: redesign V10 with star ratings, statements, and accessibility improvements |
+| 2026-04-20 | 06:09 | 06:37 | 0.46 | `6793d41` | feat: refine V10 statements and add 4 new topics |
+| 2026-04-20 | 06:37 | 06:51 | 0.24 | `db37e9f` | feat: add intake screen with age category and Raad van Advies checkbox |
+| 2026-04-20 | 06:51 | 07:01 | 0.16 | `4aca359` | feat: skip welcome phase on /v10, start directly at intake |
