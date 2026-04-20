@@ -15,14 +15,14 @@
 </script>
 
 <div class="flex flex-col items-center gap-4 w-full max-w-sm mx-auto">
-	<div class="flex gap-2" role="radiogroup" aria-label="Hoe belangrijk vind je het om dit te weten?">
+	<div class="flex gap-1 sm:gap-2" role="radiogroup" aria-label="Hoe belangrijk vind je het om dit te weten?">
 		{#each [1, 2, 3, 4, 5] as star}
 			<button
 				type="button"
 				onclick={() => onrate(star)}
 				onmouseenter={() => hovered = star}
 				onmouseleave={() => hovered = 0}
-				class="cursor-pointer text-6xl sm:text-7xl transition-transform duration-100 active:scale-90 hover:scale-110"
+				class="cursor-pointer text-5xl sm:text-7xl text-yellow-400 drop-shadow-[0_0_1px_rgba(0,0,0,0.8)] transition-transform duration-100 active:scale-90 hover:scale-110 p-1"
 				aria-label="{star} van 5 sterren: {labels[star]}"
 				aria-pressed={value === star}
 			>
@@ -31,7 +31,7 @@
 		{/each}
 	</div>
 
-	<p class="text-xl sm:text-2xl text-gray-700 font-medium h-9">
+	<p class="text-xl sm:text-2xl text-gray-700 font-medium min-h-9">
 		{activeLabel}
 	</p>
 </div>

@@ -35,8 +35,8 @@
 	</h2>
 
 	{#if question.examples}
-		<p class="text-lg text-gray-700 mb-3 text-center">Denk hierbij aan:</p>
-		<ul class="text-lg text-gray-800 mb-8 space-y-1 text-center">
+		<p class="text-xl sm:text-2xl text-gray-700 mb-3 text-center">Denk hierbij aan:</p>
+		<ul class="text-xl sm:text-2xl text-gray-800 mb-8 space-y-2 text-center">
 			{#each question.examples as example}
 				<li>{example}</li>
 			{/each}

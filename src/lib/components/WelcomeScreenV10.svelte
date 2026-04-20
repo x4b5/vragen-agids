@@ -12,7 +12,7 @@
 		</p>
 
 		<p class="text-xl md:text-2xl text-gray-800 leading-loose mb-12">
-			Stel, je zoekt een baan. Je krijgt 32 korte stellingen.
+			Stel, je zoekt een baan. Je krijgt 36 korte stellingen.
 			Per stelling geef je met sterren aan hoe belangrijk het voor jou is:
 			van <strong>1 ster</strong> (niet belangrijk) tot <strong>5 sterren</strong> (heel belangrijk).
 		</p>

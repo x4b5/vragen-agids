@@ -59,7 +59,7 @@ export const questionsV10: V10Question[] = [
 	{
 		id: 'v10-7',
 		theme: 'Werkomgeving',
-		text: 'of er gevaarlijke stoffen, machines of situaties zijn op het werk'
+		text: 'of er gevaarlijke stoffen en machines zijn of gevaarlijke situaties kunnen voorkomen'
 	},
 
 	// === Manier van werken (5) ===
@@ -157,7 +157,7 @@ export const questionsV10: V10Question[] = [
 	{
 		id: 'v10-21',
 		theme: 'Leren en beginnen',
-		text: 'of ik het werk eerst mag uitproberen'
+		text: 'of ik een dagje kan meelopen'
 	},
 	// Filter: eerste-dag-programma ja/nee
 	{
@@ -171,7 +171,7 @@ export const questionsV10: V10Question[] = [
 	{
 		id: 'v10-23',
 		theme: 'Motivatie en groei',
-		text: 'of ik later meer of beter werk kan krijgen'
+		text: 'of er mogelijkheden zijn om door te groeien'
 	},
 	// Filter: vrije pauze / vaste pauzetijden
 	{
@@ -183,11 +183,17 @@ export const questionsV10: V10Question[] = [
 	{
 		id: 'v10-25',
 		theme: 'Motivatie en groei',
-		text: 'hoeveel geld ik verdien'
+		text: 'hoeveel geld ik ga verdienen'
+	},
+	// Filter: financieel voordeel werken vs uitkering
+	{
+		id: 'v10-26',
+		theme: 'Motivatie en groei',
+		text: 'hoeveel ik met de nieuwe baan er financieel op vooruit ga'
 	},
 	// Filter: vast contract / tijdelijk / oproep
 	{
-		id: 'v10-26',
+		id: 'v10-27',
 		theme: 'Motivatie en groei',
 		text: 'of het een vaste baan is of tijdelijk'
 	},
@@ -195,38 +201,62 @@ export const questionsV10: V10Question[] = [
 	// === Praktisch (6) ===
 	// Filter: werktijden / rooster
 	{
-		id: 'v10-27',
+		id: 'v10-28',
 		theme: 'Praktisch',
 		text: 'op welke dagen en tijden ik werk'
 	},
 	// Filter: vaste werktijden / flexibele werktijden
 	{
-		id: 'v10-28',
+		id: 'v10-29',
 		theme: 'Praktisch',
 		text: 'of de werktijden vast zijn of flexibel'
 	},
 	// Filter: alleen doordeweeks / ook avond-weekend
 	{
-		id: 'v10-29',
+		id: 'v10-30',
 		theme: 'Praktisch',
 		text: 'of ik ook \u2019s avonds of in het weekend werk'
 	},
 	// Filter: bereikbaar met OV / auto / fiets
 	{
-		id: 'v10-30',
+		id: 'v10-31',
 		theme: 'Praktisch',
-		text: 'hoe ik op mijn werk kom'
+		text: 'hoe ik op mijn werk kan komen (bereikbaar met OV?)'
 	},
 	// Filter: fulltime / parttime / uren per week
 	{
-		id: 'v10-31',
+		id: 'v10-32',
 		theme: 'Praktisch',
 		text: 'hoeveel uur ik werk'
 	},
-	// Filter: kantine / eigen eten / geen voorziening
+	// Filter: aanpassing aan persoonlijke situatie ja/nee
 	{
-		id: 'v10-32',
+		id: 'v10-33',
 		theme: 'Praktisch',
-		text: 'of er een plek is om te eten'
+		text: 'hoe rekening kan worden gehouden met mijn situatie',
+		examples: [
+			'Kinderen van school halen',
+			'Een lichamelijke beperking',
+			'Mantelzorg voor iemand',
+			'Afspraken met instanties'
+		]
+	},
+	// Filter: sfeer informeel / formeel
+	{
+		id: 'v10-34',
+		theme: 'Samenwerken en sfeer',
+		text: 'hoe de sfeer is op het werk'
+	},
+	// Filter: ziekteverzuimbeleid ja/nee
+	{
+		id: 'v10-35',
+		theme: 'Praktisch',
+		text: 'wat er gebeurt als ik ziek word'
+	},
+	// Filter: begeleiding op werk ja/nee
+	{
+		id: 'v10-36',
+		theme: 'Samenwerken en sfeer',
+		text: 'of ik hulp kan krijgen als ik ergens mee zit'
 	}
 ];

@@ -1,6 +1,6 @@
 # Urenregistratie Logboek
 
-**Totaal gewerkte uren:** 56.06
+**Totaal gewerkte uren:** 64.06
 
 | Datum      | Starttijd | Eindtijd | Duur (uren) | Commit Hash | Omschrijving                                                                                                                                                                                                                                                |
 | ---------- | --------- | -------- | ----------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -34,3 +34,4 @@
 | 2026-04-10 | 20:43 | 06:30 | 8.00 | `32d2e5e` | feat: add V9 questionnaire with 20 definitive questions and multi-select sectors |
 | 2026-04-18 | 06:30 | 05:33 | 8.00 | `6be907e` | feat: add V10 questionnaire with 32 filtered questions and 4-option rating |
 | 2026-04-18 | 05:33 | 05:38 | 0.10 | `741669e` | feat: add V10 support to homepage and Skizo agent |
+| 2026-04-20 | 05:38 | 06:09 | 8.00 | `5975878` | feat: redesign V10 with star ratings, statements, and accessibility improvements |
