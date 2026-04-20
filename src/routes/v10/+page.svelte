@@ -7,6 +7,7 @@
 		submitAllV10
 	} from '$lib/stores/game-v10.svelte';
 	import WelcomeScreenV10 from '$lib/components/WelcomeScreenV10.svelte';
+	import IntakeScreenV10 from '$lib/components/IntakeScreenV10.svelte';
 	import QuestionCardV10 from '$lib/components/QuestionCardV10.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import PhaseHeader from '$lib/components/PhaseHeader.svelte';
@@ -33,6 +34,8 @@
 
 {#if game.phase === 'welcome'}
 	<WelcomeScreenV10 />
+{:else if game.phase === 'intake'}
+	<IntakeScreenV10 />
 {:else if game.phase === 'questionnaire'}
 	<main class="min-h-svh flex flex-col px-5 py-6 sm:py-10">
 		<div class="w-full max-w-lg mx-auto">

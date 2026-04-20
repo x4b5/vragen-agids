@@ -19,6 +19,7 @@ export interface SubmissionPayload {
 	duration_ms: number;
 	version?: string;
 	suggestions?: Array<{ title: string; description: string }>;
+	intake?: { age_category: string; is_raad_van_advies: boolean };
 }
 
 function isLocalStorageAvailable(): boolean {

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { startQuestionnaireV10 } from '$lib/stores/game-v10.svelte';
+	import { startIntakeV10 } from '$lib/stores/game-v10.svelte';
 </script>
 
 <main class="min-h-svh flex items-center justify-center px-5">
@@ -18,7 +18,7 @@
 		</p>
 
 		<button
-			onclick={startQuestionnaireV10}
+			onclick={startIntakeV10}
 			class="cursor-pointer rounded-xl bg-indigo-600 px-12 py-4 text-xl font-semibold text-white shadow-lg
 				transition-all active:scale-[0.97] hover:bg-indigo-700"
 		>

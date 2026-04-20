@@ -2,19 +2,37 @@ import { questionsV10 } from '../data/questions-v10';
 import type { V10Question } from '../data/questions-v10';
 import { saveV10Session, loadV10Session, clearV10Session, submitWithRetry } from '../utils/persistence';
 
-export type GamePhaseV10 = 'welcome' | 'questionnaire' | 'done';
+export type GamePhaseV10 = 'welcome' | 'intake' | 'questionnaire' | 'done';
 export type SubmissionStatusV10 = 'idle' | 'submitting' | 'submitted' | 'queued';
+
+export const ageCategories = [
+	'Jonger dan 25',
+	'25 tot 35',
+	'35 tot 45',
+	'45 tot 55',
+	'55 of ouder'
+] as const;
+
+export type AgeCategory = (typeof ageCategories)[number];
 
 let phase = $state<GamePhaseV10>('welcome');
 let currentQuestionIndex = $state(0);
 let answers = $state<Map<string, number>>(new Map());
 let startedAt = $state<number>(0);
 let submissionStatus = $state<SubmissionStatusV10>('idle');
+let ageCategory = $state<AgeCategory | null>(null);
+let isRaadVanAdvies = $state<boolean>(false);
 
 export function getGameStateV10() {
 	return {
 		get phase() {
 			return phase;
+		},
+		get ageCategory() {
+			return ageCategory;
+		},
+		get isRaadVanAdvies() {
+			return isRaadVanAdvies;
 		},
 		get currentQuestionIndex() {
 			return currentQuestionIndex;
@@ -57,6 +75,18 @@ function persistSession(): void {
 		startedAt,
 		savedAt: Date.now()
 	});
+}
+
+export function startIntakeV10(): void {
+	phase = 'intake';
+}
+
+export function setAgeCategoryV10(category: AgeCategory): void {
+	ageCategory = category;
+}
+
+export function setRaadVanAdviesV10(value: boolean): void {
+	isRaadVanAdvies = value;
 }
 
 export function startQuestionnaireV10(): void {
@@ -106,7 +136,11 @@ export async function submitAllV10(): Promise<void> {
 	const result = await submitWithRetry({
 		answers: answersObj,
 		duration_ms: duration,
-		version: 'v10'
+		version: 'v10',
+		intake: {
+			age_category: ageCategory ?? '',
+			is_raad_van_advies: isRaadVanAdvies
+		}
 	});
 
 	submissionStatus = result;
@@ -120,5 +154,7 @@ export function resetGameV10(): void {
 	answers = new Map();
 	startedAt = 0;
 	submissionStatus = 'idle';
+	ageCategory = null;
+	isRaadVanAdvies = false;
 	clearV10Session();
 }
