@@ -23,7 +23,7 @@ export const questionsV10: V10Question[] = [
 	{
 		id: 'v10-1',
 		theme: 'Werkomgeving',
-		text: 'waar je werkt: binnen, buiten of allebei'
+		text: 'waar ik werk: binnen, buiten of allebei'
 	},
 	// Filter: stil / gemiddeld / luid
 	{
@@ -35,7 +35,7 @@ export const questionsV10: V10Question[] = [
 	{
 		id: 'v10-3',
 		theme: 'Werkomgeving',
-		text: 'wat het werk vraagt van je lichaam'
+		text: 'wat het werk vraagt van mijn lichaam'
 	},
 	// Filter: rustig / gemiddeld / druk
 	{
@@ -47,19 +47,19 @@ export const questionsV10: V10Question[] = [
 	{
 		id: 'v10-5',
 		theme: 'Werkomgeving',
-		text: 'of je werkkleding krijgt of je eigen kleding aan mag'
+		text: 'of ik werkkleding krijg of mijn eigen kleding aan mag'
 	},
 	// Filter: afstand in km of reistijd
 	{
 		id: 'v10-6',
 		theme: 'Werkomgeving',
-		text: 'hoe ver je moet reizen naar je werk'
+		text: 'hoe ver ik moet reizen naar mijn werk'
 	},
 	// Filter: veiligheidsrisico laag / gemiddeld / hoog
 	{
 		id: 'v10-7',
 		theme: 'Werkomgeving',
-		text: 'of er gevaarlijke stoffen, machines zijn of wat gevaarlijke situaties kunnen zijn op het werk'
+		text: 'of er gevaarlijke stoffen, machines of situaties zijn op het werk'
 	},
 
 	// === Manier van werken (5) ===
@@ -67,31 +67,31 @@ export const questionsV10: V10Question[] = [
 	{
 		id: 'v10-8',
 		theme: 'Manier van werken',
-		text: 'of je het werk op je eigen manier mag doen'
+		text: 'of ik het werk op mijn eigen manier mag doen'
 	},
 	// Filter: alleen / klein team / groot team
 	{
 		id: 'v10-9',
 		theme: 'Manier van werken',
-		text: 'of je alleen werkt, in een klein team of in een groot team'
+		text: 'of ik alleen werk, in een klein team of in een groot team'
 	},
 	// Filter: vaste taken / wisselende taken
 	{
 		id: 'v10-10',
 		theme: 'Manier van werken',
-		text: 'of je elke dag hetzelfde doet of steeds iets anders'
+		text: 'of ik elke dag hetzelfde doe of steeds iets anders'
 	},
 	// Filter: zelfstandig starten / stap-voor-stap uitleg
 	{
 		id: 'v10-11',
 		theme: 'Manier van werken',
-		text: 'of je alles zelf mag uitzoeken of dat je stap voor stap uitleg krijgt'
+		text: 'of ik alles zelf mag uitzoeken of stap voor stap uitleg krijg'
 	},
 	// Filter: klantcontact ja/nee
 	{
 		id: 'v10-12',
 		theme: 'Manier van werken',
-		text: 'of je met klanten of bezoekers te maken krijgt'
+		text: 'of ik met klanten of bezoekers te maken krijg'
 	},
 
 	// === Inhoud van het werk (1) ===
@@ -113,31 +113,31 @@ export const questionsV10: V10Question[] = [
 	{
 		id: 'v10-14',
 		theme: 'Samenwerken en sfeer',
-		text: 'of je het team en je baas kunt ontmoeten voordat je begint'
+		text: 'of ik het team en mijn baas kan ontmoeten voordat ik begin'
 	},
 	// Filter: iemand meenemen naar kennismaking ja/nee
 	{
 		id: 'v10-15',
 		theme: 'Samenwerken en sfeer',
-		text: 'of je iemand mee mag nemen naar de eerste kennismaking'
+		text: 'of ik iemand mee mag nemen naar de eerste kennismaking'
 	},
 	// Filter: foto\u2019s/video beschikbaar ja/nee
 	{
 		id: 'v10-16',
 		theme: 'Samenwerken en sfeer',
-		text: 'of je foto\u2019s of een filmpje van de werkplek kunt zien voordat je begint'
+		text: 'of ik foto\u2019s of een filmpje van de werkplek kan zien voordat ik begin'
 	},
 	// Filter: parkeren/fietsenstalling ja/nee
 	{
 		id: 'v10-17',
 		theme: 'Samenwerken en sfeer',
-		text: 'of er plek is om je fiets of auto neer te zetten'
+		text: 'of er plek is om mijn fiets of auto neer te zetten'
 	},
 	// Filter: inwerkperiode ja/nee
 	{
 		id: 'v10-18',
 		theme: 'Samenwerken en sfeer',
-		text: 'of iemand je helpt als je net begint met werken'
+		text: 'of iemand mij helpt als ik net begin met werken'
 	},
 	// Filter: taal Nederlands / meertalig / anders
 	{
@@ -151,19 +151,19 @@ export const questionsV10: V10Question[] = [
 	{
 		id: 'v10-20',
 		theme: 'Leren en beginnen',
-		text: 'of je nieuwe dingen kunt leren'
+		text: 'of ik nieuwe dingen kan leren'
 	},
 	// Filter: meelopen/proefperiode ja/nee
 	{
 		id: 'v10-21',
 		theme: 'Leren en beginnen',
-		text: 'of je het werk eerst mag uitproberen'
+		text: 'of ik het werk eerst mag uitproberen'
 	},
 	// Filter: eerste-dag-programma ja/nee
 	{
 		id: 'v10-22',
 		theme: 'Leren en beginnen',
-		text: 'hoe je eerste werkdag eruitziet'
+		text: 'hoe mijn eerste werkdag eruitziet'
 	},
 
 	// === Motivatie en groei (4) ===
@@ -171,7 +171,7 @@ export const questionsV10: V10Question[] = [
 	{
 		id: 'v10-23',
 		theme: 'Motivatie en groei',
-		text: 'of je later meer of beter werk kunt krijgen'
+		text: 'of ik later meer of beter werk kan krijgen'
 	},
 	// Filter: vrije pauze / vaste pauzetijden
 	{
@@ -183,7 +183,7 @@ export const questionsV10: V10Question[] = [
 	{
 		id: 'v10-25',
 		theme: 'Motivatie en groei',
-		text: 'hoeveel geld je verdient'
+		text: 'hoeveel geld ik verdien'
 	},
 	// Filter: vast contract / tijdelijk / oproep
 	{
@@ -197,7 +197,7 @@ export const questionsV10: V10Question[] = [
 	{
 		id: 'v10-27',
 		theme: 'Praktisch',
-		text: 'op welke dagen en tijden je werkt'
+		text: 'op welke dagen en tijden ik werk'
 	},
 	// Filter: vaste werktijden / flexibele werktijden
 	{
@@ -209,19 +209,19 @@ export const questionsV10: V10Question[] = [
 	{
 		id: 'v10-29',
 		theme: 'Praktisch',
-		text: 'of je ook \u2019s avonds of in het weekend werkt'
+		text: 'of ik ook \u2019s avonds of in het weekend werk'
 	},
 	// Filter: bereikbaar met OV / auto / fiets
 	{
 		id: 'v10-30',
 		theme: 'Praktisch',
-		text: 'hoe je op je werk komt'
+		text: 'hoe ik op mijn werk kom'
 	},
 	// Filter: fulltime / parttime / uren per week
 	{
 		id: 'v10-31',
 		theme: 'Praktisch',
-		text: 'hoeveel uur je werkt'
+		text: 'hoeveel uur ik werk'
 	},
 	// Filter: kantine / eigen eten / geen voorziening
 	{

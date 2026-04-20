@@ -4,22 +4,22 @@
 
 <main class="min-h-svh flex items-center justify-center px-5">
 	<div class="w-full max-w-sm md:max-w-2xl mx-auto text-center">
-		<h1 class="text-4xl font-bold text-gray-900 mb-6">Welkom</h1>
+		<h1 class="text-5xl font-bold text-gray-950 mb-8">Welkom</h1>
 
-		<p class="text-lg md:text-xl text-gray-600 leading-relaxed mb-4">
-			We willen weten wat mensen belangrijk vinden in het zoeken naar werk.
+		<p class="text-xl md:text-2xl text-gray-800 leading-loose mb-5">
+			We willen weten wat mensen belangrijk vinden in (het zoeken naar) werk.
 			We willen jou vragen om ons te helpen hier achter te komen.
 		</p>
 
-		<p class="text-base md:text-lg text-gray-500 leading-relaxed mb-10">
-			Stel, je zoekt een baan. Je krijgt 32 korte vragen.
-			Per vraag kies je: <strong>Maakt niet uit</strong>,
-			<strong>Wil ik weten</strong> of <strong>Moet ik weten</strong>.
+		<p class="text-xl md:text-2xl text-gray-800 leading-loose mb-12">
+			Stel, je zoekt een baan. Je krijgt 32 korte stellingen.
+			Per stelling geef je met sterren aan hoe belangrijk het voor jou is:
+			van <strong>1 ster</strong> (niet belangrijk) tot <strong>5 sterren</strong> (heel belangrijk).
 		</p>
 
 		<button
 			onclick={startQuestionnaireV10}
-			class="cursor-pointer rounded-xl bg-indigo-600 px-10 py-3.5 text-lg font-semibold text-white shadow-lg
+			class="cursor-pointer rounded-xl bg-indigo-600 px-12 py-4 text-xl font-semibold text-white shadow-lg
 				transition-all active:scale-[0.97] hover:bg-indigo-700"
 		>
 			Start

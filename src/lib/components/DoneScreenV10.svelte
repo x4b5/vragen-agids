@@ -33,8 +33,8 @@
 						/>
 					</svg>
 				</div>
-				<h1 class="text-3xl font-bold text-gray-900 mb-3">Even geduld...</h1>
-				<p class="text-lg text-gray-500 mb-2">Verzenden...</p>
+				<h1 class="text-4xl font-bold text-gray-950 mb-3">Even geduld...</h1>
+				<p class="text-xl text-gray-700 mb-2">Verzenden...</p>
 			{:else if game.submissionStatus === 'queued'}
 				<div
 					class="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-amber-100"
@@ -53,8 +53,8 @@
 						/>
 					</svg>
 				</div>
-				<h1 class="text-3xl font-bold text-gray-900 mb-3">Bedankt voor je tijd!</h1>
-				<p class="text-lg text-amber-600 mb-2">
+				<h1 class="text-4xl font-bold text-gray-950 mb-3">Bedankt voor je tijd!</h1>
+				<p class="text-xl text-amber-700 mb-2">
 					Je antwoorden zijn lokaal opgeslagen en worden automatisch verzonden zodra de
 					verbinding hersteld is.
 				</p>
@@ -76,16 +76,16 @@
 						/>
 					</svg>
 				</div>
-				<h1 class="text-3xl font-bold text-gray-900 mb-3">Bedankt voor je tijd!</h1>
-				<p class="text-lg text-gray-500 mb-2">Je antwoorden zijn succesvol verzonden.</p>
+				<h1 class="text-4xl font-bold text-gray-950 mb-3">Bedankt voor je tijd!</h1>
+				<p class="text-xl text-gray-700 mb-2">Je antwoorden zijn succesvol verzonden.</p>
 			{/if}
 		</div>
 
 		<div class="rounded-2xl bg-gray-50 p-6 mb-8">
-			<p class="text-3xl font-bold text-indigo-600">{totalAnswered}</p>
-			<p class="text-sm text-gray-500">Vragen beoordeeld</p>
+			<p class="text-4xl font-bold text-indigo-600">{totalAnswered}</p>
+			<p class="text-lg text-gray-700">Vragen beoordeeld</p>
 		</div>
 
-		<p class="text-sm text-gray-400">Je kunt dit venster sluiten.</p>
+		<p class="text-lg text-gray-600">Je kunt dit venster sluiten.</p>
 	</div>
 </main>

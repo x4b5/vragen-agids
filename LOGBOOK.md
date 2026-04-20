@@ -1,6 +1,6 @@
 # Urenregistratie Logboek
 
-**Totaal gewerkte uren:** 31.96
+**Totaal gewerkte uren:** 56.06
 
 | Datum      | Starttijd | Eindtijd | Duur (uren) | Commit Hash | Omschrijving                                                                                                                                                                                                                                                |
 | ---------- | --------- | -------- | ----------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -30,3 +30,7 @@
 | 2026-04-03 | 14:52 | 16:36 | 1.74 | `eb2909b` | feat: add V5 visual filters and V6 visual card questionnaire |
 | 2026-04-04 | 16:36 | 11:19 | 8.00 | `a895ddf` | feat: add V7 swipe-style questionnaire with Tinder UX |
 | 2026-04-04 | 11:19 | 11:41 | 0.37 | `b40fd35` | feat: add V8 review questionnaire combining all V1-V7 questions |
+| 2026-04-04 | 11:41 | 20:43 | 8.00 | `f4790da` | feat: add custom question input per theme group in V8 and fix V7/V8 Supabase routing |
+| 2026-04-10 | 20:43 | 06:30 | 8.00 | `32d2e5e` | feat: add V9 questionnaire with 20 definitive questions and multi-select sectors |
+| 2026-04-18 | 06:30 | 05:33 | 8.00 | `6be907e` | feat: add V10 questionnaire with 32 filtered questions and 4-option rating |
+| 2026-04-18 | 05:33 | 05:38 | 0.10 | `741669e` | feat: add V10 support to homepage and Skizo agent |

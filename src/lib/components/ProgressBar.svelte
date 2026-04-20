@@ -18,10 +18,10 @@
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div class="w-full" ondblclick={handleDoubleClick}>
   <div class="flex items-center justify-between mb-1.5">
-    <span class="text-sm font-medium text-gray-500"
+    <span class="text-lg font-medium text-gray-700"
       >Vraag {current + 1} van {total}</span
     >
-    <span class="text-sm font-medium text-gray-400"
+    <span class="text-lg font-medium text-gray-600"
       >{Math.round(progress * 100)}%</span
     >
   </div>
