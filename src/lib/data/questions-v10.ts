@@ -18,84 +18,67 @@ export const themesV10 = [
 export type ThemeV10 = (typeof themesV10)[number];
 
 export const questionsV10: V10Question[] = [
-	// === Werkomgeving (7) ===
-	// Filter: binnen / buiten / beide
+	// 1 — Werkomgeving
 	{
 		id: 'v10-1',
 		theme: 'Werkomgeving',
 		text: 'waar ik werk: binnen, buiten of allebei'
 	},
-	// Filter: stil / gemiddeld / luid
+	// 2 — Praktisch
 	{
-		id: 'v10-2',
-		theme: 'Werkomgeving',
-		text: 'hoeveel geluid er is op de werkplek'
+		id: 'v10-28',
+		theme: 'Praktisch',
+		text: 'op welke dagen en tijden ik werk'
 	},
-	// Filter: licht / gemiddeld / zwaar lichamelijk
+	// 3 — Samenwerken en sfeer
 	{
-		id: 'v10-3',
-		theme: 'Werkomgeving',
-		text: 'wat het werk vraagt van mijn lichaam'
+		id: 'v10-14',
+		theme: 'Samenwerken en sfeer',
+		text: 'of ik het team en mijn baas kan ontmoeten voordat ik begin'
 	},
-	// Filter: rustig / gemiddeld / druk
-	{
-		id: 'v10-4',
-		theme: 'Werkomgeving',
-		text: 'hoe druk het is op een werkdag'
-	},
-	// Filter: werkkleding / eigen kleding
-	{
-		id: 'v10-5',
-		theme: 'Werkomgeving',
-		text: 'of ik werkkleding krijg of mijn eigen kleding aan mag'
-	},
-	// Filter: afstand in km of reistijd
-	{
-		id: 'v10-6',
-		theme: 'Werkomgeving',
-		text: 'hoe ver ik moet reizen naar mijn werk'
-	},
-	// Filter: veiligheidsrisico laag / gemiddeld / hoog
-	{
-		id: 'v10-7',
-		theme: 'Werkomgeving',
-		text: 'of er gevaarlijke stoffen en machines zijn of gevaarlijke situaties kunnen voorkomen'
-	},
-
-	// === Manier van werken (5) ===
-	// Filter: vaste werkwijze / eigen inbreng
+	// 4 — Manier van werken
 	{
 		id: 'v10-8',
 		theme: 'Manier van werken',
 		text: 'of ik het werk op mijn eigen manier mag doen'
 	},
-	// Filter: alleen / klein team / groot team
+	// 5 — Motivatie en groei
+	{
+		id: 'v10-23',
+		theme: 'Motivatie en groei',
+		text: 'of er mogelijkheden zijn om door te groeien'
+	},
+	// 6 — Leren en beginnen
+	{
+		id: 'v10-20',
+		theme: 'Leren en beginnen',
+		text: 'of ik nieuwe dingen kan leren'
+	},
+	// 7 — Werkomgeving
+	{
+		id: 'v10-2',
+		theme: 'Werkomgeving',
+		text: 'hoeveel geluid er is op de werkplek'
+	},
+	// 8 — Praktisch
+	{
+		id: 'v10-29',
+		theme: 'Praktisch',
+		text: 'of de werktijden vast zijn of flexibel'
+	},
+	// 9 — Samenwerken en sfeer
+	{
+		id: 'v10-19',
+		theme: 'Samenwerken en sfeer',
+		text: 'welke taal er gesproken wordt op het werk'
+	},
+	// 10 — Manier van werken
 	{
 		id: 'v10-9',
 		theme: 'Manier van werken',
 		text: 'of ik alleen werk, in een klein team of in een groot team'
 	},
-	// Filter: vaste taken / wisselende taken
-	{
-		id: 'v10-10',
-		theme: 'Manier van werken',
-		text: 'of ik elke dag hetzelfde doe of steeds iets anders'
-	},
-	// Filter: zelfstandig starten / stap-voor-stap uitleg
-	{
-		id: 'v10-11',
-		theme: 'Manier van werken',
-		text: 'of ik alles zelf mag uitzoeken of stap voor stap uitleg krijg'
-	},
-	// Filter: klantcontact ja/nee
-	{
-		id: 'v10-12',
-		theme: 'Manier van werken',
-		text: 'of ik met klanten of bezoekers te maken krijg'
-	},
-
-	// === Inhoud van het werk (1) ===
-	// Filter: type werk (helpen / maken / regelen / uitzoeken)
+	// 11 — Inhoud van het werk
 	{
 		id: 'v10-13',
 		theme: 'Inhoud van het werk',
@@ -107,129 +90,139 @@ export const questionsV10: V10Question[] = [
 			'Dingen uitzoeken of onderzoeken'
 		]
 	},
-
-	// === Samenwerken en sfeer (6) ===
-	// Filter: kennismaking vooraf ja/nee
-	{
-		id: 'v10-14',
-		theme: 'Samenwerken en sfeer',
-		text: 'of ik het team en mijn baas kan ontmoeten voordat ik begin'
-	},
-	// Filter: iemand meenemen naar kennismaking ja/nee
-	{
-		id: 'v10-15',
-		theme: 'Samenwerken en sfeer',
-		text: 'of ik iemand mee mag nemen naar de eerste kennismaking'
-	},
-	// Filter: meelopen met collega's ja/nee
-	{
-		id: 'v10-16',
-		theme: 'Samenwerken en sfeer',
-		text: "of ik kan meelopen met verschillende collega\u2019s"
-	},
-	// Filter: parkeren/fietsenstalling ja/nee
-	{
-		id: 'v10-17',
-		theme: 'Praktisch',
-		text: 'of er plek is om mijn fiets of auto neer te zetten'
-	},
-	// Filter: inwerkperiode ja/nee
-	{
-		id: 'v10-18',
-		theme: 'Samenwerken en sfeer',
-		text: 'of iemand mij helpt als ik net begin met werken'
-	},
-	// Filter: taal Nederlands / meertalig / anders
-	{
-		id: 'v10-19',
-		theme: 'Samenwerken en sfeer',
-		text: 'welke taal er gesproken wordt op het werk'
-	},
-
-	// === Leren en beginnen (3) ===
-	// Filter: opleiding/cursussen ja/nee
-	{
-		id: 'v10-20',
-		theme: 'Leren en beginnen',
-		text: 'of ik nieuwe dingen kan leren'
-	},
-	// Filter: meelopen/proefperiode ja/nee
-	{
-		id: 'v10-21',
-		theme: 'Leren en beginnen',
-		text: 'of ik meerdere dagen kan meelopen'
-	},
-	// Filter: eerste-dag-programma ja/nee
-	{
-		id: 'v10-22',
-		theme: 'Leren en beginnen',
-		text: 'hoe mijn eerste werkdag eruitziet'
-	},
-
-	// === Motivatie en groei (4) ===
-	// Filter: doorgroeimogelijkheden ja/nee
-	{
-		id: 'v10-23',
-		theme: 'Motivatie en groei',
-		text: 'of er mogelijkheden zijn om door te groeien'
-	},
-	// Filter: vrije pauze / vaste pauzetijden
-	{
-		id: 'v10-24',
-		theme: 'Praktisch',
-		text: 'hoe de pauzes geregeld zijn'
-	},
-	// Filter: salaris getoond ja/nee, salarisindicatie
-	{
-		id: 'v10-25',
-		theme: 'Motivatie en groei',
-		text: 'hoeveel geld ik ga verdienen'
-	},
-	// Filter: financieel voordeel werken vs uitkering
-	{
-		id: 'v10-26',
-		theme: 'Motivatie en groei',
-		text: 'hoeveel ik met de nieuwe baan er financieel op vooruit ga'
-	},
-	// Filter: vast contract / tijdelijk / oproep
-	{
-		id: 'v10-27',
-		theme: 'Motivatie en groei',
-		text: 'of het een vaste baan is of tijdelijk'
-	},
-
-	// === Praktisch (6) ===
-	// Filter: werktijden / rooster
-	{
-		id: 'v10-28',
-		theme: 'Praktisch',
-		text: 'op welke dagen en tijden ik werk'
-	},
-	// Filter: vaste werktijden / flexibele werktijden
-	{
-		id: 'v10-29',
-		theme: 'Praktisch',
-		text: 'of de werktijden vast zijn of flexibel'
-	},
-	// Filter: alleen doordeweeks / ook avond-weekend
-	{
-		id: 'v10-30',
-		theme: 'Praktisch',
-		text: 'of ik ook \u2019s avonds of in het weekend werk'
-	},
-	// Filter: bereikbaar met OV / auto / fiets
-	{
-		id: 'v10-31',
-		theme: 'Praktisch',
-		text: 'hoe ik op mijn werk kan komen (bereikbaar met OV?)'
-	},
-	// Filter: fulltime / parttime / uren per week
+	// 12 — Praktisch
 	{
 		id: 'v10-32',
 		theme: 'Praktisch',
 		text: 'hoeveel uur ik werk'
 	},
-	// Filter: aanpassing aan persoonlijke situatie ja/nee
+	// 13 — Werkomgeving
+	{
+		id: 'v10-3',
+		theme: 'Werkomgeving',
+		text: 'wat het werk vraagt van mijn lichaam'
+	},
+	// 14 — Samenwerken en sfeer
+	{
+		id: 'v10-18',
+		theme: 'Samenwerken en sfeer',
+		text: 'of iemand mij helpt als ik net begin met werken'
+	},
+	// 15 — Motivatie en groei
+	{
+		id: 'v10-25',
+		theme: 'Motivatie en groei',
+		text: 'hoeveel geld ik ga verdienen'
+	},
+	// 16 — Manier van werken
+	{
+		id: 'v10-10',
+		theme: 'Manier van werken',
+		text: 'of ik elke dag hetzelfde doe of steeds iets anders'
+	},
+	// 17 — Leren en beginnen
+	{
+		id: 'v10-21',
+		theme: 'Leren en beginnen',
+		text: 'of ik meerdere dagen kan meelopen'
+	},
+	// 18 — Praktisch
+	{
+		id: 'v10-30',
+		theme: 'Praktisch',
+		text: 'of ik ook \u2019s avonds of in het weekend werk'
+	},
+	// 19 — Werkomgeving
+	{
+		id: 'v10-4',
+		theme: 'Werkomgeving',
+		text: 'hoe druk het is op een werkdag'
+	},
+	// 20 — Samenwerken en sfeer
+	{
+		id: 'v10-34',
+		theme: 'Samenwerken en sfeer',
+		text: 'hoe de sfeer is op het werk'
+	},
+	// 21 — Manier van werken
+	{
+		id: 'v10-11',
+		theme: 'Manier van werken',
+		text: 'of ik alles zelf mag uitzoeken of stap voor stap uitleg krijg'
+	},
+	// 22 — Motivatie en groei
+	{
+		id: 'v10-26',
+		theme: 'Motivatie en groei',
+		text: 'hoeveel ik met de nieuwe baan er financieel op vooruit ga'
+	},
+	// 23 — Praktisch
+	{
+		id: 'v10-24',
+		theme: 'Praktisch',
+		text: 'hoe de pauzes geregeld zijn'
+	},
+	// 24 — Werkomgeving
+	{
+		id: 'v10-5',
+		theme: 'Werkomgeving',
+		text: 'of ik werkkleding krijg of mijn eigen kleding aan mag'
+	},
+	// 25 — Samenwerken en sfeer
+	{
+		id: 'v10-15',
+		theme: 'Samenwerken en sfeer',
+		text: 'of ik iemand mee mag nemen naar de eerste kennismaking'
+	},
+	// 26 — Leren en beginnen
+	{
+		id: 'v10-22',
+		theme: 'Leren en beginnen',
+		text: 'hoe mijn eerste werkdag eruitziet'
+	},
+	// 27 — Praktisch
+	{
+		id: 'v10-31',
+		theme: 'Praktisch',
+		text: 'hoe ik op mijn werk kan komen (bereikbaar met OV?)'
+	},
+	// 28 — Manier van werken
+	{
+		id: 'v10-12',
+		theme: 'Manier van werken',
+		text: 'of ik met klanten of bezoekers te maken krijg'
+	},
+	// 29 — Werkomgeving
+	{
+		id: 'v10-6',
+		theme: 'Werkomgeving',
+		text: 'hoe ver ik moet reizen naar mijn werk'
+	},
+	// 30 — Motivatie en groei
+	{
+		id: 'v10-27',
+		theme: 'Motivatie en groei',
+		text: 'of het een vaste baan is of tijdelijk'
+	},
+	// 31 — Samenwerken en sfeer
+	{
+		id: 'v10-16',
+		theme: 'Samenwerken en sfeer',
+		text: "of ik kan meelopen met verschillende collega\u2019s"
+	},
+	// 32 — Praktisch
+	{
+		id: 'v10-17',
+		theme: 'Praktisch',
+		text: 'of er plek is om mijn fiets of auto neer te zetten'
+	},
+	// 33 — Werkomgeving
+	{
+		id: 'v10-7',
+		theme: 'Werkomgeving',
+		text: 'of er gevaarlijke stoffen en machines zijn of gevaarlijke situaties kunnen voorkomen'
+	},
+	// 34 — Praktisch
 	{
 		id: 'v10-33',
 		theme: 'Praktisch',
@@ -242,22 +235,16 @@ export const questionsV10: V10Question[] = [
 			'Ramadan'
 		]
 	},
-	// Filter: sfeer informeel / formeel
-	{
-		id: 'v10-34',
-		theme: 'Samenwerken en sfeer',
-		text: 'hoe de sfeer is op het werk'
-	},
-	// Filter: ziekteverzuimbeleid ja/nee
-	{
-		id: 'v10-35',
-		theme: 'Praktisch',
-		text: 'wat er gebeurt als ik ziek word'
-	},
-	// Filter: begeleiding op werk ja/nee
+	// 35 — Samenwerken en sfeer
 	{
 		id: 'v10-36',
 		theme: 'Samenwerken en sfeer',
 		text: 'of ik hulp kan krijgen als ik ergens mee zit'
+	},
+	// 36 — Praktisch
+	{
+		id: 'v10-35',
+		theme: 'Praktisch',
+		text: 'wat er gebeurt als ik ziek word'
 	}
 ];
