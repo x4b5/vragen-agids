@@ -49,7 +49,7 @@
 					class="h-8 w-8 rounded border-gray-300 text-indigo-600 accent-indigo-600 cursor-pointer"
 				/>
 				<span class="text-xl md:text-2xl text-gray-800">
-					Ik ben deelnemer van de Raad van Advies
+					Vink aan als je deelnemer bent van de <strong>Raad van Advies</strong>
 				</span>
 			</label>
 		</div>

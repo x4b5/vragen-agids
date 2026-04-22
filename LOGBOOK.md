@@ -1,6 +1,6 @@
 # Urenregistratie Logboek
 
-**Totaal gewerkte uren:** 64.92
+**Totaal gewerkte uren:** 65.11
 
 | Datum      | Starttijd | Eindtijd | Duur (uren) | Commit Hash | Omschrijving                                                                                                                                                                                                                                                |
 | ---------- | --------- | -------- | ----------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -38,3 +38,5 @@
 | 2026-04-20 | 06:09 | 06:37 | 0.46 | `6793d41` | feat: refine V10 statements and add 4 new topics |
 | 2026-04-20 | 06:37 | 06:51 | 0.24 | `db37e9f` | feat: add intake screen with age category and Raad van Advies checkbox |
 | 2026-04-20 | 06:51 | 07:01 | 0.16 | `4aca359` | feat: skip welcome phase on /v10, start directly at intake |
+| 2026-04-20 | 07:01 | 07:09 | 0.13 | `b6d6549` | fix: add v10 case to Supabase table routing |
+| 2026-04-20 | 07:09 | 07:12 | 0.06 | `c990af0` | fix: update Skizo agent for 5-star rating system |

@@ -20,6 +20,7 @@ export interface SubmissionPayload {
 	version?: string;
 	suggestions?: Array<{ title: string; description: string }>;
 	intake?: { age_category: string; is_raad_van_advies: boolean };
+	question_timings?: Record<string, number>;
 }
 
 function isLocalStorageAvailable(): boolean {
@@ -437,6 +438,7 @@ const V10_SESSION_KEY = 'agids-v10-session';
 
 export interface V10SessionData {
 	answers: Record<string, number>;
+	questionTimings?: Record<string, number>;
 	currentIndex: number;
 	startedAt: number;
 	savedAt: number;

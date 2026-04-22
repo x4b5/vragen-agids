@@ -22,6 +22,8 @@ let startedAt = $state<number>(0);
 let submissionStatus = $state<SubmissionStatusV10>('idle');
 let ageCategory = $state<AgeCategory | null>(null);
 let isRaadVanAdvies = $state<boolean>(false);
+let questionTimings = $state<Map<string, number>>(new Map());
+let questionStartedAt = $state<number>(0);
 
 export function getGameStateV10() {
 	return {
@@ -64,13 +66,30 @@ export function getGameStateV10() {
 	};
 }
 
+function recordCurrentQuestionTime(): void {
+	if (questionStartedAt <= 0) return;
+	const questionId = questionsV10[currentQuestionIndex]?.id;
+	if (!questionId) return;
+	const elapsed = Date.now() - questionStartedAt;
+	const prev = questionTimings.get(questionId) ?? 0;
+	const next = new Map(questionTimings);
+	next.set(questionId, prev + elapsed);
+	questionTimings = next;
+	questionStartedAt = Date.now();
+}
+
 function persistSession(): void {
 	const answersObj: Record<string, number> = {};
 	for (const [id, value] of answers.entries()) {
 		answersObj[id] = value;
 	}
+	const timingsObj: Record<string, number> = {};
+	for (const [id, ms] of questionTimings.entries()) {
+		timingsObj[id] = ms;
+	}
 	saveV10Session({
 		answers: answersObj,
+		questionTimings: timingsObj,
 		currentIndex: currentQuestionIndex,
 		startedAt,
 		savedAt: Date.now()
@@ -95,11 +114,16 @@ export function startQuestionnaireV10(): void {
 		answers = new Map(Object.entries(saved.answers).map(([k, v]) => [k, Number(v)]));
 		currentQuestionIndex = saved.currentIndex;
 		startedAt = saved.startedAt;
+		questionTimings = new Map(
+			Object.entries(saved.questionTimings ?? {}).map(([k, v]) => [k, Number(v)])
+		);
 	} else {
 		answers = new Map();
 		currentQuestionIndex = 0;
 		startedAt = Date.now();
+		questionTimings = new Map();
 	}
+	questionStartedAt = Date.now();
 	submissionStatus = 'idle';
 	phase = 'questionnaire';
 }
@@ -113,24 +137,36 @@ export function rateQuestionV10(questionId: string, stars: number): void {
 
 export function nextQuestionV10(): void {
 	if (currentQuestionIndex < questionsV10.length - 1) {
+		recordCurrentQuestionTime();
 		currentQuestionIndex++;
+		questionStartedAt = Date.now();
 	}
 }
 
 export function prevQuestionV10(): void {
 	if (currentQuestionIndex > 0) {
+		recordCurrentQuestionTime();
 		currentQuestionIndex--;
+		questionStartedAt = Date.now();
 	}
 }
 
 export async function submitAllV10(): Promise<void> {
+	if (submissionStatus === 'submitting' || submissionStatus === 'submitted') return;
 	submissionStatus = 'submitting';
+
+	recordCurrentQuestionTime();
 
 	const duration = startedAt ? Date.now() - startedAt : 0;
 
 	const answersObj: Record<string, { value: string }> = {};
 	for (const [id, stars] of answers.entries()) {
 		answersObj[id] = { value: String(stars) };
+	}
+
+	const timingsObj: Record<string, number> = {};
+	for (const [id, ms] of questionTimings.entries()) {
+		timingsObj[id] = ms;
 	}
 
 	const result = await submitWithRetry({
@@ -140,7 +176,8 @@ export async function submitAllV10(): Promise<void> {
 		intake: {
 			age_category: ageCategory ?? '',
 			is_raad_van_advies: isRaadVanAdvies
-		}
+		},
+		question_timings: timingsObj
 	});
 
 	submissionStatus = result;
@@ -156,5 +193,7 @@ export function resetGameV10(): void {
 	submissionStatus = 'idle';
 	ageCategory = null;
 	isRaadVanAdvies = false;
+	questionTimings = new Map();
+	questionStartedAt = 0;
 	clearV10Session();
 }
