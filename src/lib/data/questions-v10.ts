@@ -121,16 +121,16 @@ export const questionsV10: V10Question[] = [
 		theme: 'Samenwerken en sfeer',
 		text: 'of ik iemand mee mag nemen naar de eerste kennismaking'
 	},
-	// Filter: foto\u2019s/video beschikbaar ja/nee
+	// Filter: meelopen met collega's ja/nee
 	{
 		id: 'v10-16',
 		theme: 'Samenwerken en sfeer',
-		text: 'of ik foto\u2019s of een filmpje van de werkplek kan zien voordat ik begin'
+		text: "of ik kan meelopen met verschillende collega\u2019s"
 	},
 	// Filter: parkeren/fietsenstalling ja/nee
 	{
 		id: 'v10-17',
-		theme: 'Samenwerken en sfeer',
+		theme: 'Praktisch',
 		text: 'of er plek is om mijn fiets of auto neer te zetten'
 	},
 	// Filter: inwerkperiode ja/nee
@@ -157,7 +157,7 @@ export const questionsV10: V10Question[] = [
 	{
 		id: 'v10-21',
 		theme: 'Leren en beginnen',
-		text: 'of ik een dagje kan meelopen'
+		text: 'of ik meerdere dagen kan meelopen'
 	},
 	// Filter: eerste-dag-programma ja/nee
 	{
@@ -176,7 +176,7 @@ export const questionsV10: V10Question[] = [
 	// Filter: vrije pauze / vaste pauzetijden
 	{
 		id: 'v10-24',
-		theme: 'Motivatie en groei',
+		theme: 'Praktisch',
 		text: 'hoe de pauzes geregeld zijn'
 	},
 	// Filter: salaris getoond ja/nee, salarisindicatie
@@ -238,7 +238,8 @@ export const questionsV10: V10Question[] = [
 			'Kinderen van school halen',
 			'Een lichamelijke beperking',
 			'Mantelzorg voor iemand',
-			'Afspraken met instanties'
+			'Afspraken met instanties',
+			'Ramadan'
 		]
 	},
 	// Filter: sfeer informeel / formeel
