@@ -21,6 +21,7 @@ export interface SubmissionPayload {
 	suggestions?: Array<{ title: string; description: string }>;
 	intake?: { age_category: string; is_raad_van_advies: boolean };
 	question_timings?: Record<string, number>;
+	remark?: string;
 }
 
 function isLocalStorageAvailable(): boolean {

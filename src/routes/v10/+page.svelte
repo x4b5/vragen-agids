@@ -4,11 +4,15 @@
 		rateQuestionV10,
 		nextQuestionV10,
 		prevQuestionV10,
+		goToRemarksV10,
+		setRemarkV10,
+		backToQuestionsV10,
 		submitAllV10
 	} from '$lib/stores/game-v10.svelte';
 	import WelcomeScreenV10 from '$lib/components/WelcomeScreenV10.svelte';
 	import IntakeScreenV10 from '$lib/components/IntakeScreenV10.svelte';
 	import QuestionCardV10 from '$lib/components/QuestionCardV10.svelte';
+	import RemarkScreenV10 from '$lib/components/RemarkScreenV10.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import PhaseHeader from '$lib/components/PhaseHeader.svelte';
 	import DoneScreenV10 from '$lib/components/DoneScreenV10.svelte';
@@ -19,9 +23,9 @@
 		rateQuestionV10(questionId, stars);
 	}
 
-	async function handleNext() {
+	function handleNext() {
 		if (game.isLastQuestion) {
-			await submitAllV10();
+			goToRemarksV10();
 		} else {
 			nextQuestionV10();
 		}
@@ -63,6 +67,13 @@
 			{/key}
 		</div>
 	</main>
+{:else if game.phase === 'remarks'}
+	<RemarkScreenV10
+		remark={game.remark}
+		onchange={setRemarkV10}
+		onsubmit={submitAllV10}
+		onback={backToQuestionsV10}
+	/>
 {:else if game.phase === 'done'}
 	<DoneScreenV10 />
 {/if}

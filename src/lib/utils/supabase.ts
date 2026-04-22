@@ -40,6 +40,7 @@ export async function submitResponses(data: {
 	version?: string;
 	suggestions?: Array<{ title: string; description: string }>;
 	question_timings?: Record<string, number>;
+	remark?: string;
 }): Promise<boolean> {
 	if (!supabase) return false;
 
@@ -65,7 +66,8 @@ export async function submitResponses(data: {
 			row = {
 				answers: data.answers,
 				duration_ms: data.duration_ms,
-				question_timings: data.question_timings ?? null
+				question_timings: data.question_timings ?? null,
+				remark: data.remark ?? null
 			};
 		} else {
 			row = {

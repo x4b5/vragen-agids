@@ -2,7 +2,7 @@ import { questionsV10 } from '../data/questions-v10';
 import type { V10Question } from '../data/questions-v10';
 import { saveV10Session, loadV10Session, clearV10Session, submitWithRetry } from '../utils/persistence';
 
-export type GamePhaseV10 = 'welcome' | 'intake' | 'questionnaire' | 'done';
+export type GamePhaseV10 = 'welcome' | 'intake' | 'questionnaire' | 'remarks' | 'done';
 export type SubmissionStatusV10 = 'idle' | 'submitting' | 'submitted' | 'queued';
 
 export const ageCategories = [
@@ -24,6 +24,7 @@ let ageCategory = $state<AgeCategory | null>(null);
 let isRaadVanAdvies = $state<boolean>(false);
 let questionTimings = $state<Map<string, number>>(new Map());
 let questionStartedAt = $state<number>(0);
+let remark = $state<string>('');
 
 export function getGameStateV10() {
 	return {
@@ -62,6 +63,9 @@ export function getGameStateV10() {
 		},
 		get submissionStatus() {
 			return submissionStatus;
+		},
+		get remark() {
+			return remark;
 		}
 	};
 }
@@ -151,6 +155,20 @@ export function prevQuestionV10(): void {
 	}
 }
 
+export function goToRemarksV10(): void {
+	recordCurrentQuestionTime();
+	phase = 'remarks';
+}
+
+export function setRemarkV10(text: string): void {
+	remark = text;
+}
+
+export function backToQuestionsV10(): void {
+	phase = 'questionnaire';
+	questionStartedAt = Date.now();
+}
+
 export async function submitAllV10(): Promise<void> {
 	if (submissionStatus === 'submitting' || submissionStatus === 'submitted') return;
 	submissionStatus = 'submitting';
@@ -177,7 +195,8 @@ export async function submitAllV10(): Promise<void> {
 			age_category: ageCategory ?? '',
 			is_raad_van_advies: isRaadVanAdvies
 		},
-		question_timings: timingsObj
+		question_timings: timingsObj,
+		remark: remark.trim() || undefined
 	});
 
 	submissionStatus = result;
@@ -195,5 +214,6 @@ export function resetGameV10(): void {
 	isRaadVanAdvies = false;
 	questionTimings = new Map();
 	questionStartedAt = 0;
+	remark = '';
 	clearV10Session();
 }
