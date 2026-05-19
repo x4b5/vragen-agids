@@ -19,8 +19,8 @@
 
 		<button
 			onclick={startIntakeV10}
-			class="cursor-pointer rounded-xl bg-indigo-600 px-12 py-4 text-xl font-semibold text-white shadow-lg
-				transition-all active:scale-[0.97] hover:bg-indigo-700"
+			class="btn-amg cursor-pointer rounded-xl px-12 py-4 text-xl font-semibold text-white shadow-lg
+				transition-all active:scale-[0.97]"
 		>
 			Start
 		</button>

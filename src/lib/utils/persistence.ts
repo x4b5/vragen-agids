@@ -19,7 +19,7 @@ export interface SubmissionPayload {
 	duration_ms: number;
 	version?: string;
 	suggestions?: Array<{ title: string; description: string }>;
-	intake?: { age_category: string; is_raad_van_advies: boolean };
+	intake?: { age_category: string; is_raad_van_advies: boolean; situation?: string };
 	question_timings?: Record<string, number>;
 	remark?: string;
 }

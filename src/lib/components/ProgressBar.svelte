@@ -27,7 +27,7 @@
   </div>
   <div class="h-2 w-full rounded-full bg-gray-100 overflow-hidden">
     <div
-      class="h-full rounded-full bg-indigo-500 transition-all duration-500 ease-out"
+      class="h-full rounded-full bg-[#7DC5FF] transition-all duration-500 ease-out"
       style="width: {progress * 100}%"
     ></div>
   </div>

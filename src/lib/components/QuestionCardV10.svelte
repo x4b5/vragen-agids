@@ -59,8 +59,8 @@
 		<button
 			onclick={onnext}
 			disabled={!rating}
-			class="cursor-pointer rounded-xl bg-indigo-600 px-8 py-3 text-lg font-semibold text-white shadow-md
-				transition-all hover:bg-indigo-700 active:scale-[0.97] disabled:opacity-30 disabled:cursor-not-allowed"
+			class="btn-amg cursor-pointer rounded-xl px-8 py-3 text-lg font-semibold text-white shadow-md
+				transition-all active:scale-[0.97] disabled:opacity-30 disabled:cursor-not-allowed"
 		>
 			Volgende
 		</button>

@@ -4,7 +4,7 @@
 		ageCategories,
 		setAgeCategoryV10,
 		setRaadVanAdviesV10,
-		startQuestionnaireV10
+		startSituationV10
 	} from '$lib/stores/game-v10.svelte';
 
 	const game = getGameStateV10();
@@ -30,7 +30,7 @@
 						class="cursor-pointer w-full rounded-xl border-2 px-6 py-4 text-lg md:text-xl text-left
 							transition-all active:scale-[0.98]
 							{game.ageCategory === category
-								? 'border-indigo-600 bg-indigo-50 text-indigo-900 font-semibold'
+								? 'border-[#7DC5FF] bg-blue-50 text-blue-900 font-semibold'
 								: 'border-gray-200 bg-white text-gray-800 hover:border-gray-300'}"
 					>
 						{category}
@@ -46,7 +46,7 @@
 					type="checkbox"
 					checked={game.isRaadVanAdvies}
 					onchange={(e) => setRaadVanAdviesV10(e.currentTarget.checked)}
-					class="h-8 w-8 rounded border-gray-300 text-indigo-600 accent-indigo-600 cursor-pointer"
+					class="h-8 w-8 rounded border-gray-300 text-[#7DC5FF] accent-[#7DC5FF] cursor-pointer"
 				/>
 				<span class="text-xl md:text-2xl text-gray-800">
 					Vink aan als je deelnemer bent van de <strong>Raad van Advies</strong>
@@ -57,12 +57,12 @@
 		<!-- Doorgaan knop -->
 		<div class="text-center">
 			<button
-				onclick={startQuestionnaireV10}
+				onclick={startSituationV10}
 				disabled={!canContinue}
 				class="cursor-pointer rounded-xl px-12 py-4 text-xl font-semibold text-white shadow-lg
 					transition-all active:scale-[0.97]
 					{canContinue
-						? 'bg-indigo-600 hover:bg-indigo-700'
+						? 'btn-amg'
 						: 'bg-gray-300 cursor-not-allowed'}"
 			>
 				Doorgaan

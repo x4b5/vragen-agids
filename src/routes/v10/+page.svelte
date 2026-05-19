@@ -16,7 +16,7 @@
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import PhaseHeader from '$lib/components/PhaseHeader.svelte';
 	import DoneScreenV10 from '$lib/components/DoneScreenV10.svelte';
-
+	import SituationScreenV10 from '$lib/components/SituationScreenV10.svelte';
 	const game = getGameStateV10();
 
 	function handleRate(questionId: string, stars: number) {
@@ -40,6 +40,8 @@
 	<WelcomeScreenV10 />
 {:else if game.phase === 'intake'}
 	<IntakeScreenV10 />
+{:else if game.phase === 'situation'}
+	<SituationScreenV10 />
 {:else if game.phase === 'questionnaire'}
 	<main class="min-h-svh flex flex-col px-5 py-6 sm:py-10">
 		<div class="w-full max-w-lg mx-auto">

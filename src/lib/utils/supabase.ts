@@ -39,7 +39,7 @@ export async function submitResponses(data: {
 	duration_ms: number;
 	version?: string;
 	suggestions?: Array<{ title: string; description: string }>;
-	intake?: { age_category: string; is_raad_van_advies: boolean };
+	intake?: { age_category: string; is_raad_van_advies: boolean; situation?: string };
 	question_timings?: Record<string, number>;
 	remark?: string;
 }): Promise<boolean> {
@@ -70,7 +70,8 @@ export async function submitResponses(data: {
 				question_timings: data.question_timings ?? null,
 				remark: data.remark ?? null,
 				age_category: data.intake?.age_category ?? null,
-				is_raad_van_advies: data.intake?.is_raad_van_advies ?? false
+				is_raad_van_advies: data.intake?.is_raad_van_advies ?? false,
+				situation: data.intake?.situation ?? null
 			};
 		} else {
 			row = {

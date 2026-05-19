@@ -4,6 +4,14 @@
 	--font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 	--animate-fade-in: fade-in 0.3s ease-out;
 	--animate-shake: shake 0.4s ease-in-out;
+
+	/* Huisstijl Arbeidsmarktgids */
+	--color-amg-beige: #F5F1E4;
+	--color-amg-green: #CDEE64;
+	--color-amg-blue: #7DC5FF;
+	--color-amg-orange: #FEAB4C;
+	--color-amg-coral: #FC8273;
+	--color-amg-lavender: #ECC1FF;
 }
 
 @keyframes fade-in {
@@ -44,4 +52,11 @@ body {
 	font-family: var(--font-sans);
 	-webkit-tap-highlight-color: transparent;
 	overflow-x: hidden;
+}
+
+.btn-amg {
+	background-color: var(--color-amg-blue);
+}
+.btn-amg:hover {
+	background-color: #5eb5f5;
 }

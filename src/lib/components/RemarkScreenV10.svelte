@@ -25,7 +25,7 @@
 
 		<textarea
 			class="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-lg text-gray-900
-				placeholder:text-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200
+				placeholder:text-gray-400 focus:border-[#7DC5FF] focus:outline-none focus:ring-2 focus:ring-[#7DC5FF]/30
 				transition-colors resize-none"
 			rows="4"
 			placeholder="Typ hier je opmerking of vraag..."
@@ -43,8 +43,8 @@
 
 			<button
 				onclick={onsubmit}
-				class="cursor-pointer rounded-xl bg-indigo-600 px-8 py-3 text-lg font-semibold text-white shadow-md
-					transition-all hover:bg-indigo-700 active:scale-[0.97]"
+				class="btn-amg cursor-pointer rounded-xl px-8 py-3 text-lg font-semibold text-white shadow-md
+					transition-all active:scale-[0.97]"
 			>
 				Versturen
 			</button>
