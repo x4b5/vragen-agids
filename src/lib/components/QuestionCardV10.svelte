@@ -24,19 +24,19 @@
 </script>
 
 <div class="w-full max-w-lg mx-auto">
-	<p class="text-xl sm:text-2xl text-gray-700 mb-4 text-center">
+	<p class="text-lg sm:text-xl text-gray-700 mb-4 text-center">
 		Als ik werk zoek, wil ik weten...
 	</p>
 
 	<h2
-		class="text-3xl sm:text-4xl font-bold text-gray-950 mb-8 text-center leading-snug"
+		class="text-2xl sm:text-3xl font-bold text-gray-950 mb-8 text-center leading-snug"
 	>
 		...{question.text}
 	</h2>
 
 	{#if question.examples}
-		<p class="text-xl sm:text-2xl text-gray-700 mb-3 text-center">Denk hierbij aan:</p>
-		<ul class="text-xl sm:text-2xl text-gray-800 mb-8 space-y-2 text-center">
+		<p class="text-lg sm:text-xl text-gray-700 mb-3 text-center">Denk hierbij aan:</p>
+		<ul class="text-lg sm:text-xl text-gray-800 mb-8 space-y-2 text-center">
 			{#each question.examples as example}
 				<li>{example}</li>
 			{/each}
@@ -51,7 +51,7 @@
 		<button
 			onclick={onprev}
 			disabled={isFirst}
-			class="cursor-pointer text-lg font-medium text-gray-500 hover:text-gray-700 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+			class="cursor-pointer text-base font-medium text-gray-500 hover:text-gray-700 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
 		>
 			Vorige
 		</button>
@@ -59,7 +59,7 @@
 		<button
 			onclick={onnext}
 			disabled={!rating}
-			class="btn-amg cursor-pointer rounded-xl px-8 py-3 text-lg font-semibold text-white shadow-md
+			class="btn-amg cursor-pointer rounded-xl px-8 py-3 text-base font-semibold text-white shadow-md
 				transition-all active:scale-[0.97] disabled:opacity-30 disabled:cursor-not-allowed"
 		>
 			Volgende

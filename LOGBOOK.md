@@ -1,6 +1,6 @@
 # Urenregistratie Logboek
 
-**Totaal gewerkte uren:** 92.25
+**Totaal gewerkte uren:** 92.68
 
 | Datum      | Starttijd | Eindtijd | Duur (uren) | Commit Hash | Omschrijving                                                                                                                                                                                                                                                |
 | ---------- | --------- | -------- | ----------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -48,3 +48,4 @@
 | 2026-04-23 | 08:16 | 06:33 | 8.00 | `7ead583` | fix: store intake responses (age_category, is_raad_van_advies) in Supabase |
 | 2026-05-19 | 06:33 | 18:08 | 8.00 | `a7ad5ef` | chore: update logbook, add docs and supabase config |
 | 2026-05-19 | 18:08 | 20:31 | 2.37 | `b2fc1ab` | feat: apply brand style patterns, blue buttons, and add situation screen |
+| 2026-05-19 | 20:31 | 20:57 | 0.43 | `392fe07` | feat: apply Outfit font, green progress bar, hidden phase headers, and logo footer |

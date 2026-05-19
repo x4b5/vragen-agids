@@ -14,20 +14,20 @@
 
 <main class="min-h-svh flex items-center justify-center px-5 py-10">
 	<div class="w-full max-w-sm md:max-w-2xl mx-auto">
-		<h2 class="text-3xl md:text-4xl font-bold text-gray-950 text-center mb-10">
+		<h2 class="text-2xl md:text-3xl font-bold text-gray-950 text-center mb-10">
 			Voordat we beginnen
 		</h2>
 
 		<!-- Leeftijdscategorie -->
 		<div class="mb-10">
-			<p class="text-xl md:text-2xl font-semibold text-gray-900 mb-4">
+			<p class="text-lg md:text-xl font-semibold text-gray-900 mb-4">
 				Wat is je leeftijd?
 			</p>
 			<div class="flex flex-col gap-3">
 				{#each ageCategories as category}
 					<button
 						onclick={() => setAgeCategoryV10(category)}
-						class="cursor-pointer w-full rounded-xl border-2 px-6 py-4 text-lg md:text-xl text-left
+						class="cursor-pointer w-full rounded-xl border-2 px-6 py-4 text-base md:text-lg text-left
 							transition-all active:scale-[0.98]
 							{game.ageCategory === category
 								? 'border-[#7DC5FF] bg-blue-50 text-blue-900 font-semibold'
@@ -40,7 +40,7 @@
 		</div>
 
 		<!-- Raad van Advies checkbox -->
-		<div class="mb-12">
+		<div class="mb-5">
 			<label class="flex items-center gap-4 cursor-pointer">
 				<input
 					type="checkbox"
@@ -48,7 +48,7 @@
 					onchange={(e) => setRaadVanAdviesV10(e.currentTarget.checked)}
 					class="h-8 w-8 rounded border-gray-300 text-[#7DC5FF] accent-[#7DC5FF] cursor-pointer"
 				/>
-				<span class="text-xl md:text-2xl text-gray-800">
+				<span class="text-lg md:text-xl text-gray-800">
 					Vink aan als je deelnemer bent van de <strong>Raad van Advies</strong>
 				</span>
 			</label>
@@ -59,7 +59,7 @@
 			<button
 				onclick={startSituationV10}
 				disabled={!canContinue}
-				class="cursor-pointer rounded-xl px-12 py-4 text-xl font-semibold text-white shadow-lg
+				class="cursor-pointer rounded-xl px-12 py-4 text-lg font-semibold text-white shadow-lg
 					transition-all active:scale-[0.97]
 					{canContinue
 						? 'btn-amg'
