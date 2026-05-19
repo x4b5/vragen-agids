@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 @theme {
-	--font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+	--font-sans: 'Outfit', system-ui, -apple-system, sans-serif;
 	--animate-fade-in: fade-in 0.3s ease-out;
 	--animate-shake: shake 0.4s ease-in-out;
 
