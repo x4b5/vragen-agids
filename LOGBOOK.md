@@ -1,6 +1,6 @@
 # Urenregistratie Logboek
 
-**Totaal gewerkte uren:** 65.11
+**Totaal gewerkte uren:** 81.88
 
 | Datum      | Starttijd | Eindtijd | Duur (uren) | Commit Hash | Omschrijving                                                                                                                                                                                                                                                |
 | ---------- | --------- | -------- | ----------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -40,3 +40,9 @@
 | 2026-04-20 | 06:51 | 07:01 | 0.16 | `4aca359` | feat: skip welcome phase on /v10, start directly at intake |
 | 2026-04-20 | 07:01 | 07:09 | 0.13 | `b6d6549` | fix: add v10 case to Supabase table routing |
 | 2026-04-20 | 07:09 | 07:12 | 0.06 | `c990af0` | fix: update Skizo agent for 5-star rating system |
+| 2026-04-22 | 07:12 | 07:30 | 8.00 | `c6d69b1` | feat: improve welcome/intake text and add question timings |
+| 2026-04-22 | 07:30 | 07:41 | 0.18 | `1f9fd04` | feat: add per-question timings and optional remark screen |
+| 2026-04-22 | 07:41 | 08:02 | 0.36 | `ebb8b0c` | fix: update v10 statements — fix themes, revise questions |
+| 2026-04-22 | 08:02 | 08:05 | 0.04 | `eebece3` | fix: change welcome title from Welkom to Hoi |
+| 2026-04-22 | 08:05 | 08:16 | 0.19 | `be27e58` | feat: shuffle v10 statements across themes and fix welcome flow |
+| 2026-04-23 | 08:16 | 06:33 | 8.00 | `7ead583` | fix: store intake responses (age_category, is_raad_van_advies) in Supabase |
