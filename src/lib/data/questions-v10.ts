@@ -22,6 +22,13 @@ export type ThemeV10 = (typeof themesV10)[number];
 // Volgorde: eerst uitnodigende haak-vragen (rust, ontdekken, herkenning),
 // daarna hulp & geld, meedoen, gezondheid, leren en als laatste werk.
 export const questionsV10: V10Question[] = [
+	// — Vaste openingsvraag: financieel vooruitgaan
+	{
+		id: 'v10-6',
+		theme: 'Geld en zekerheid',
+		text: 'ik er meteen financieel op vooruitga als ik ga werken'
+	},
+
 	// — Opening: spanning wegnemen + nieuwsgierig maken
 	{
 		id: 'v10-14',
@@ -38,12 +45,6 @@ export const questionsV10: V10Question[] = [
 		theme: 'Meedoen',
 		text: 'ik onder de mensen kom in plaats van veel thuis te zitten'
 	},
-	{
-		id: 'v10-6',
-		theme: 'Geld en zekerheid',
-		text: 'ik er meteen financieel op vooruitga als ik ga werken'
-	},
-
 	// — Hulp en zekerheid
 	{
 		id: 'v10-4',

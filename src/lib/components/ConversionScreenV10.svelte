@@ -19,7 +19,7 @@
 	}
 </script>
 
-<main class="min-h-svh flex items-center justify-center px-5 py-10">
+<main class="min-h-svh flex items-center justify-center px-5 pt-10 pb-28">
 	<div class="w-full max-w-sm md:max-w-xl mx-auto text-center">
 		{#if reflection.kind === 'all-important'}
 			<h1 class="text-3xl md:text-4xl font-bold text-gray-950 mb-5">

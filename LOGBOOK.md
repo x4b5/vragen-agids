@@ -1,6 +1,6 @@
 # Urenregistratie Logboek
 
-**Totaal gewerkte uren:** 109.30
+**Totaal gewerkte uren:** 109.49
 
 | Datum      | Starttijd | Eindtijd | Duur (uren) | Commit Hash | Omschrijving                                                                                                                                                                                                                                                |
 | ---------- | --------- | -------- | ----------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -54,3 +54,4 @@
 | 2026-06-16 | 21:34 | 21:42 | 8.00 | `0d640ce` | feat: voeg conversie-eindscherm met persoonlijke spiegel en arbeidsmarktgids-CTA toe |
 | 2026-06-16 | 21:42 | 21:47 | 0.08 | `80e6539` | chore: update urenregistratie logboek |
 | 2026-06-16 | 21:47 | 21:54 | 0.12 | `5bf3d8a` | style: verklein arbeidsmarktgids-logo in footer |
+| 2026-06-16 | 21:54 | 22:06 | 0.19 | `6d02c0f` | feat: vervang website-CTA door WhatsApp-knop en zet alle reflecties in jij-vorm |
