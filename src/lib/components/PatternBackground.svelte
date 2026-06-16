@@ -134,7 +134,10 @@
 <style>
 	.pattern-bg {
 		position: relative;
-		min-height: 100svh;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		min-height: 0;
 		overflow: hidden;
 	}
 
@@ -149,5 +152,8 @@
 	.pattern-content {
 		position: relative;
 		z-index: 1;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
 	}
 </style>

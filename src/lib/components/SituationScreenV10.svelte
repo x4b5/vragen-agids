@@ -14,7 +14,7 @@
 	let isSubmitting = $derived(game.submissionStatus === 'submitting');
 </script>
 
-<main class="min-h-svh flex items-center justify-center px-5 py-10">
+<main class="flex-1 flex items-center justify-center px-5 py-10">
 	<div class="w-full max-w-sm md:max-w-2xl mx-auto">
 		<h2 class="text-2xl md:text-3xl font-bold text-gray-950 text-center mb-10">
 			Tot slot...

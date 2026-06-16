@@ -40,7 +40,7 @@
 {#if game.phase === 'situation'}
 	<SituationScreenV10 />
 {:else if game.phase === 'questionnaire'}
-	<main class="min-h-svh flex flex-col px-5 py-6 sm:py-10">
+	<main class="flex-1 flex flex-col px-5 py-6 sm:py-10">
 		<div class="w-full max-w-lg mx-auto">
 			<ProgressBar
 				progress={game.progress}

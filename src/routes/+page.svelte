@@ -3,7 +3,7 @@
 </script>
 
 <PatternBackground patternIndex={3}>
-  <main class="min-h-svh flex items-center justify-center px-5 py-10">
+  <main class="flex-1 flex items-center justify-center px-5 py-10">
     <div class="w-full max-w-sm md:max-w-2xl mx-auto text-center">
       <h1 class="text-4xl font-bold text-gray-950 mb-8">Hoi</h1>
 
