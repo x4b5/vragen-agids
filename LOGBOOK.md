@@ -1,6 +1,6 @@
 # Urenregistratie Logboek
 
-**Totaal gewerkte uren:** 109.10
+**Totaal gewerkte uren:** 109.18
 
 | Datum      | Starttijd | Eindtijd | Duur (uren) | Commit Hash | Omschrijving                                                                                                                                                                                                                                                |
 | ---------- | --------- | -------- | ----------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -52,3 +52,4 @@
 | 2026-05-19 | 20:57 | 21:22 | 0.42 | `a989dc6` | fix: reduce font sizes and tighten button spacing across all screens |
 | 2026-06-12 | 21:22 | 21:34 | 8.00 | `fad7567` | test: add load test script for concurrent Supabase submissions |
 | 2026-06-16 | 21:34 | 21:42 | 8.00 | `0d640ce` | feat: voeg conversie-eindscherm met persoonlijke spiegel en arbeidsmarktgids-CTA toe |
+| 2026-06-16 | 21:42 | 21:47 | 0.08 | `80e6539` | chore: update urenregistratie logboek |
