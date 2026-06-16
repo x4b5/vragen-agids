@@ -25,13 +25,13 @@
 
 <div class="w-full max-w-lg mx-auto">
 	<p class="text-lg sm:text-xl text-gray-700 mb-4 text-center">
-		Als ik werk zoek, wil ik weten...
+		Ik vind het belangrijk dat...
 	</p>
 
 	<h2
 		class="text-2xl sm:text-3xl font-bold text-gray-950 mb-8 text-center leading-snug"
 	>
-		...{question.text}
+		{question.text}
 	</h2>
 
 	{#if question.examples}

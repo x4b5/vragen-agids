@@ -8,14 +8,12 @@
       <h1 class="text-4xl font-bold text-gray-950 mb-8">Hoi</h1>
 
       <p class="text-lg md:text-xl text-gray-800 leading-loose mb-5">
-        We willen weten wat mensen belangrijk vinden in (het zoeken naar) werk.
-        We willen jou vragen om ons te helpen hier achter te komen.
+        Vaak krijg je te horen wat je zou moeten doen — solliciteer hier, volg die cursus.
+        Maar zelden vraagt iemand eerst wat jíj eigenlijk wilt.
       </p>
 
       <p class="text-lg md:text-xl text-gray-800 leading-loose mb-12">
-        Je krijgt zo meteen 36 stellingen.
-        Per stelling geef je met sterren aan hoe belangrijk deze voor jou is:
-        van <strong>1 ster</strong> (niet belangrijk) tot <strong>5 sterren</strong> (heel belangrijk).
+        Wij beginnen bij jou. Wat vind jij belangrijk?
       </p>
 
       <a

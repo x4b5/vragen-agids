@@ -1,8 +1,9 @@
 import { questionsV10 } from '../data/questions-v10';
 import type { V10Question } from '../data/questions-v10';
+import { buildReflectionV10 } from '../engine/reflection-v10';
 import { saveV10Session, loadV10Session, clearV10Session, submitWithRetry } from '../utils/persistence';
 
-export type GamePhaseV10 = 'welcome' | 'intake' | 'situation' | 'questionnaire' | 'remarks' | 'done';
+export type GamePhaseV10 = 'welcome' | 'intake' | 'situation' | 'questionnaire' | 'remarks' | 'done' | 'conversion';
 export type SubmissionStatusV10 = 'idle' | 'submitting' | 'submitted' | 'queued';
 
 export const ageCategories = [
@@ -24,7 +25,7 @@ export const situations = [
 
 export type Situation = (typeof situations)[number];
 
-let phase = $state<GamePhaseV10>('intake');
+let phase = $state<GamePhaseV10>('questionnaire');
 let currentQuestionIndex = $state(0);
 let answers = $state<Map<string, number>>(new Map());
 let startedAt = $state<number>(0);
@@ -41,11 +42,11 @@ export function getGameStateV10() {
 		get phase() {
 			return phase;
 		},
+		get reflection() {
+			return buildReflectionV10(answers, questionsV10);
+		},
 		get ageCategory() {
 			return ageCategory;
-		},
-		get isRaadVanAdvies() {
-			return isRaadVanAdvies;
 		},
 		get situation() {
 			return situation;
@@ -113,20 +114,8 @@ function persistSession(): void {
 	});
 }
 
-export function startIntakeV10(): void {
-	phase = 'intake';
-}
-
 export function setAgeCategoryV10(category: AgeCategory): void {
 	ageCategory = category;
-}
-
-export function setRaadVanAdviesV10(value: boolean): void {
-	isRaadVanAdvies = value;
-}
-
-export function startSituationV10(): void {
-	phase = 'situation';
 }
 
 export function setSituationV10(value: Situation): void {
@@ -176,18 +165,11 @@ export function prevQuestionV10(): void {
 	}
 }
 
-export function goToRemarksV10(): void {
+export function goToSituationV10(): void {
 	recordCurrentQuestionTime();
-	phase = 'remarks';
-}
-
-export function setRemarkV10(text: string): void {
-	remark = text;
-}
-
-export function backToQuestionsV10(): void {
-	phase = 'questionnaire';
-	questionStartedAt = Date.now();
+	// Stop de vraag-klok: het situatie-scherm telt niet mee als vraagtijd.
+	questionStartedAt = 0;
+	phase = 'situation';
 }
 
 export async function submitAllV10(): Promise<void> {
@@ -223,11 +205,11 @@ export async function submitAllV10(): Promise<void> {
 
 	submissionStatus = result;
 	clearV10Session();
-	phase = 'done';
+	phase = 'conversion';
 }
 
 export function resetGameV10(): void {
-	phase = 'intake';
+	phase = 'questionnaire';
 	currentQuestionIndex = 0;
 	answers = new Map();
 	startedAt = 0;

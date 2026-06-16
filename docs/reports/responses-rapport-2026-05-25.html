@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>Responses-rapport — Vragen AGids v10 (25 mei 2026)</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  body {
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: #1f2937;
+    line-height: 1.55;
+    font-size: 11pt;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+  h1 { font-size: 22pt; margin: 0 0 4px; color: #111827; }
+  h2 { font-size: 15pt; margin-top: 28px; padding-bottom: 6px; border-bottom: 2px solid #2563eb; color: #1e3a8a; }
+  h3 { font-size: 12pt; margin-top: 18px; color: #374151; }
+  p, li { font-size: 11pt; }
+  ul, ol { padding-left: 22px; }
+  hr { border: none; border-top: 1px solid #e5e7eb; margin: 24px 0; }
+  blockquote {
+    margin: 12px 0;
+    padding: 10px 14px;
+    background: #fef3c7;
+    border-left: 4px solid #f59e0b;
+    border-radius: 4px;
+    font-size: 10.5pt;
+  }
+  blockquote strong { color: #92400e; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12px 0 18px;
+    font-size: 9.5pt;
+    page-break-inside: avoid;
+  }
+  th, td {
+    border: 1px solid #d1d5db;
+    padding: 6px 9px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: #f3f4f6;
+    font-weight: 600;
+    color: #111827;
+  }
+  tr:nth-child(even) td { background: #fafafa; }
+  td:nth-child(n+3):last-child, td:last-child { text-align: right; }
+  code {
+    background: #f3f4f6;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 9.5pt;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+  }
+  .meta {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin: 12px 0 20px;
+    font-size: 10pt;
+  }
+  .meta div { margin: 2px 0; }
+  .callout-warning {
+    background: #fef2f2;
+    border-left: 4px solid #dc2626;
+  }
+  .pagebreak { page-break-before: always; }
+  @media print {
+    body { padding: 0; }
+    h2 { page-break-after: avoid; }
+    table { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Responses-rapport — Vragen AGids v10</h1>
+<div class="meta">
+  <div><strong>Gegenereerd op:</strong> 2026-05-25</div>
+  <div><strong>Databron:</strong> Supabase tabel <code>responses_v10</code></div>
+  <div><strong>Aantal responses:</strong> 12</div>
+  <div><strong>Periode:</strong> 2026-05-20 09:20 t/m 2026-05-21 01:31 (UTC)</div>
+  <div><strong>Versie vragenlijst:</strong> v10 (36 vragen, 1–5 belangrijkheidsschaal)</div>
+</div>
+
+<h2>Kanttekeningen vooraf</h2>
+<ul>
+  <li><strong>Alleen afgeronde sessies.</strong> De data wordt pas naar Supabase gestuurd zodra een respondent de hele vragenlijst doorloopt. Drop-off zit niet in deze tabel.</li>
+  <li><strong>Kleine steekproef (N = 12).</strong> Cijfers zijn indicatief, niet statistisch significant.</li>
+  <li><strong>Alle responses van 20–21 mei 2026</strong> — waarschijnlijk een testronde / eerste lichting.</li>
+</ul>
+
+<h2>1. Demografische verdeling</h2>
+
+<h3>Leeftijdscategorie</h3>
+<table>
+  <thead><tr><th>Leeftijd</th><th>Aantal</th><th>Aandeel</th></tr></thead>
+  <tbody>
+    <tr><td>Jonger dan 25</td><td>4</td><td>33%</td></tr>
+    <tr><td>25 tot 35</td><td>5</td><td>42%</td></tr>
+    <tr><td>35 tot 45</td><td>1</td><td>8%</td></tr>
+    <tr><td>55 of ouder</td><td>2</td><td>17%</td></tr>
+    <tr><td><strong>Totaal</strong></td><td><strong>12</strong></td><td>100%</td></tr>
+  </tbody>
+</table>
+<p>Geen respondenten in de categorie <strong>45 tot 55</strong>.</p>
+
+<h3>Situatie</h3>
+<table>
+  <thead><tr><th>Situatie</th><th>Aantal</th><th>Aandeel</th></tr></thead>
+  <tbody>
+    <tr><td>Ik werk nu niet en wil mij oriënteren</td><td>8</td><td>67%</td></tr>
+    <tr><td>Ik werk en wil misschien eens iets (heel) anders</td><td>2</td><td>17%</td></tr>
+    <tr><td>Ik begeleid mensen (coach, docent, begeleider)</td><td>2</td><td>17%</td></tr>
+  </tbody>
+</table>
+
+<h3>Raad van Advies</h3>
+<table>
+  <thead><tr><th>Raad van Advies</th><th>Aantal</th></tr></thead>
+  <tbody>
+    <tr><td>Ja</td><td>1</td></tr>
+    <tr><td>Nee</td><td>11</td></tr>
+  </tbody>
+</table>
+
+<h2>2. Sessieduur</h2>
+<table>
+  <thead><tr><th>Statistiek</th><th>Waarde</th></tr></thead>
+  <tbody>
+    <tr><td>Gemiddeld</td><td>4 min 24 s</td></tr>
+    <tr><td>Mediaan</td><td>3 min 51 s</td></tr>
+    <tr><td>Minimum</td><td>1 min 45 s</td></tr>
+    <tr><td>Maximum</td><td>12 min 49 s</td></tr>
+  </tbody>
+</table>
+<p>De uitschieter van 12 min 49 s wordt veroorzaakt door één vraag (v10-35 — "wat er gebeurt als ik ziek word") waarop de respondent 7 min 42 s bleef hangen — vermoedelijk afgeleid geraakt of pauze genomen.</p>
+
+<h2>3. Belangrijkste bevindingen</h2>
+
+<h3>Top 6 — meest belangrijke vragen</h3>
+<table>
+  <thead><tr><th>#</th><th>ID</th><th>Vraag</th><th>Gem.</th><th>Thema</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>v10-13</td><td>wat voor soort werk het is</td><td>4,33</td><td>Inhoud van het werk</td></tr>
+    <tr><td>2</td><td>v10-7</td><td>of er gevaarlijke stoffen, machines of situaties zijn</td><td>4,25</td><td>Werkomgeving</td></tr>
+    <tr><td>3</td><td>v10-20</td><td>of ik nieuwe dingen kan leren</td><td>4,17</td><td>Leren en beginnen</td></tr>
+    <tr><td>4</td><td>v10-27</td><td>of het een vaste baan is of tijdelijk</td><td>4,08</td><td>Motivatie en groei</td></tr>
+    <tr><td>5</td><td>v10-23</td><td>of er mogelijkheden zijn om door te groeien</td><td>4,00</td><td>Motivatie en groei</td></tr>
+    <tr><td>5</td><td>v10-34</td><td>hoe de sfeer is op het werk</td><td>4,00</td><td>Samenwerken en sfeer</td></tr>
+  </tbody>
+</table>
+
+<h3>Bodem 6 — minst belangrijke vragen</h3>
+<table>
+  <thead><tr><th>#</th><th>ID</th><th>Vraag</th><th>Gem.</th><th>Thema</th></tr></thead>
+  <tbody>
+    <tr><td>36</td><td>v10-15</td><td>of ik iemand mee mag nemen naar de eerste kennismaking</td><td>1,50</td><td>Samenwerken en sfeer</td></tr>
+    <tr><td>35</td><td>v10-22</td><td>hoeveel ik er financieel op vooruit ga</td><td>2,42</td><td>Motivatie en groei</td></tr>
+    <tr><td>34</td><td>v10-24</td><td>hoe de pauzes geregeld zijn</td><td>2,67</td><td>Praktisch</td></tr>
+    <tr><td>33</td><td>v10-4</td><td>hoe druk het is op een werkdag</td><td>2,75</td><td>Werkomgeving</td></tr>
+    <tr><td>32</td><td>v10-16</td><td>of ik elke dag hetzelfde doe of steeds iets anders</td><td>2,83</td><td>Manier van werken</td></tr>
+    <tr><td>31</td><td>v10-17</td><td>of er plek is om mijn fiets of auto neer te zetten</td><td>2,92</td><td>Praktisch</td></tr>
+  </tbody>
+</table>
+
+<blockquote><strong>Opvallend:</strong> vraag v10-15 ("iemand meenemen naar kennismaking") scoort extreem laag — 9 van de 12 respondenten gaven een 1. Overweeg of deze vraag bijgesteld of verwijderd moet worden.</blockquote>
+
+<blockquote><strong>Opvallend:</strong> vraag v10-22 ("financieel vooruit") scoort laag terwijl v10-25 ("hoeveel geld ik ga verdienen") juist hoog scoort (3,92). De respondenten lijken absolute verdiensten belangrijker te vinden dan het verschil met hun huidige situatie.</blockquote>
+
+<div class="pagebreak"></div>
+
+<h2>4. Volledig overzicht per vraag</h2>
+<p>Gerangschikt op gemiddelde belangrijkheid (hoog → laag). Verdeling toont per score (1–5) het aantal respondenten.</p>
+<table>
+  <thead><tr><th>ID</th><th>Vraag</th><th>Gem.</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead>
+  <tbody>
+    <tr><td>v10-13</td><td>wat voor soort werk het is</td><td>4,33</td><td>0</td><td>0</td><td>3</td><td>3</td><td>6</td></tr>
+    <tr><td>v10-7</td><td>of er gevaarlijke stoffen, machines of situaties zijn</td><td>4,25</td><td>0</td><td>1</td><td>2</td><td>2</td><td>7</td></tr>
+    <tr><td>v10-20</td><td>of ik nieuwe dingen kan leren</td><td>4,17</td><td>0</td><td>0</td><td>4</td><td>2</td><td>6</td></tr>
+    <tr><td>v10-27</td><td>of het een vaste baan is of tijdelijk</td><td>4,08</td><td>0</td><td>0</td><td>4</td><td>3</td><td>5</td></tr>
+    <tr><td>v10-23</td><td>of er mogelijkheden zijn om door te groeien</td><td>4,00</td><td>0</td><td>1</td><td>3</td><td>3</td><td>5</td></tr>
+    <tr><td>v10-34</td><td>hoe de sfeer is op het werk</td><td>4,00</td><td>0</td><td>1</td><td>2</td><td>6</td><td>3</td></tr>
+    <tr><td>v10-3</td><td>wat het werk vraagt van mijn lichaam</td><td>3,92</td><td>0</td><td>1</td><td>2</td><td>6</td><td>3</td></tr>
+    <tr><td>v10-18</td><td>of iemand mij helpt als ik net begin</td><td>3,92</td><td>0</td><td>0</td><td>5</td><td>2</td><td>5</td></tr>
+    <tr><td>v10-25</td><td>hoeveel geld ik ga verdienen</td><td>3,92</td><td>0</td><td>2</td><td>1</td><td>5</td><td>4</td></tr>
+    <tr><td>v10-28</td><td>op welke dagen en tijden ik werk</td><td>3,92</td><td>1</td><td>0</td><td>3</td><td>3</td><td>5</td></tr>
+    <tr><td>v10-30</td><td>of ik ook 's avonds of in het weekend werk</td><td>3,92</td><td>0</td><td>1</td><td>4</td><td>0</td><td>7</td></tr>
+    <tr><td>v10-32</td><td>hoeveel uur ik werk</td><td>3,83</td><td>0</td><td>0</td><td>5</td><td>3</td><td>4</td></tr>
+    <tr><td>v10-1</td><td>waar ik werk: binnen, buiten of allebei</td><td>3,67</td><td>0</td><td>2</td><td>3</td><td>4</td><td>3</td></tr>
+    <tr><td>v10-8</td><td>of ik het werk op mijn eigen manier mag doen</td><td>3,67</td><td>0</td><td>2</td><td>3</td><td>4</td><td>3</td></tr>
+    <tr><td>v10-29</td><td>of de werktijden vast zijn of flexibel</td><td>3,67</td><td>0</td><td>2</td><td>3</td><td>4</td><td>3</td></tr>
+    <tr><td>v10-10</td><td>of ik alleen werk, in een klein team of in een groot team</td><td>3,50</td><td>0</td><td>2</td><td>4</td><td>4</td><td>2</td></tr>
+    <tr><td>v10-26</td><td>hoeveel ik er financieel op vooruit ga (alternatieve formulering)</td><td>3,50</td><td>0</td><td>3</td><td>3</td><td>3</td><td>3</td></tr>
+    <tr><td>v10-2</td><td>hoeveel geluid er is op de werkplek</td><td>3,42</td><td>0</td><td>2</td><td>4</td><td>5</td><td>1</td></tr>
+    <tr><td>v10-9</td><td>welke taal er gesproken wordt op het werk</td><td>3,42</td><td>0</td><td>2</td><td>4</td><td>5</td><td>1</td></tr>
+    <tr><td>v10-33</td><td>hoe rekening kan worden gehouden met mijn situatie</td><td>3,42</td><td>0</td><td>4</td><td>2</td><td>3</td><td>3</td></tr>
+    <tr><td>v10-36</td><td>of ik hulp kan krijgen als ik ergens mee zit</td><td>3,42</td><td>0</td><td>4</td><td>4</td><td>1</td><td>3</td></tr>
+    <tr><td>v10-5</td><td>of ik werkkleding krijg of mijn eigen kleding aan mag</td><td>3,33</td><td>2</td><td>1</td><td>3</td><td>3</td><td>3</td></tr>
+    <tr><td>v10-35</td><td>wat er gebeurt als ik ziek word</td><td>3,33</td><td>0</td><td>4</td><td>4</td><td>3</td><td>1</td></tr>
+    <tr><td>v10-6</td><td>hoe ver ik moet reizen naar mijn werk</td><td>3,25</td><td>0</td><td>4</td><td>4</td><td>1</td><td>3</td></tr>
+    <tr><td>v10-11</td><td>of ik alles zelf mag uitzoeken of stap voor stap uitleg krijg</td><td>3,25</td><td>0</td><td>1</td><td>7</td><td>2</td><td>2</td></tr>
+    <tr><td>v10-12</td><td>of ik met klanten of bezoekers te maken krijg</td><td>3,17</td><td>1</td><td>2</td><td>4</td><td>4</td><td>1</td></tr>
+    <tr><td>v10-19</td><td>welke taal er gesproken wordt op het werk (Samenwerken)</td><td>3,17</td><td>1</td><td>1</td><td>7</td><td>0</td><td>3</td></tr>
+    <tr><td>v10-21</td><td>of ik meerdere dagen kan meelopen</td><td>3,17</td><td>1</td><td>2</td><td>4</td><td>4</td><td>1</td></tr>
+    <tr><td>v10-14</td><td>of ik het team en mijn baas kan ontmoeten voordat ik begin</td><td>3,08</td><td>0</td><td>5</td><td>2</td><td>2</td><td>3</td></tr>
+    <tr><td>v10-31</td><td>hoe ik op mijn werk kan komen (bereikbaar met OV?)</td><td>3,00</td><td>2</td><td>1</td><td>5</td><td>3</td><td>1</td></tr>
+    <tr><td>v10-17</td><td>of er plek is om mijn fiets of auto neer te zetten</td><td>2,92</td><td>2</td><td>2</td><td>4</td><td>3</td><td>1</td></tr>
+    <tr><td>v10-16</td><td>of ik elke dag hetzelfde doe of steeds iets anders</td><td>2,83</td><td>0</td><td>5</td><td>4</td><td>1</td><td>2</td></tr>
+    <tr><td>v10-4</td><td>hoe druk het is op een werkdag</td><td>2,75</td><td>2</td><td>3</td><td>4</td><td>2</td><td>1</td></tr>
+    <tr><td>v10-24</td><td>hoe de pauzes geregeld zijn</td><td>2,67</td><td>2</td><td>3</td><td>6</td><td>0</td><td>1</td></tr>
+    <tr><td>v10-22</td><td>hoeveel ik er financieel op vooruit ga</td><td>2,42</td><td>3</td><td>5</td><td>3</td><td>0</td><td>1</td></tr>
+    <tr><td>v10-15</td><td>of ik iemand mee mag nemen naar de eerste kennismaking</td><td>1,50</td><td>9</td><td>0</td><td>3</td><td>0</td><td>0</td></tr>
+  </tbody>
+</table>
+
+<div class="pagebreak"></div>
+
+<h2>5. Tijdsbesteding per vraag</h2>
+
+<h3>Vragen met de langste gemiddelde verwerkingstijd</h3>
+<table>
+  <thead><tr><th>ID</th><th>Vraag</th><th>Gem. tijd</th><th>Opmerking</th></tr></thead>
+  <tbody>
+    <tr><td>v10-35</td><td>wat er gebeurt als ik ziek word</td><td>~54 s</td><td>Sterk vertekend door één uitschieter van 462 s</td></tr>
+    <tr><td>v10-1</td><td>waar ik werk: binnen, buiten of allebei</td><td>~13 s</td><td>Eerste vraag — inclusief inlees-/denktijd</td></tr>
+    <tr><td>v10-33</td><td>hoe rekening kan worden gehouden met situatie</td><td>~12 s</td><td>Vraag heeft 5 voorbeelden, kost denktijd</td></tr>
+    <tr><td>v10-21</td><td>of ik meerdere dagen kan meelopen</td><td>~9 s</td><td>Lange overweging</td></tr>
+    <tr><td>v10-26</td><td>hoeveel ik er financieel op vooruit ga</td><td>~9 s</td><td>Lange overweging</td></tr>
+    <tr><td>v10-13</td><td>wat voor soort werk het is</td><td>~9 s</td><td>Vraag met voorbeelden, hoogste belangrijkheid</td></tr>
+  </tbody>
+</table>
+
+<h3>Vragen waar mensen het snelst doorheen gaan</h3>
+<table>
+  <thead><tr><th>ID</th><th>Vraag</th><th>Gem. tijd</th></tr></thead>
+  <tbody>
+    <tr><td>v10-15</td><td>iemand meenemen naar kennismaking</td><td>~5 s</td></tr>
+    <tr><td>v10-22</td><td>financieel vooruit</td><td>~4 s</td></tr>
+    <tr><td>v10-6</td><td>reistijd naar werk</td><td>~5 s</td></tr>
+  </tbody>
+</table>
+<p>Snelle doorklik op v10-15 en v10-22 is consistent met de lage belangrijkheidsscores — respondenten hoeven niet na te denken om "1" te kiezen.</p>
+
+<h2>6. Vrije opmerkingen (4 van 12)</h2>
+<table>
+  <thead><tr><th>Datum/tijd</th><th>Leeftijd</th><th>Opmerking</th></tr></thead>
+  <tbody>
+    <tr><td>2026-05-20 09:20</td><td>Jonger dan 25</td><td>"Nee"</td></tr>
+    <tr><td>2026-05-20 09:28</td><td>Jonger dan 25</td><td>"K heb geen vraag"</td></tr>
+    <tr><td>2026-05-20 09:39</td><td>Jonger dan 25</td><td>"Nee"</td></tr>
+    <tr><td>2026-05-20 19:19</td><td>25 tot 35</td><td>"Wat voor ervaring nodig is om het werk te kunnen doen. Is wel fijn om dat te weten. Of het moet een werkplek zijn waar geen scholing of ervaring voor nodig is en alle ervaring op de werkplek opgedaan wordt."</td></tr>
+  </tbody>
+</table>
+
+<blockquote class="callout-warning"><strong>Aandachtspunt:</strong> 3 van de 4 opmerkingen zijn "Nee" of "geen vraag" — wellicht is de vraagstelling op de remark-pagina onduidelijk en denken respondenten dat ze ja/nee moeten antwoorden in plaats van een vrije opmerking te geven.</blockquote>
+
+<blockquote><strong>Inhoudelijke suggestie:</strong> de respondent van 19:19 mist een vraag over <strong>werkervaring / scholingseisen</strong>. Overweeg een vraag in het thema "Leren en beginnen" of "Praktisch" toe te voegen over: "of er ervaring of een opleiding nodig is voor het werk".</blockquote>
+
+<h2>7. Patroon-observaties</h2>
+<ol>
+  <li><strong>Inhoud &gt; Praktisch:</strong> Wat voor werk je doet (v10-13), of je kunt leren (v10-20), of het veilig is (v10-7), en of het vast/tijdelijk is (v10-27) scoren consistent hoger dan praktische zaken zoals parkeren (v10-17) en pauzes (v10-24).</li>
+  <li><strong>Salaris-context belangrijker dan delta:</strong> v10-25 (absolute verdienste) krijgt gem. 3,92; v10-22 (financiële vooruitgang) krijgt gem. 2,42. Mensen willen weten <em>wat</em> ze verdienen, niet zozeer <em>hoeveel meer</em> dan nu.</li>
+  <li><strong>Eén vraag scoort eenduidig als onbelangrijk:</strong> v10-15 (iemand meenemen naar kennismaking) — score 1,50 met 75% van de respondenten op "1". Sterk signaal om deze vraag te heroverwegen.</li>
+  <li><strong>Respondent #2 gaf op 33 van de 36 vragen een 5.</strong> Mogelijk niet serieus ingevuld, of vond echt alles belangrijk. Het kan zinvol zijn om dergelijke "constante-antwoord" patronen eruit te filteren in toekomstige analyses.</li>
+  <li><strong>Doelgroep skewt jong:</strong> 75% van de respondenten is jonger dan 35. Voor representatieve uitspraken over 35–55-jarigen is meer data nodig.</li>
+</ol>
+
+<h2>Methodologie</h2>
+<ul>
+  <li><strong>Belangrijkheidsschaal:</strong> 1 = "helemaal niet belangrijk", 5 = "heel belangrijk".</li>
+  <li><strong>Gemiddelden:</strong> ongewogen rekenkundig gemiddelde over alle 12 responses.</li>
+  <li><strong>Tijdsmetingen:</strong> <code>question_timings</code> in milliseconden, per respondent gemeten van moment-van-tonen tot moment-van-antwoorden.</li>
+  <li><strong>Bron:</strong> <code>SELECT * FROM responses_v10 ORDER BY created_at ASC</code> op project <code>kjorxtwgcvbzyjikadab</code>.</li>
+</ul>
+
+</body>
+</html>

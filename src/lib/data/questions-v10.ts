@@ -6,245 +6,191 @@ export interface V10Question {
 }
 
 export const themesV10 = [
-	'Werkomgeving',
-	'Manier van werken',
-	'Inhoud van het werk',
-	'Samenwerken en sfeer',
-	'Leren en beginnen',
-	'Motivatie en groei',
-	'Praktisch'
+	'Overzicht en hulp',
+	'Geld en zekerheid',
+	'Gezondheid en situatie',
+	'Meedoen',
+	'Jouw volgende stap',
+	'Leren en ontwikkelen',
+	'Werk'
 ] as const;
 
 export type ThemeV10 = (typeof themesV10)[number];
 
+// Elke vraag wordt in de UI getoond als: "Ik vind het belangrijk dat... {text}"
+// Daarom begint elke text met het onderwerp (ik / het werk / iemand), niet met "dat".
+// Volgorde: eerst uitnodigende haak-vragen (rust, ontdekken, herkenning),
+// daarna hulp & geld, meedoen, gezondheid, leren en als laatste werk.
 export const questionsV10: V10Question[] = [
-	// 1 — Werkomgeving
-	{
-		id: 'v10-1',
-		theme: 'Werkomgeving',
-		text: 'waar ik werk: binnen, buiten of allebei'
-	},
-	// 2 — Praktisch
-	{
-		id: 'v10-28',
-		theme: 'Praktisch',
-		text: 'op welke dagen en tijden ik werk'
-	},
-	// 3 — Samenwerken en sfeer
+	// — Opening: spanning wegnemen + nieuwsgierig maken
 	{
 		id: 'v10-14',
-		theme: 'Samenwerken en sfeer',
-		text: 'of ik het team en mijn baas kan ontmoeten voordat ik begin'
+		theme: 'Jouw volgende stap',
+		text: 'ik rustig kan beginnen, zonder ergens meteen aan vast te zitten'
 	},
-	// 4 — Manier van werken
-	{
-		id: 'v10-8',
-		theme: 'Manier van werken',
-		text: 'of ik het werk op mijn eigen manier mag doen'
-	},
-	// 5 — Motivatie en groei
-	{
-		id: 'v10-23',
-		theme: 'Motivatie en groei',
-		text: 'of er mogelijkheden zijn om door te groeien'
-	},
-	// 6 — Leren en beginnen
-	{
-		id: 'v10-20',
-		theme: 'Leren en beginnen',
-		text: 'of ik nieuwe dingen kan leren'
-	},
-	// 7 — Werkomgeving
-	{
-		id: 'v10-2',
-		theme: 'Werkomgeving',
-		text: 'hoeveel geluid er is op de werkplek'
-	},
-	// 8 — Praktisch
-	{
-		id: 'v10-29',
-		theme: 'Praktisch',
-		text: 'of de werktijden vast zijn of flexibel'
-	},
-	// 9 — Samenwerken en sfeer
-	{
-		id: 'v10-19',
-		theme: 'Samenwerken en sfeer',
-		text: 'welke taal er gesproken wordt op het werk'
-	},
-	// 10 — Manier van werken
-	{
-		id: 'v10-9',
-		theme: 'Manier van werken',
-		text: 'of ik alleen werk, in een klein team of in een groot team'
-	},
-	// 11 — Inhoud van het werk
-	{
-		id: 'v10-13',
-		theme: 'Inhoud van het werk',
-		text: 'wat voor soort werk het is',
-		examples: [
-			'Mensen helpen',
-			'Iets maken of repareren',
-			'Dingen regelen of organiseren',
-			'Dingen uitzoeken of onderzoeken'
-		]
-	},
-	// 12 — Praktisch
-	{
-		id: 'v10-32',
-		theme: 'Praktisch',
-		text: 'hoeveel uur ik werk'
-	},
-	// 13 — Werkomgeving
-	{
-		id: 'v10-3',
-		theme: 'Werkomgeving',
-		text: 'wat het werk vraagt van mijn lichaam'
-	},
-	// 14 — Samenwerken en sfeer
-	{
-		id: 'v10-18',
-		theme: 'Samenwerken en sfeer',
-		text: 'of iemand mij helpt als ik net begin met werken'
-	},
-	// 15 — Motivatie en groei
-	{
-		id: 'v10-25',
-		theme: 'Motivatie en groei',
-		text: 'hoeveel geld ik ga verdienen'
-	},
-	// 16 — Manier van werken
-	{
-		id: 'v10-10',
-		theme: 'Manier van werken',
-		text: 'of ik elke dag hetzelfde doe of steeds iets anders'
-	},
-	// 17 — Leren en beginnen
-	{
-		id: 'v10-21',
-		theme: 'Leren en beginnen',
-		text: 'of ik meerdere dagen kan meelopen'
-	},
-	// 18 — Praktisch
-	{
-		id: 'v10-30',
-		theme: 'Praktisch',
-		text: 'of ik ook \u2019s avonds of in het weekend werk'
-	},
-	// 19 — Werkomgeving
-	{
-		id: 'v10-4',
-		theme: 'Werkomgeving',
-		text: 'hoe druk het is op een werkdag'
-	},
-	// 20 — Samenwerken en sfeer
-	{
-		id: 'v10-34',
-		theme: 'Samenwerken en sfeer',
-		text: 'hoe de sfeer is op het werk'
-	},
-	// 21 — Manier van werken
-	{
-		id: 'v10-11',
-		theme: 'Manier van werken',
-		text: 'of ik alles zelf mag uitzoeken of stap voor stap uitleg krijg'
-	},
-	// 22 — Motivatie en groei
-	{
-		id: 'v10-26',
-		theme: 'Motivatie en groei',
-		text: 'hoeveel ik met de nieuwe baan er financieel op vooruit ga'
-	},
-	// 23 — Praktisch
-	{
-		id: 'v10-24',
-		theme: 'Praktisch',
-		text: 'hoe de pauzes geregeld zijn'
-	},
-	// 24 — Werkomgeving
-	{
-		id: 'v10-5',
-		theme: 'Werkomgeving',
-		text: 'of ik werkkleding krijg of mijn eigen kleding aan mag'
-	},
-	// 25 — Samenwerken en sfeer
-	{
-		id: 'v10-15',
-		theme: 'Samenwerken en sfeer',
-		text: 'of ik iemand mee mag nemen naar de eerste kennismaking'
-	},
-	// 26 — Leren en beginnen
-	{
-		id: 'v10-22',
-		theme: 'Leren en beginnen',
-		text: 'hoe mijn eerste werkdag eruitziet'
-	},
-	// 27 — Praktisch
-	{
-		id: 'v10-31',
-		theme: 'Praktisch',
-		text: 'hoe ik op mijn werk kan komen (bereikbaar met OV?)'
-	},
-	// 28 — Manier van werken
-	{
-		id: 'v10-12',
-		theme: 'Manier van werken',
-		text: 'of ik met klanten of bezoekers te maken krijg'
-	},
-	// 29 — Werkomgeving
-	{
-		id: 'v10-6',
-		theme: 'Werkomgeving',
-		text: 'hoe ver ik moet reizen naar mijn werk'
-	},
-	// 30 — Motivatie en groei
-	{
-		id: 'v10-27',
-		theme: 'Motivatie en groei',
-		text: 'of het een vaste baan is of tijdelijk'
-	},
-	// 31 — Samenwerken en sfeer
-	{
-		id: 'v10-16',
-		theme: 'Samenwerken en sfeer',
-		text: "of ik kan meelopen met verschillende collega\u2019s"
-	},
-	// 32 — Praktisch
 	{
 		id: 'v10-17',
-		theme: 'Praktisch',
-		text: 'of er plek is om mijn fiets of auto neer te zetten'
+		theme: 'Jouw volgende stap',
+		text: 'ik kan ontdekken wat ik wil en wat bij me past'
 	},
-	// 33 — Werkomgeving
+	{
+		id: 'v10-11',
+		theme: 'Meedoen',
+		text: 'ik onder de mensen kom in plaats van veel thuis te zitten'
+	},
+	{
+		id: 'v10-6',
+		theme: 'Geld en zekerheid',
+		text: 'ik er meteen financieel op vooruitga als ik ga werken'
+	},
+
+	// — Hulp en zekerheid
+	{
+		id: 'v10-4',
+		theme: 'Geld en zekerheid',
+		text: 'werken geen problemen geeft met mijn uitkering'
+	},
+	{
+		id: 'v10-2',
+		theme: 'Overzicht en hulp',
+		text: 'ik gewoon iemand kan vragen als ik iets niet snap'
+	},
+	{
+		id: 'v10-1',
+		theme: 'Overzicht en hulp',
+		text: 'ik hulp kan krijgen met formulieren en brieven van de gemeente'
+	},
+	{
+		id: 'v10-3',
+		theme: 'Overzicht en hulp',
+		text: 'iemand mij helpt om een begin te maken'
+	},
+	{
+		id: 'v10-5',
+		theme: 'Geld en zekerheid',
+		text: 'ik hulp kan krijgen als ik niet rondkom met geld'
+	},
+
+	// — Meedoen en kleine stappen
+	{
+		id: 'v10-12',
+		theme: 'Meedoen',
+		text: 'ik overdag iets te doen heb en weer een ritme opbouw'
+	},
+	{
+		id: 'v10-13',
+		theme: 'Meedoen',
+		text: 'ik iets kan doen dichtbij, in mijn eigen buurt'
+	},
+	{
+		id: 'v10-15',
+		theme: 'Jouw volgende stap',
+		text: 'ik eerst iets kan proberen, zoals vrijwilligerswerk'
+	},
+	{
+		id: 'v10-16',
+		theme: 'Jouw volgende stap',
+		text: 'ik eerst met iemand kan praten die met me meedenkt'
+	},
+
+	// — Gezondheid en situatie
 	{
 		id: 'v10-7',
-		theme: 'Werkomgeving',
-		text: 'of er gevaarlijke stoffen en machines zijn of gevaarlijke situaties kunnen voorkomen'
+		theme: 'Gezondheid en situatie',
+		text: 'er rekening wordt gehouden met mijn gezondheid'
 	},
-	// 34 — Praktisch
+	{
+		id: 'v10-8',
+		theme: 'Gezondheid en situatie',
+		text: 'ik mijn kinderen op tijd van school kan halen'
+	},
+	{
+		id: 'v10-32',
+		theme: 'Gezondheid en situatie',
+		text: 'er rekening wordt gehouden met mijn lichamelijke beperking'
+	},
 	{
 		id: 'v10-33',
-		theme: 'Praktisch',
-		text: 'hoe rekening kan worden gehouden met mijn situatie',
-		examples: [
-			'Kinderen van school halen',
-			'Een lichamelijke beperking',
-			'Mantelzorg voor iemand',
-			'Afspraken met instanties',
-			'Ramadan'
-		]
+		theme: 'Gezondheid en situatie',
+		text: 'ik tijd houd om voor iemand te zorgen'
 	},
-	// 35 — Samenwerken en sfeer
 	{
-		id: 'v10-36',
-		theme: 'Samenwerken en sfeer',
-		text: 'of ik hulp kan krijgen als ik ergens mee zit'
+		id: 'v10-34',
+		theme: 'Gezondheid en situatie',
+		text: 'ik naar mijn afspraken met instanties kan gaan'
 	},
-	// 36 — Praktisch
 	{
-		id: 'v10-35',
-		theme: 'Praktisch',
-		text: 'wat er gebeurt als ik ziek word'
+		id: 'v10-9',
+		theme: 'Gezondheid en situatie',
+		text: 'ik op een plek kan komen, ook als ik geen vervoer heb'
+	},
+	{
+		id: 'v10-10',
+		theme: 'Gezondheid en situatie',
+		text: 'ik weet wat er gebeurt als ik ziek word'
+	},
+
+	// — Leren en ontwikkelen
+	{
+		id: 'v10-18',
+		theme: 'Leren en ontwikkelen',
+		text: 'ik de Nederlandse taal kan oefenen of leren'
+	},
+	{
+		id: 'v10-19',
+		theme: 'Leren en ontwikkelen',
+		text: 'ik nieuwe dingen kan leren'
+	},
+	{
+		id: 'v10-20',
+		theme: 'Leren en ontwikkelen',
+		text: 'ik me verder kan ontwikkelen en kan doorgroeien'
+	},
+
+	// — Werk
+	{
+		id: 'v10-22',
+		theme: 'Werk',
+		text: 'iemand mij helpt en begeleidt als ik begin'
+	},
+	{
+		id: 'v10-23',
+		theme: 'Werk',
+		text: 'ik eerst kan meelopen of een dag kan proberen'
+	},
+	{
+		id: 'v10-24',
+		theme: 'Werk',
+		text: 'ik de mensen kan ontmoeten voordat ik begin'
+	},
+	{
+		id: 'v10-25',
+		theme: 'Werk',
+		text: 'ik niet te veel uren hoef te werken'
+	},
+	{
+		id: 'v10-26',
+		theme: 'Werk',
+		text: 'ik kan kiezen of ik binnen of buiten werk'
+	},
+	{
+		id: 'v10-27',
+		theme: 'Werk',
+		text: 'het niet te druk is op de plek'
+	},
+	{
+		id: 'v10-29',
+		theme: 'Werk',
+		text: 'er sportmogelijkheden worden aangeboden'
+	},
+	{
+		id: 'v10-30',
+		theme: 'Werk',
+		text: 'ik weet of het werk vast of tijdelijk is'
+	},
+	{
+		id: 'v10-31',
+		theme: 'Werk',
+		text: 'ik mijn werk op mijn eigen manier mag doen'
 	}
 ];

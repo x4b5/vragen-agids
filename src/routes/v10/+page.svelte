@@ -1,23 +1,24 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import {
 		getGameStateV10,
+		startQuestionnaireV10,
 		rateQuestionV10,
 		nextQuestionV10,
 		prevQuestionV10,
-		goToRemarksV10,
-		setRemarkV10,
-		backToQuestionsV10,
-		submitAllV10
+		goToSituationV10
 	} from '$lib/stores/game-v10.svelte';
-	import WelcomeScreenV10 from '$lib/components/WelcomeScreenV10.svelte';
-	import IntakeScreenV10 from '$lib/components/IntakeScreenV10.svelte';
 	import QuestionCardV10 from '$lib/components/QuestionCardV10.svelte';
-	import RemarkScreenV10 from '$lib/components/RemarkScreenV10.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import PhaseHeader from '$lib/components/PhaseHeader.svelte';
-	import DoneScreenV10 from '$lib/components/DoneScreenV10.svelte';
 	import SituationScreenV10 from '$lib/components/SituationScreenV10.svelte';
+	import ConversionScreenV10 from '$lib/components/ConversionScreenV10.svelte';
 	const game = getGameStateV10();
+
+	// Start direct met de vragenlijst (de welkomstpagina is de root-route /).
+	onMount(() => {
+		startQuestionnaireV10();
+	});
 
 	function handleRate(questionId: string, stars: number) {
 		rateQuestionV10(questionId, stars);
@@ -25,7 +26,7 @@
 
 	function handleNext() {
 		if (game.isLastQuestion) {
-			goToRemarksV10();
+			goToSituationV10();
 		} else {
 			nextQuestionV10();
 		}
@@ -36,11 +37,7 @@
 	}
 </script>
 
-{#if game.phase === 'welcome'}
-	<WelcomeScreenV10 />
-{:else if game.phase === 'intake'}
-	<IntakeScreenV10 />
-{:else if game.phase === 'situation'}
+{#if game.phase === 'situation'}
 	<SituationScreenV10 />
 {:else if game.phase === 'questionnaire'}
 	<main class="min-h-svh flex flex-col px-5 py-6 sm:py-10">
@@ -69,13 +66,6 @@
 			{/key}
 		</div>
 	</main>
-{:else if game.phase === 'remarks'}
-	<RemarkScreenV10
-		remark={game.remark}
-		onchange={setRemarkV10}
-		onsubmit={submitAllV10}
-		onback={backToQuestionsV10}
-	/>
-{:else if game.phase === 'done'}
-	<DoneScreenV10 />
+{:else if game.phase === 'conversion'}
+	<ConversionScreenV10 />
 {/if}
