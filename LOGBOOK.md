@@ -1,6 +1,6 @@
 # Urenregistratie Logboek
 
-**Totaal gewerkte uren:** 109.96
+**Totaal gewerkte uren:** 111.01
 
 | Datum      | Starttijd | Eindtijd | Duur (uren) | Commit Hash | Omschrijving                                                                                                                                                                                                                                                |
 | ---------- | --------- | -------- | ----------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -56,3 +56,4 @@
 | 2026-06-16 | 21:47 | 21:54 | 0.12 | `5bf3d8a` | style: verklein arbeidsmarktgids-logo in footer |
 | 2026-06-16 | 21:54 | 22:06 | 0.19 | `6d02c0f` | feat: vervang website-CTA door WhatsApp-knop en zet alle reflecties in jij-vorm |
 | 2026-06-16 | 22:06 | 22:34 | 0.47 | `ee59fe2` | feat: zet financiële vraag als vaste eerste vraag in vragenlijst v10 |
+| 2026-06-16 | 22:34 | 23:37 | 1.05 | `4af7567` | fix: voorkom dat inhoud achter het footer-logo valt |

@@ -22,7 +22,7 @@
 <div class="flex min-h-svh flex-col" class:bg-amg-beige={isWelcome}>
   {@render children()}
 
-  <footer class="mt-auto flex justify-center pt-3 pb-10 pointer-events-none">
+  <footer class="mt-auto flex justify-center pt-16 pb-12 pointer-events-none">
     <img src="/logo-arbeidsmarktgids.svg" alt="Arbeidsmarktgids" class="h-7 opacity-70" />
   </footer>
 </div>
