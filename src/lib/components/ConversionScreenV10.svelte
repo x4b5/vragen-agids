@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getGameStateV10 } from '$lib/stores/game-v10.svelte';
+	import { getGameStateV10, markWhatsappClickedV10 } from '$lib/stores/game-v10.svelte';
 	import { reflectionsV10 } from '$lib/data/reflections-v10';
 
 	const WHATSAPP_NUMBER = '31634369257';
@@ -77,6 +77,7 @@
 			href={whatsappUrl}
 			target="_blank"
 			rel="noopener noreferrer"
+			onclick={markWhatsappClickedV10}
 			class="inline-flex items-center justify-center gap-3 rounded-xl bg-[#25D366] px-10 py-4 text-lg font-semibold text-white shadow-lg
 				transition-all active:scale-[0.97] hover:bg-[#22c35e]"
 		>

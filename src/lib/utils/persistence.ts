@@ -1,4 +1,4 @@
-import { submitResponses } from './supabase';
+import { submitResponses, markWhatsappClicked } from './supabase';
 
 const SESSION_KEY = 'agids-session';
 const PENDING_KEY = 'agids-pending';
@@ -70,24 +70,40 @@ export function clearSession(): void {
 	}
 }
 
-export async function submitWithRetry(payload: SubmissionPayload): Promise<'submitted' | 'queued'> {
-	const success = await submitResponses(payload);
-	if (success) {
-		return 'submitted';
+function queuePayload(payload: SubmissionPayload): void {
+	if (!isLocalStorageAvailable()) return;
+	try {
+		const raw = localStorage.getItem(PENDING_KEY);
+		const pending: SubmissionPayload[] = raw ? JSON.parse(raw) : [];
+		pending.push(payload);
+		localStorage.setItem(PENDING_KEY, JSON.stringify(pending));
+	} catch {
+		// Storage full — we tried
 	}
-	// Queue for later retry
-	if (isLocalStorageAvailable()) {
-		try {
-			const raw = localStorage.getItem(PENDING_KEY);
-			const pending: SubmissionPayload[] = raw ? JSON.parse(raw) : [];
-			pending.push(payload);
-			localStorage.setItem(PENDING_KEY, JSON.stringify(pending));
-		} catch {
-			// Storage full — we tried
-		}
-	}
-	return 'queued';
 }
+
+/**
+ * Verstuurt en geeft naast de status ook het id van de opgeslagen inzending terug.
+ * Het id is nodig om later (bijv. bij een WhatsApp-klik) dezelfde rij bij te werken.
+ * Bij 'queued' is er nog geen id (de rij bestaat nog niet in Supabase).
+ */
+export async function submitWithRetryV10(
+	payload: SubmissionPayload
+): Promise<{ status: 'submitted' | 'queued'; id: string | null }> {
+	const { ok, id } = await submitResponses(payload);
+	if (ok) {
+		return { status: 'submitted', id };
+	}
+	queuePayload(payload);
+	return { status: 'queued', id: null };
+}
+
+export async function submitWithRetry(payload: SubmissionPayload): Promise<'submitted' | 'queued'> {
+	const { status } = await submitWithRetryV10(payload);
+	return status;
+}
+
+export { markWhatsappClicked };
 
 // === V2 persistence (separate keys to avoid conflict with v1) ===
 
@@ -490,8 +506,8 @@ export async function flushPendingQueue(): Promise<void> {
 
 		const remaining: SubmissionPayload[] = [];
 		for (const payload of pending) {
-			const success = await submitResponses(payload);
-			if (!success) {
+			const { ok } = await submitResponses(payload);
+			if (!ok) {
 				remaining.push(payload);
 			}
 		}

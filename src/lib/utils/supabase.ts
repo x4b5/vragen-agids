@@ -42,8 +42,8 @@ export async function submitResponses(data: {
 	intake?: { age_category: string; is_raad_van_advies: boolean; situation?: string };
 	question_timings?: Record<string, number>;
 	remark?: string;
-}): Promise<boolean> {
-	if (!supabase) return false;
+}): Promise<{ ok: boolean; id: string | null }> {
+	if (!supabase) return { ok: false, id: null };
 
 	const table = getTableForVersion(data.version);
 
@@ -80,15 +80,38 @@ export async function submitResponses(data: {
 			};
 		}
 
-		const { error } = await supabase.from(table).insert(row);
+		const { data: inserted, error } = await supabase
+			.from(table)
+			.insert(row)
+			.select('id')
+			.single();
 
 		if (error) {
 			console.error('Failed to submit responses:', error.message);
-			return false;
+			return { ok: false, id: null };
 		}
-		return true;
+		return { ok: true, id: inserted?.id ?? null };
 	} catch (err) {
 		console.error('Network or unexpected error while submitting:', err);
-		return false;
+		return { ok: false, id: null };
+	}
+}
+
+/**
+ * Markeert dat de persoon na het invullen op de WhatsApp-knop heeft geklikt.
+ * Werkt alleen de v10-tabel bij en faalt stil (analytics mag de flow nooit breken).
+ */
+export async function markWhatsappClicked(id: string): Promise<void> {
+	if (!supabase || !id) return;
+	try {
+		const { error } = await supabase
+			.from('responses_v10')
+			.update({ clicked_whatsapp: true })
+			.eq('id', id);
+		if (error) {
+			console.error('Failed to mark whatsapp click:', error.message);
+		}
+	} catch (err) {
+		console.error('Network or unexpected error while marking whatsapp click:', err);
 	}
 }

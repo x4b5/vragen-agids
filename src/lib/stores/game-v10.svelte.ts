@@ -1,7 +1,13 @@
 import { questionsV10 } from '../data/questions-v10';
 import type { V10Question } from '../data/questions-v10';
 import { buildReflectionV10 } from '../engine/reflection-v10';
-import { saveV10Session, loadV10Session, clearV10Session, submitWithRetry } from '../utils/persistence';
+import {
+	saveV10Session,
+	loadV10Session,
+	clearV10Session,
+	submitWithRetryV10,
+	markWhatsappClicked
+} from '../utils/persistence';
 
 export type GamePhaseV10 = 'welcome' | 'intake' | 'situation' | 'questionnaire' | 'remarks' | 'done' | 'conversion';
 export type SubmissionStatusV10 = 'idle' | 'submitting' | 'submitted' | 'queued';
@@ -36,6 +42,7 @@ let situation = $state<Situation | null>(null);
 let questionTimings = $state<Map<string, number>>(new Map());
 let questionStartedAt = $state<number>(0);
 let remark = $state<string>('');
+let lastSubmissionId = $state<string | null>(null);
 
 export function getGameStateV10() {
 	return {
@@ -190,7 +197,7 @@ export async function submitAllV10(): Promise<void> {
 		timingsObj[id] = ms;
 	}
 
-	const result = await submitWithRetry({
+	const result = await submitWithRetryV10({
 		answers: answersObj,
 		duration_ms: duration,
 		version: 'v10',
@@ -203,9 +210,19 @@ export async function submitAllV10(): Promise<void> {
 		remark: remark.trim() || undefined
 	});
 
-	submissionStatus = result;
+	submissionStatus = result.status;
+	lastSubmissionId = result.id;
 	clearV10Session();
 	phase = 'conversion';
+}
+
+/**
+ * Markeert in Supabase dat de persoon op de WhatsApp-knop klikte.
+ * Faalt stil: het mag de navigatie naar WhatsApp nooit ophouden of breken.
+ */
+export async function markWhatsappClickedV10(): Promise<void> {
+	if (!lastSubmissionId) return;
+	await markWhatsappClicked(lastSubmissionId);
 }
 
 export function resetGameV10(): void {
@@ -220,5 +237,6 @@ export function resetGameV10(): void {
 	questionTimings = new Map();
 	questionStartedAt = 0;
 	remark = '';
+	lastSubmissionId = null;
 	clearV10Session();
 }
