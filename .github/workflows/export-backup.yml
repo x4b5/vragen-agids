@@ -1,4 +1,4 @@
-name: Weekly Data Backup
+name: Data Backup (elke 2 dagen)
 
 on:
   schedule:
